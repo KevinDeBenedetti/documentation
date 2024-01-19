@@ -1,8 +1,124 @@
 ---
-title: Ma doc
+title: La Doc
 description: Ma documentation de développeur
 ---
 
-import Links from '../../components/Links.vue' 
+import Test from '../../components/Test.vue'
 
-<Links />
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## 🚀 Derniers ajouts
+
+<CardGrid>
+
+    <LinkCard
+        title="⭐ Mac OS"
+        href="/documentation/macos/alias/"
+        description="Créer des alias"
+    />
+
+    <LinkCard
+        title="⭐ Vue 3"
+        href="/documentation/vue/github-pages/"
+        description="Github Pages"
+    />
+
+</CardGrid>
+
+## Frontend
+
+<CardGrid>
+
+    <LinkCard
+        title="Vue 3"
+        href="/documentation/vue/"
+        description="🚧 En cours"
+    />
+
+    <LinkCard
+        title="Nuxt.js"
+        href="/documentation/nuxt/"
+        description="🚧 En cours"
+    />
+
+</CardGrid>
+
+## Backend
+
+<CardGrid>
+
+    <LinkCard
+        title="Symfony"
+        href="/documentation/symfony/"
+        description="🚧 En cours"
+    />
+
+    <LinkCard
+        title="Express.js"
+        href="/documentation/express/"
+        description="⏱️ Prochainement"
+    />
+
+</CardGrid>
+
+## CI / CD
+
+<CardGrid>
+
+    <LinkCard
+        title="Github Actions"
+        description="Utiliser Github Actions, "
+        href="/documentation/github/"
+        description="🚧 En cours"
+    />
+
+    <LinkCard
+        title="Deployer"
+        href="/documentation/deployer/"
+        description="⏱️ Prochainement"
+    />
+
+</CardGrid>
+
+## Outils de développement
+
+<CardGrid>
+
+    <LinkCard
+        title="Docker"
+        href="/documentation/github/"
+        description="⏱️ Prochainement"
+    />
+
+    <LinkCard
+        title="Git"
+        href="/documentation/git/"
+        description="⏱️ Prochainement"
+    />
+
+    <LinkCard
+        title="Linters"
+        href="/documentation/linters/"
+        description="⏱️ Prochainement"
+    />
+
+</CardGrid>
+
+## Systèmes d'exploitation
+
+<CardGrid>
+
+    <LinkCard
+        title="Mac OS"
+        href="/documentation/github/"
+       description="🚧 En cours"
+    />
+
+    <LinkCard
+        title="Ubuntu"
+        href="/documentation/git/"
+        description="⏱️ Prochainement"
+    />
+
+</CardGrid>

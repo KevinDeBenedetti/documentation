@@ -11,7 +11,7 @@ sidebar:
 
 ## Déployer son application Vite / Vue 3 pour Github Pages
 
-Ce tutoriel est inspiré de la ressource suivante (documentation)[https://mkay11.medium.com/how-to-deploy-your-vite-vue-3-application-in-github-pages-2023-2b842f50576a]
+Ce tutoriel est inspiré de la ressource suivante [documentation](https://mkay11.medium.com/how-to-deploy-your-vite-vue-3-application-in-github-pages-2023-2b842f50576a)
 
 ### 1 - Lier son repository Github
 
