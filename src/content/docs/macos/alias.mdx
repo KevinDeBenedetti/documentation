@@ -1,0 +1,94 @@
+---
+title: Ajouter des alias
+description: Ajouter des alias pour macOS.
+sidebar:
+    order: 3
+    label: Ajouter des alias
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+:::note[Introduction]
+Vous pouvez créer des alias pour simplifier l'utilisation des commandes fréquemment utilisées dans votre terminal. Les alias sont des raccourcis que vous pouvez définir pour des commandes plus longues et complexes.
+:::
+
+## Modifier le fichier de profil
+
+Vous pouvez utilisr un éditeur de texte comme `nano`, `vim` ou celui de votre choix.
+
+```bash title="Pour Zsh"
+nano ~/.zshrc_profile
+```
+:::tip[Pourquoi utiliser Zsh ?]
+Zsh (Z shell) est le shell par défaut sur macOS.
+<Tabs>
+  <TabItem label="Avantages">
+    - Autocomplétion améliorée
+    - Correction orthographique
+    - Personnalisation
+    - Fonctionnalités avancées
+  </TabItem>
+  <TabItem label="Inconvénients">
+    - Apprentissage
+  </TabItem>
+</Tabs>
+:::
+
+```bash title="Pour Bash"
+nano ~/.bash_profile
+```
+:::tip[Pourquoi utiliser Bash ?]
+Bash (Bourne Again Shell) était le shell par défaut sur macOS Catalina (10.15) et versions ultérieures.
+<Tabs>
+  <TabItem label="Avantages">
+    - Large adoption
+    - Familiarité
+  </TabItem>
+  <TabItem label="Inconvénients">
+    - Moins de fonctionnalités avancées
+    - Moins personnalisable
+  </TabItem>
+</Tabs>
+:::
+
+## Ajouter un Alias
+
+Dans le fichier de profil, ajoutez des lignes pour définir vos alias.
+
+```bash title="Exemple avec Nginx"
+# Raccourci pour configurer Nginx
+alias ..nginx="cd /usr/local/etc/nginx"
+```
+
+## Confirmer les modifications
+
+Après avoir ajouté vos alias, enregistrez les modifications dans le fichier de profil et fermez l'éditeur.
+
+```bash title="Pour Zsh"
+source ~/.zshrc_profile
+```
+
+```bash title="Pour Bash"
+source ~/.bash_profile
+```
+
+Cette commande recharge le fichier de profil, rendant les nouveaux alias immédiatement disponibles.
+
+## Supprimer un alias
+
+Pour supprimer un alias, utilisez la commande `unalias` suivi du nom de l'alias.
+
+```bash frame="none"
+unalias [alias]
+```
+
+## Lister les alias
+
+Pour voir la liste de tous les alias définis, utilisez la commande `alias` dans votre terminal.
+
+```bash frame="none"
+alias
+```
+
+## Alias globaux
+
+Si vous souhaitez que vos alias soient disponibles pour tous les utilisateurs, vous pouvez les ajouter dans les fichiers de profil globaux, tels que `/etc/zshrc` ou `/etc/bashrc`.

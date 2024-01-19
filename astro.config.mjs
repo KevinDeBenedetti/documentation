@@ -36,6 +36,11 @@ export default defineConfig({
 					collapsed: true
 				},
 				{
+					label: 'Docker',
+					autogenerate: { directory: 'docker' },
+					collapsed: true
+				},
+				{
 					label: 'Mac OS',
 					autogenerate: { directory: 'macos' },
 					collapsed: true
