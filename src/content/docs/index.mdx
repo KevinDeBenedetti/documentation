@@ -1,5 +1,5 @@
 ---
-title: NornsCodingGuide 🤖
+title: Ma doc
 description: Ma documentation de développeur
 template: splash
 hero:
@@ -27,41 +27,97 @@ hero:
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
+<LinkCard
+    title="Documentation"
+    href="/documentation/home/"
+/>
+
 ## Les technologies
 
 ### Frontend
 
 <CardGrid>
+
     <LinkCard
         title="Vue 3"
-        href="/documentation/vue/start/"
+        href="/documentation/vue/"
     />
+
     <LinkCard
         title="Nuxt.js"
-        href="/documentation/nuxt/start/"
+        href="/documentation/nuxt/"
     />
+
 </CardGrid>
 
 ### Backend
+
 <CardGrid>
+
     <LinkCard
         title="Symfony"
-        href="/symfony/start/"
+        href="/documentation/symfony/"
     />
+
     <LinkCard
         title="Express.js"
-        href="/express/start/"
+        href="/documentation/express/"
     />
+
 </CardGrid>
 
 ### CI / CD
+
 <CardGrid>
+
     <LinkCard
         title="Github Actions"
-        href="/documentation/github/start/"
+        description="Utiliser Github Actions, "
+        href="/documentation/github/"
     />
+
     <LinkCard
         title="Deployer"
-        href="/documentation/deployer/start/"
+        href="/documentation/deployer/"
     />
+
+</CardGrid>
+
+### Outils de développement
+
+<CardGrid>
+
+    <LinkCard
+        title="Docker"
+        description="Utiliser Github Actions, "
+        href="/documentation/docker/"
+    />
+
+    <LinkCard
+        title="Git"
+        href="/documentation/git/"
+    />
+
+    <LinkCard
+        title="Linters"
+        href="/documentation/linters/"
+    />
+
+</CardGrid>
+
+### Systèmes d'exploitation
+
+<CardGrid>
+
+    <LinkCard
+        title="Mac OS"
+        description="Utiliser Github Actions, "
+        href="/documentation/macos/"
+    />
+
+    <LinkCard
+        title="Ubuntu"
+        href="/documentation/ubuntu/"
+    />
+
 </CardGrid>
