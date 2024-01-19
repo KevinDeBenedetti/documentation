@@ -3,122 +3,63 @@ title: La Doc
 description: Ma documentation de développeur
 ---
 
-import Test from '../../components/Test.vue'
-
-
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## 🚀 Derniers ajouts
 
-<CardGrid>
-
-    <LinkCard
-        title="⭐ Mac OS"
-        href="/documentation/macos/alias/"
-        description="Créer des alias"
-    />
-
-    <LinkCard
-        title="⭐ Vue 3"
-        href="/documentation/vue/github-pages/"
-        description="Github Pages"
-    />
-
+<CardGrid stagger>
+    <Card title="Symfony" icon="star">
+        API Platform
+        <LinkCard title="Voir la doc" href="/documentation/symfony/api-platform/" />
+    </Card>
+    <Card title="Mac OS" icon="star">
+        Créer des alias
+        <LinkCard title="Voir la doc" href="/documentation/macos/alias/" />
+    </Card>
+    <Card title="Vue 3" icon="star">
+        Github Pages
+        <LinkCard title="Voir la doc" href="/documentation/vue/github-pages/" />
+    </Card>
 </CardGrid>
 
 ## Frontend
 
-<CardGrid>
-
-    <LinkCard
-        title="Vue 3"
-        href="/documentation/vue/"
-        description="🚧 En cours"
-    />
-
-    <LinkCard
-        title="Nuxt.js"
-        href="/documentation/nuxt/"
-        description="🚧 En cours"
-    />
-
-</CardGrid>
+<Card title="Frameworks" icon="open-book">
+    <CardGrid>
+        <LinkCard title="Vue 3" href="/documentation/vue/" description="🚧 En cours" />
+        <LinkCard title="Nuxt.js" href="/documentation/nuxt/" description="🚧 En cours" />
+    </CardGrid>
+</Card>
 
 ## Backend
-
-<CardGrid>
-
-    <LinkCard
-        title="Symfony"
-        href="/documentation/symfony/"
-        description="🚧 En cours"
-    />
-
-    <LinkCard
-        title="Express.js"
-        href="/documentation/express/"
-        description="⏱️ Prochainement"
-    />
-
-</CardGrid>
+<Card title="Frameworks" icon="open-book">
+    <CardGrid>
+        <LinkCard title="Symfony" href="/documentation/symfony/" description="🚧 En cours" />
+        <LinkCard title="Express.js" href="/documentation/express/" description="⏱️ Prochainement" />
+    </CardGrid>
+</Card>
 
 ## CI / CD
-
-<CardGrid>
-
-    <LinkCard
-        title="Github Actions"
-        description="Utiliser Github Actions, "
-        href="/documentation/github/"
-        description="🚧 En cours"
-    />
-
-    <LinkCard
-        title="Deployer"
-        href="/documentation/deployer/"
-        description="⏱️ Prochainement"
-    />
-
-</CardGrid>
+<Card icon="open-book">
+    <CardGrid>
+        <LinkCard title="Github Actions" description="Utiliser Github Actions" href="/documentation/github/" description="🚧 En cours" />
+        <LinkCard title="Deployer" href="/documentation/deployer/" description="⏱️ Prochainement" />
+    </CardGrid>
+</Card>
 
 ## Outils de développement
-
-<CardGrid>
-
-    <LinkCard
-        title="Docker"
-        href="/documentation/github/"
-        description="⏱️ Prochainement"
-    />
-
-    <LinkCard
-        title="Git"
-        href="/documentation/git/"
-        description="⏱️ Prochainement"
-    />
-
-    <LinkCard
-        title="Linters"
-        href="/documentation/linters/"
-        description="⏱️ Prochainement"
-    />
-
-</CardGrid>
+<Card icon="open-book">
+    <CardGrid>
+        <LinkCard title="Docker" href="/documentation/github/" description="⏱️ Prochainement"/>
+        <LinkCard title="Git" href="/documentation/git/" description="⏱️ Prochainement" />
+        <LinkCard title="Linters" href="/documentation/linters/" description="⏱️ Prochainement" />
+    </CardGrid>
+</Card>
 
 ## Systèmes d'exploitation
-
-<CardGrid>
-
-    <LinkCard
-        title="Mac OS"
-        href="/documentation/github/"
-       description="🚧 En cours"
-    />
-
-    <LinkCard
-        title="Ubuntu"
-        href="/documentation/git/"
-        description="⏱️ Prochainement"
-    />
-
-</CardGrid>
+<Card icon="open-book">
+    <CardGrid>
+        <LinkCard title="Mac OS" href="/documentation/github/" description="🚧 En cours" />
+        <LinkCard title="Ubuntu" href="/documentation/git/" description="⏱️ Prochainement" />
+    </CardGrid>
+</Card>
