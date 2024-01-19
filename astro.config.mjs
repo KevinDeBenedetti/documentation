@@ -3,6 +3,8 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://KevinDeBenedetti.github.io',
+	base: '/documentation',
 	integrations: [
 		starlight({
 			title: 'NornsCodingGuide',
@@ -31,6 +33,11 @@ export default defineConfig({
 				{
 					label: 'Symfony',
 					autogenerate: { directory: 'symfony' },
+					collapsed: true
+				},
+				{
+					label: 'Mac OS',
+					autogenerate: { directory: 'macos' },
 					collapsed: true
 				}
 			],
