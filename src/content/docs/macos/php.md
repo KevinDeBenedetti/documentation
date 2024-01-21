@@ -9,12 +9,11 @@ sidebar:
         variant: note
 ---
 
-:::note[Introduction]
 Installer PHP avec le gestionnaire de paquet Homebrew.
 
-- Ressources :
-    - [Paquet Homebrew](https://formulae.brew.sh/formula/php#default)
-    - [Documentation officielle](https://www.php.net/manual/fr/intro-whatis.php)
+:::note[Ressources]
+📓 [Documentation officielle](https://www.php.net/manual/fr/intro-whatis.php) <br>
+📦 [Paquet Homebrew](https://formulae.brew.sh/formula/php#default)
 :::
 
 ```bash title="Chercher les versions de PHP"

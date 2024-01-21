@@ -9,12 +9,11 @@ sidebar:
         variant: note
 ---
 
-:::note[Introduction]
 Installer MySQL avec le gestionnaire de paquet Homebrew.
 
-- Ressources :
-    - [Paquet Homebrew](https://formulae.brew.sh/formula/mysql#default)
-    - [Documentation officielle](https://www.mysql.com/fr/)
+:::note[Ressources]
+📓 [Documentation officielle](https://www.mysql.com/fr/) <br>
+📦 [Paquet Homebrew](https://formulae.brew.sh/formula/mysql#default)
 :::
 
 ```bash title="Installer MySQL"

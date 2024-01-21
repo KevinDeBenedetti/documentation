@@ -2,14 +2,14 @@
 title: API Platform - Symfony
 description: Guide pour utiliser API Platform avec Symfony.
 sidebar:
-    order: 3
+    order: 4
     label: API Platform
 ---
 
 ## Installer API Platform
 
 ```sh frame="none"
-composer require api
+symfony composer require api
 ```
 
 ### Modification des routes
@@ -50,4 +50,9 @@ lexik_jwt_authentication:
         check_path: /auth
         username_path: email
         password_path: password
+```
+
+### Créer une entité
+```bash
+php bin/console make:entity --api-resource
 ```

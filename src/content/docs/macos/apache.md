@@ -9,12 +9,11 @@ sidebar:
         variant: note
 ---
 
-:::note[Introduction]
 Installer Apache avec le gestionnaire de paquet Homebrew.
 
-- Ressources :
-    - [Paquet Homebrew](https://formulae.brew.sh/formula/httpd#default)
-    - [Documentation officielle](https://httpd.apache.org/)
+:::note[Ressources]
+📓 [Documentation officielle](https://httpd.apache.org/) <br>
+📦 [Paquet Homebrew](https://formulae.brew.sh/formula/httpd#default)
 :::
 
 ```bash title="Installer Apache"

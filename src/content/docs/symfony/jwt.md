@@ -2,7 +2,7 @@
 title: Authentification Json Web Token - Symfony
 description: Guide pour utiliser les bases de donneés avec Symfony.
 sidebar:
-    order: 2
+    order: 3
     label: Authentification JWT
 ---
 

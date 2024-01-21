@@ -6,9 +6,8 @@ sidebar:
     label: Homebrew
 ---
 
-:::note[Introduction]
+
 Homebrew est un gestionnaire de paquets pour macOS, vous permettant d'installer, mettre à jour et gérer des logiciels tiers sur votre système. Cette page vous guide à travers l'installation et l'utilisation de Homebrew. [Site officiel](https://brew.sh/fr/)
-:::
 
 ## Installation
 
