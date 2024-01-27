@@ -11,8 +11,8 @@ sidebar:
 ---
 
 :::note[Documentation]
-[API-platform](https://github.com/KevinDeBenedetti/fsp_backend_gestion/blob/main/config/packages/security.yaml) <br>
-[Symfony](https://symfony.com/doc/current/security.html#the-user)
+📓 [API-platform](https://github.com/KevinDeBenedetti/fsp_backend_gestion/blob/main/config/packages/security.yaml) <br>
+📓 [Symfony](https://symfony.com/doc/current/security.html#the-user)
 :::
 
 ## Création d'une entité User

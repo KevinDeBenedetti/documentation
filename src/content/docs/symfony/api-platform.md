@@ -11,8 +11,8 @@ sidebar:
 ---
 
 :::note[Documentation]
-[API-platform](https://api-platform.com/docs/distribution/) <br>
-[Symfony](https://symfony.com/doc/current/the-fast-track/en/26-api.html#installing-api-platform)
+📓 [API-platform](https://api-platform.com/docs/distribution/) <br>
+📓 [Symfony](https://symfony.com/doc/current/the-fast-track/en/26-api.html#installing-api-platform)
 :::
 
 ## Installer API Platform
