@@ -5,9 +5,6 @@ description: Un guide pour modifier les pages d'erreurs avec Symfony.
 sidebar:
     order: 10
     label: Les page d'erreurs
-    badge:
-        text: Nouveau
-        variant: success
 ---
 Vous trouverez une documentation pour modifier les pages d'erreur de Symfony avec Twig.
 

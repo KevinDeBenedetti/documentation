@@ -1,6 +1,6 @@
 ---
 title: Installer Symfony - skeleton
-lastUpdated: 2024-01-21
+lastUpdated: 2024-01-31
 description: Un guide pour démarrer avec Symfony.
 sidebar:
     order: 0
@@ -87,4 +87,14 @@ composer require symfony/serializer-pack
 :::note[symfony/serializer-pack]
 📓 [Documentation](https://symfony.com/doc/current/serializer.html) <br>
 📦 [Component](https://symfony.com/components/Serializer%20Pack)
+:::
+
+### Profiler
+Le profiler est une puissante boîte à outils de développement offrant des insights détaillés sur l'exécution de chaque requête, fournissant ainsi des informations essentielles pour le processus de développement.
+```shell
+composer require --dev symfony/profiler-pack
+```
+:::note[symfony/serializer-pack]
+📓 [Documentation](https://symfony.com/doc/current/profiler.html) <br>
+📦 [Component](https://packagist.org/packages/symfony/profiler-pack)
 :::

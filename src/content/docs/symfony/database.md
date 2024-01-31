@@ -4,9 +4,7 @@ lastUpdated: 2024-01-21
 description: Guide pour utiliser les bases de donneés avec Symfony.
 sidebar:
     order: 3
-    badge:
-      text: Nouveau
-      variant: success
+    label: Base de données
 ---
 
 :::note[Doctrine]

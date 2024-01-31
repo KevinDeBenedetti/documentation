@@ -5,9 +5,6 @@ description: Guide pour utiliser API Platform avec Symfony.
 sidebar:
     order: 4
     label: API Platform
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
 :::note[Documentation]
@@ -21,10 +18,6 @@ Installer le composant d'API Platform dans notre projet Symfony skeleton.
 
 ```sh title="Commande pour installer le composant"
 php bin/console composer require api
-```
-
-```sh title="Symfony CLI"
-symfony composer require api
 ```
 
 :::tip[Création de la base de données et de son schéma :]
