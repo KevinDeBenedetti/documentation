@@ -127,3 +127,6 @@ Nous devons modifier notre entité `User` dans `src/Entity/User.php`. Pour ce ca
 +       return (string) $this->id;
     }
 ```
+:::tip[Ressources]
+[Deprecation : user_identity_field](https://github.com/lexik/LexikJWTAuthenticationBundle/issues/1051)
+:::

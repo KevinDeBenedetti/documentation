@@ -36,7 +36,7 @@ export default defineConfig({
     {
       label: 'CI / CD',
       items: [
-        { label: 'Github Actions', autogenerate: { directory: 'github' }, collapsed: true},
+        { label: 'GitHub', autogenerate: { directory: 'github' }, collapsed: true},
         { label: 'Deployer', autogenerate: { directory: 'deployer' }, collapsed: true}
       ]
     },

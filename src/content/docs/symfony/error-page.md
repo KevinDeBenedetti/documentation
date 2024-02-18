@@ -14,7 +14,7 @@ Vous trouverez une documentation pour modifier les pages d'erreur de Symfony ave
 
 ## Installer Twig
 Le langage de modélisation Twig vous permet d’écrire des modèles concis et lisibles qui sont plus conviviaux pour les concepteurs Web et, à plusieurs égards, plus puissants que les modèles PHP.
-```bash title="Installer le bundle symfony/twig-pack"
+```shell title="Installer le bundle symfony/twig-pack"
 composer require symfony/twig-pack
 ```
 :::note[symfony/twig-pack]
