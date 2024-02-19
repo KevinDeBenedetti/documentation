@@ -38,9 +38,6 @@ Créer un fichier `Dockerfile` et y ajouter le contenu suivant.
 ```yml
 // Dockerfile.yml
 # Le nom du fichier est `Dockerfile` sans extension.
-
-version: '3.3'
-
 FROM node:20-alpine
 
 WORKDIR /app

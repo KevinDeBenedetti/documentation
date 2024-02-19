@@ -39,8 +39,6 @@ Create a `Dockerfile` file and add the following content.
 // Dockerfile.yml
 # The name is `Dockerfile` without extension
 
-version: '3.3'
-
 FROM node:20-alpine
 
 WORKDIR /app
