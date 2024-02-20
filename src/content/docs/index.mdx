@@ -1,36 +1,35 @@
 ---
-title: Accueil
-description: Ma documentation de développeur
+title: RunesDoc
+description: Documentation de développeur web, Kevin De Benedetti
 template: splash
 hero:
-  tagline: Bienvenue dans ma documentation de développeur web !
-  #image:
-  #  file: ../../assets/houston.webp
+  tagline: Bienvenue dans ma documentation de développeur !
   actions:
-    - text: portfolio
-      link: https://kevindb.dev/
+    - text: Voir la documentation
+      link: /documentation/home/
       icon: external
       variant: primary
-    - text: github
-      link: https://github.com/KevinDeBenedetti
-      icon: github
-    - text: linkedin
-      link: https://www.linkedin.com/in/kevindebenedetti/
-      icon: linkedin
-    - text: email
-      link: mailto:contact@kevindb.dev
-      icon: email
-    # - text: discord
-    #   link: add
-    #   icon: discord
-    # - text: telegram
-    #   link: add
-    #   icon: telegram
 ---
 
-import { LinkCard } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-<LinkCard
-    title="Documentation"
-    href="/documentation/home/"
-/>
+## 🚀 Derniers ajouts
+
+<CardGrid stagger>
+    <Card title="Docker" icon="star">
+        Docker & Nuxt
+        <LinkCard title="Voir la doc" href="/documentation/docker/nuxt/" />
+    </Card>
+    <Card title="GitHub" icon="star">
+        GitHub Actions / Vue 3 - Vite Nouveau
+        <LinkCard title="Voir la doc" href="/documentation/github/github-action_vue/" />
+    </Card>
+    <Card title="Symfony" icon="star">
+        Refresh Token
+        <LinkCard title="Voir la doc" href="/documentation/symfony/refresh-token/" />
+    </Card>
+    <Card title="Symfony" icon="star">
+        Authentification JWT
+        <LinkCard title="Voir la doc" href="/documentation/symfony/jwt/" />
+    </Card>
+</CardGrid>

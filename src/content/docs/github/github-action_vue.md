@@ -38,11 +38,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-
 })
 ```
 
-### Créer un fichier Github Actions Workflow
+### Créer un fichier GitHub Actions Workflow
 
 ```yml
 // .github/workflows/deploy.yml
