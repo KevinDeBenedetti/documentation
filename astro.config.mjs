@@ -37,23 +37,20 @@ export default defineConfig({
       label: 'CI / CD',
       items: [
         { label: 'GitHub', autogenerate: { directory: 'github' }, collapsed: true},
-        { label: 'Deployer', autogenerate: { directory: 'deployer' }, collapsed: true}
+        { label: 'Deployer', autogenerate: { directory: 'deployer' }, collapsed: true},
+        { label: 'Docker', autogenerate: { directory: 'docker' }, collapsed: true },
       ]
     },
     {
-      label: 'Outils de développement',
+      label: 'VPS',
       items: [
-        { label: 'Docker', autogenerate: { directory: 'docker' }, collapsed: true },
-        { label: 'Git', autogenerate: { directory: 'git' }, collapsed: true },
-        { label: 'Linters', autogenerate: { directory: 'linters'}, collapsed: true}
+        { label: 'Debian', autogenerate: { directory: 'debian' }, collapsed: true }
       ]
     },
     {
       label: 'Systèmes d\'exploitation',
       items: [
         { label: 'Mac OS',  autogenerate: { directory: 'macos'
-        }, collapsed: true },
-        { label: 'Ubuntu',  autogenerate: { directory: 'ubuntu'
         }, collapsed: true }
       ]
     }],
