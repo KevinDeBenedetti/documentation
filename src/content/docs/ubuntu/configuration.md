@@ -1,7 +1,7 @@
 ---
-title: Debian
+title: Ubuntu
 lastUpdated: 2024-02-25
-description: Un guide pour configurer debian 12.
+description: Un guide pour configurer Ubuntu 23.
 sidebar:
     order: 1
     label: Configuration
@@ -12,6 +12,19 @@ sidebar:
 :::
 
 ## Configuration
+
+Changer la disposition du clavier, `dpkg-reconfigure` est déjà installé.
+```bash title="Configurer keyboard-configuration s'il est installé"
+sudo dpkg-reconfigure keyboard-configuration
+```
+
+```bash title="Rédamarrer le service"
+sudo service keyboard-setup restart
+```
+
+```bash title="Modification de la langue du système"
+sudo dpkg-reconfigure locales
+```
 
 Modifier le mot de passe du compte.
 ```bash
@@ -53,33 +66,3 @@ Se connecter avec le nouveau port.
 ssh nomdutilisateur@IPv4_de_votre_VPS -p NouveauPort
 ```
 
-### Disposition du clavier
-
-Modification de la disposition du clavier avec KVM.
-
-```bash
-sudo dpkg-reconfigure locales
-```
-
-Désélectionner `en_US.UTF-8 UTF-8` et sélectionner `fr_FR.UTF-8 UTF-8`.
-
-```bash title="Installer le paquet keyboard-configuration"
-sudo apt install keyboard-configuration
-```
-
-```bash title="Configurer keyboard-configuration s'il est installé"
-sudo dpkg-reconfigure keyboard-con
-```
-
-#### Console
-:::note[Ressources]
-[Tuto](https://libremaster.com/comment-utiliser-le-kvm-dun-vps-ovh-et-configurer-le-clavier-en-francais-sur-debian/)
-:::
-```bash title="Installer le paquet console-setup"
-// Facultatif
-sudo apt install console-setup
-```
-
-```bash title="Rédamarrer le service"
-sudo service keyboard-setup restart
-```

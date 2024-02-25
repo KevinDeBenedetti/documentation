@@ -9,9 +9,7 @@ sidebar:
 
 ## Commandes de base
 
-### CREATE
-
-### READ
+### Afficher
 
 ```bash title="Afficher tous les conteneurs démarrés"
 sudo docker ps
@@ -25,9 +23,27 @@ sudo docker ps -a
 sudo docker images
 ```
 
-### UPDATE
+### Monter
 
-### DELETE
+```bash title="Monter l'image"
+docker build <NOM_IMAGE>
+```
+
+```bash title="Monter l'image et le conteneur"
+docker-compose up -d
+```
+
+:::tip
+`-d` pour le monter en arrière plan
+:::
+
+### Sauvegarde
+
+```bash title="Créer une sauvegarde locale de son conteneur"
+docker save -o <SAUVEGARDE_.tar> <NOM_DU_CONTENEUR>
+```
+
+### Supprimer
 
 ```bash title="Supprimer tous les conteneurs non démarrés"
 sudo docker rm $(sudo docker ps -a -q -f "status=exited")
