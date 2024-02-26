@@ -1,17 +1,20 @@
 ---
-title: Ubuntu
-lastUpdated: 2024-02-25
+title: Ubuntu | Configuration
+lastUpdated: 2024-02-26
 description: Un guide pour configurer Ubuntu 23.
 sidebar:
     order: 1
     label: Configuration
+    badge:
+      text: Nouveau
+      variant: success
 ---
 
 :::note[DOCUMENTATION]
 [OVH](https://help.ovhcloud.com/csm/fr-vps-security-tips?id=kb_article_view&sysparm_article=KB0047708)
 :::
 
-## Configuration
+## Configurer le clavier
 
 Changer la disposition du clavier, `dpkg-reconfigure` est déjà installé.
 ```bash title="Configurer keyboard-configuration s'il est installé"
@@ -22,9 +25,13 @@ sudo dpkg-reconfigure keyboard-configuration
 sudo service keyboard-setup restart
 ```
 
+## Configurer la langue du système
+
 ```bash title="Modification de la langue du système"
 sudo dpkg-reconfigure locales
 ```
+
+## Modifier le mot de passe
 
 Modifier le mot de passe du compte.
 ```bash
@@ -38,31 +45,21 @@ sudo apt upgrade
 sudo reboot
 ```
 
-### SSH
+## Modifier le port SSH
 
-Modifier la configuration SSH
-```bash
-sudo nano /etc/ssh/ssh_config
-```
+Le port SSH est 22 par défaut, nous allons le modifier. 
+[SSH](/documentation/ubuntu/ssh/)
 
-Modifier le port dans le fichier de config avec un numéro entre 49152 et 65535.
-```yml
-// /etc/ssh/ssh_config
-Port SSH_PORT
-```
+## Configurer le serveur Web avec Caddy
 
-Redémarrer le service.
-```bash
-sudo service sshd restart
-```
+[Caddy](/documentation/ubuntu/caddy/)
 
-Si ce n'est pas suffisant, redémarrer le système.
-```bash
-sudo reboot
-```
+## Configurer fail2ban
 
-Se connecter avec le nouveau port.
-```bash
-ssh nomdutilisateur@IPv4_de_votre_VPS -p NouveauPort
-```
+Nous allons configurer fail2ban pour renforcer la sécurité de notre VPS.
+[fail2ban](/documentation/ubuntu/fail2ban/)
 
+## Configurer le pare-feu avec UFW
+
+Nous allons utiliser UFW pour configurer le pare-feu de notre VPS, il est utilisé avec iptables.
+[UFW](/documentation/ubuntu/ufw/)

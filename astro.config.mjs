@@ -45,7 +45,8 @@ export default defineConfig({
       label: 'VPS',
       items: [
         { label: 'Debian', autogenerate: { directory: 'debian' }, collapsed: true },
-        { label: 'Ubuntu', autogenerate: { directory: 'ubuntu' }, collapsed: true }
+        { label: 'Ubuntu', autogenerate: { directory: 'ubuntu' }, collapsed: true },
+        { label: 'OVH', autogenerate: { directory: 'ovh' }, collapsed: true }
       ]
     },
     {
