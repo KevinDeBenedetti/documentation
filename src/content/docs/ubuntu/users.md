@@ -9,5 +9,4 @@ sidebar:
 
 :::note
 [OVH](https://help.ovhcloud.com/csm/fr-dedicated-servers-root-password?id=kb_article_view&sysparm_article=KB0043315#unprivileged)
-[Hostinger]
 :::

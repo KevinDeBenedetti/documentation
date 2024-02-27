@@ -33,6 +33,7 @@ Utiliser Visual Studio Code pour éditer le fichier de configuration.
 // ./.ssh/config
 Host <command_name>
     Hostname <host_name>
+    # Port <customize_port> / 22 by default
     User <username>
     IdentityFile ~/.ssh/<key_name>_rsa
     IdentitiesOnly yes

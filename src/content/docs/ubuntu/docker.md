@@ -9,6 +9,8 @@ sidebar:
 
 ## Installer docker
 
+[Documentation Officielle](https://docs.docker.com/engine/install/ubuntu/)
+
 ## Sans privilèges root
 
 Pour pouvoir utiliser Docker sans privilèges root, nous devons utiliser cette commande et redémarrer le système. Voir la documentation [Hostinger](https://www.hostinger.fr/tutoriels/installer-docker-sur-ubuntu#Comment_utiliser_Docker_sur_Ubuntu_1804)
