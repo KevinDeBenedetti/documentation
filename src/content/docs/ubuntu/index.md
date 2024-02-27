@@ -13,6 +13,8 @@ sidebar:
 
 ## Commandes de base
 
+Les commandes Linux de base selon [Hostinger](https://www.hostinger.fr/tutoriels/commandes-linux).
+
 ```bash title="Se connecter en ssh"
 ssh username@adresse_ip -p <PORT>
 ```
