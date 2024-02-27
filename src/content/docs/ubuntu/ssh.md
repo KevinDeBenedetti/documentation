@@ -1,31 +1,38 @@
 ---
 title: Ubuntu | SSH
-lastUpdated: 2024-02-26
+lastUpdated: 2024-02-27
 description: Un guide pour configurer SSH de Ubuntu 23.
 sidebar:
     order: 2
     label: SSH
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
-### SSH
+:::note
+Pour Ubuntu 23.04 et versions ultérieures
+[OVH](https://help.ovhcloud.com/csm/fr-vps-security-tips?id=kb_article_view&sysparm_article=KB0047708)
+:::
 
-Modifier la configuration SSH
+## Modifier le port SSH
+
+Le port par défaut pour se connecter en SSH est 22, nous allons le modifier.
+
+Modifier la configuration SSH, modifier le fichier `ssh.socket` dans le répertoire `/lib/systemd/system`.
 ```bash
-sudo nano /etc/ssh/ssh_config
+sudo nano /lib/systemd/system/ssh.socket
 ```
 
 Modifier le port dans le fichier de config avec un numéro entre 49152 et 65535.
 ```yml
-// /etc/ssh/ssh_config
-Port SSH_PORT
+// /lib/systemd/system/ssh.socket
+[Socket]
+ListenStream=49152
+Accept=no
 ```
 
-Redémarrer le service.
+Enregistrer les modifications.
 ```bash
-sudo service sshd restart
+sudo systemctl daemon-reload
+sudo systemctl restart ssh.service
 ```
 
 Si ce n'est pas suffisant, redémarrer le système.
@@ -35,5 +42,5 @@ sudo reboot
 
 Se connecter avec le nouveau port.
 ```bash
-ssh nomdutilisateur@IPv4_de_votre_VPS -p NouveauPort
+ssh <username>@<IPv4_VPS> -p <ssh_port>
 ```

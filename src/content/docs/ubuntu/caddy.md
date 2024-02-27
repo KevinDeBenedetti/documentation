@@ -1,13 +1,10 @@
 ---
 title: Ubuntu | Caddy
-lastUpdated: 2024-02-26
+lastUpdated: 2024-02-27
 description: Un guide pour utiliser caddy avec ubuntu 23.10.
 sidebar:
     order: 3
     label: Caddy
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
 :::note[Documentation]
@@ -87,3 +84,33 @@ https://exemple.fr {
 }
 ```
 Caddy prend en charge la navigation https.
+
+## Redirection wwww
+
+:::tip[Ressources]
+[Tuto](https://jinnabalu.medium.com/caddy-http-to-https-redirections-7321bdce0aa8) <br>
+[Documentation](https://caddyserver.com/docs/caddyfile/directives/redir)
+:::
+
+```diff lang="txt"
+// /etc/caddy/Caddyfile
+https://www.example.fr {
+        redir https://exampe.fr permanent
+}
+https://exemple.fr {
+        # Set this path to your site's directory.
+        # root * /usr/share/caddy
+
+        # Enable the static file server.
+        # file_server
+
+        # Another common task is to set up a reverse proxy:
+        # reverse_proxy localhost:8080
+        reverse_proxy :3000
+
+        # Or serve a PHP site through php-fpm:
+        # php_fastcgi localhost:9000
+}
+```
+
+Sauvegarder et relancer caddy.

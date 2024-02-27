@@ -1,13 +1,10 @@
 ---
-title: Docker
-lastUpdated: 2024-02-25
+title: Docker | Les images
+lastUpdated: 2024-02-27
 description: Un guide pour utiliser les images dans docker.
 sidebar:
-    order: 2
-    label: Images
-    badge:
-      text: Nouveau
-      variant: success
+    order: 1
+    label: Les images
 ---
 
 :::note
@@ -29,18 +26,6 @@ docker buildx build --platform linux/amd64 -t <image_name> .
 Réglages dans docker desktop macOS, [ressources](https://dev.to/docker/run-x86-containers-on-apple-mac-m1-with-rosetta-2-417a), voir également [docker officiel](https://docs.docker.com/build/building/multi-platform/) et [docker article](https://www.docker.com/blog/multi-arch-images/)
 :::
 
-```bash title="Construire une image multiplateformes (apple silicon)"
-    docker save -o <file_name>.tar <image_name>
-```
-Sauvegarder une copie de l'image, à partir du container.
-
-## Charger une image
-
-```bash
-sudo docker load --input test.tar
-```
-Charger une image à partir d'une sauvegarde.
-
 ## Monter l'image
 ```bash
 sudo docker build -t node .
@@ -56,3 +41,17 @@ docker run --name <container_name> <image_name>
 sudo docker run --name <container_name> -p 3000:3000 <image_name>
 ```
 [Ressources](https://medium.com/@wimadev.de/deploy-a-node-js-app-with-docker-on-a-vps-minimal-setup-c28208fc231a), il faut lier le port 3000 du conteneur et le port 3000 du VPS.
+
+## Sauvegarder une image
+
+```bash title="Construire une image multiplateformes (apple silicon)"
+    docker save -o <file_name>.tar <image_name>
+```
+Sauvegarder une copie de l'image, à partir du container.
+
+## Charger une image
+
+```bash
+sudo docker load --input test.tar
+```
+Charger une image à partir d'une sauvegarde.

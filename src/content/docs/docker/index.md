@@ -1,10 +1,10 @@
 ---
-title: Docker
+title: Docker | Démarrer
 lastUpdated: 2024-02-25
 description: Un guide pour démarrer avec docker.
 sidebar:
     order: 0
-    label: Démarrer avec Docker
+    label: Démarrer
 ---
 
 ## Commandes de base
@@ -37,7 +37,7 @@ docker-compose up -d
 `-d` pour le monter en arrière plan
 :::
 
-### Sauvegarde
+### Sauvegarder
 
 ```bash title="Créer une sauvegarde locale de son conteneur"
 docker save -o <SAUVEGARDE_.tar> <NOM_DU_CONTENEUR>

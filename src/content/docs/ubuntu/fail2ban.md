@@ -5,9 +5,6 @@ description: Un guide pour configurer fail2ban debian 12.
 sidebar:
     order: 3
     label: Fail2ban
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
 :::note[Documenation]

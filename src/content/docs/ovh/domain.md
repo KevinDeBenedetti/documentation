@@ -20,3 +20,7 @@ Modifier le champ `données` : adresse ip du VPS.
 Ajouter un domaine dans la partie DNS Secondaire.
 
 Suivre les consignes pour ajouter le domaine à un DNS secondaire.
+
+:::note[Ressources]
+🔖 [Tuto](https://support.us.ovhcloud.com/hc/en-us/articles/360012042099-How-to-Connect-Your-VPS-to-Your-Domain-Name)
+:::

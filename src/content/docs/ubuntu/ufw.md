@@ -5,9 +5,6 @@ description: Un guide pour utiliser ufw avec ubuntu 23.10.
 sidebar:
     order: 4
     label: UFW
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
 :::note
