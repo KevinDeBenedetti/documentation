@@ -44,3 +44,14 @@ Se connecter avec le nouveau port.
 ```bash
 ssh <username>@<IPv4_VPS> -p <ssh_port>
 ```
+
+## Copier un fichier
+
+
+```bash title="Copier un fichier en ssh."
+scp -r <NOM_DU_FICHIER> username@adresse_ip:~/ 
+```
+
+```bash title="Copier un fichier en ssh, sur un port personnalisé"
+scp -r -P <PORT> <NOM_DU_FICHIER> username@adresse_ip:~/ 
+```

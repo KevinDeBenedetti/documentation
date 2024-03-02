@@ -29,22 +29,22 @@ editor /etc/caddy/Caddyfile
 ```
 Dans le répertoire `/etc/caddy`, modifier le fichier Caddyfile.
 
-```txt
+```diff lang="txt"
 // /etc/caddy/Caddyfile
 
 :80 {
-        # Set this path to your site's directory.
-        # root * /usr/share/caddy
-
-        # Enable the static file server.
-        # file_server
-
-        # Another common task is to set up a reverse proxy:
-        # reverse_proxy localhost:8080
-        reverse_proxy :3000
-
-        # Or serve a PHP site through php-fpm:
-        # php_fastcgi localhost:9000
+-        # Set this path to your site's directory.
+-        # root * /usr/share/caddy
+-
+-        # Enable the static file server.
+-        # file_server
+-
+-        # Another common task is to set up a reverse proxy:
+-        # reverse_proxy localhost:8080
++        reverse_proxy :3000
+-
+-        # Or serve a PHP site through php-fpm:
+-        # php_fastcgi localhost:9000
 }
 ```
 
@@ -68,19 +68,9 @@ curl "https://cloudflare-dns.com/dns-query?name=example.com&type=A" \
 ```diff lang="txt"
 // /etc/caddy/Caddyfile
 
-https://exemple.fr {
-        # Set this path to your site's directory.
-        # root * /usr/share/caddy
-
-        # Enable the static file server.
-        # file_server
-
-        # Another common task is to set up a reverse proxy:
-        # reverse_proxy localhost:8080
+- :80 {
++ https://exemple.fr {
         reverse_proxy :3000
-
-        # Or serve a PHP site through php-fpm:
-        # php_fastcgi localhost:9000
 }
 ```
 Caddy prend en charge la navigation https.
@@ -94,23 +84,31 @@ Caddy prend en charge la navigation https.
 
 ```diff lang="txt"
 // /etc/caddy/Caddyfile
-https://www.example.fr {
-        redir https://exampe.fr permanent
-}
++ https://www.example.fr {
++         redir https://exampe.fr permanent
++ }
 https://exemple.fr {
-        # Set this path to your site's directory.
-        # root * /usr/share/caddy
-
-        # Enable the static file server.
-        # file_server
-
-        # Another common task is to set up a reverse proxy:
-        # reverse_proxy localhost:8080
         reverse_proxy :3000
-
-        # Or serve a PHP site through php-fpm:
-        # php_fastcgi localhost:9000
 }
 ```
 
 Sauvegarder et relancer caddy.
+
+## Lighthouse
+
+:::tip[Documentation]
+[encode](https://caddyserver.com/docs/caddyfile/directives/encode#encode)
+:::
+
+Pour améliorer les performances de notre site statique, il nous faudra l'encoder. Voici un exemple de configuration avec `gzip`.
+
+```diff lang="text
+// /etc/caddy/Caddyfile
+https://www.example.fr {
+        redir https://exampe.fr permanent
+}
+https://exemple.fr {
++        encode gzip
+        reverse_proxy :3000
+}
+```
