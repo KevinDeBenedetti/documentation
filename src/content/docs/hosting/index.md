@@ -1,7 +1,7 @@
 ---
-title: OVH | Démarrer
-lastUpdated: 2024-02-27
-description: Un guide pour utiliser les offres VPS d'OVH.
+title: Hébergements | Démarrer
+lastUpdated: 2024-03-09
+description: Un guide sur les hébergements.
 sidebar:
     order: 0
     label: Démarrer
