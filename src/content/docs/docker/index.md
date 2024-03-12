@@ -40,7 +40,7 @@ docker-compose up -d
 ### Sauvegarder
 
 ```bash title="Créer une sauvegarde locale de son conteneur"
-docker save -o <SAUVEGARDE_.tar> <NOM_DU_CONTENEUR>
+docker save -o <SAUVEGARDE_.tar> <IMAGE_NAME>
 ```
 
 ### Supprimer
