@@ -95,6 +95,30 @@ firewalls:
 ...
 ```
 
+### Dépréciation des annotations
+Sans la modification des annotations en attributs, vous obtiendrez un message d'erreur.
+
+```diff lang="php"
+// src/Entity/RefreshToken.php
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gesdinet\JWTRefreshTokenBundle\Entity\RefreshToken as BaseRefreshToken;
+
+- /**
+-  * @ORM\Entity
+-  * @ORM\Table("refresh_tokens")
+-  */
++ #[ORM\Entity]
++ #[ORM\Table(name: 'refresh_tokens')]
+class RefreshToken extends BaseRefreshToken
+{
+}
+
+```
+
 ## Modifier le `username` dans la base de données
 Nous devons modifier notre entité `User` dans `src/Entity/User.php`. Pour ce cas, nous souhaitons utiliser l'id au lieu de l'email pour enregistrer nos `refreshToken` dans la base de données, nous avons une entité `src/Entity/RefreshToken.php` qui a été créé grâce à Symfony Flex.
 
