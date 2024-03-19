@@ -58,7 +58,9 @@ providers:
         entity:
             class: App\Entity\User
             property: email
-
+            
++    enable_authenticator_manager: true
+    
 ...
 
 firewalls:
@@ -80,7 +82,7 @@ firewalls:
         stateless: true
         entry_point: jwt
         jwt: ~  
-        refresh_jwt:
++        refresh_jwt:
 +            check_path: /api/token/refresh
 
 ...
@@ -121,6 +123,60 @@ class RefreshToken extends BaseRefreshToken
 
 ## Modifier le `username` dans la base de données
 Nous devons modifier notre entité `User` dans `src/Entity/User.php`. Pour ce cas, nous souhaitons utiliser l'id au lieu de l'email pour enregistrer nos `refreshToken` dans la base de données, nous avons une entité `src/Entity/RefreshToken.php` qui a été créé grâce à Symfony Flex.
+```diff lang="yml"
+// config/packages/security.yaml
+
+...
+
+providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:  
+        entity:
+            class: App\Entity\User
+            property: email
+        
++    jwt:
++        lexik_jwt: ~
+        
+    enable_authenticator_manager: true
+    
+...
+
+firewalls:
+    dev:
+        pattern: ^/(_(profiler|wdt)|css|images|js)/
+        security: false
+        
+    login:
+          pattern: ^/api/login$
+          stateless: true
++          provider: app_user_provider
+          json_login:
+            check_path: /api/login
+            username_path: email
+            success_handler: lexik_jwt_authentication.handler.authentication_success
+            failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+    api:
+        pattern: ^/api
+        stateless: true
+        entry_point: jwt
++        provider: jwt
+        jwt: ~  
+        refresh_jwt:
+            check_path: /api/token/refresh
+
+...
+
+    access_control:
+        - { path: ^/$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
+        - { path: ^/docs, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI docs
+        - { path: ^/api/(login|token/refresh), roles: PUBLIC_ACCESS }
+        - { path: ^/api/login$, roles: PUBLIC_ACCESS }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
+
+...
+```
 
 ```diff lang="php"
 // src/Entity/User.php
