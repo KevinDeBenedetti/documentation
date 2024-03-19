@@ -1,6 +1,6 @@
 ---
 title: Authentification Json Web Token - Symfony
-lastUpdated: 2024-01-31
+lastUpdated: 2024-03-19
 description: Guide pour utiliser les bases de donneés avec Symfony.
 sidebar:
     order: 6
@@ -32,9 +32,9 @@ php bin/console lexik:jwt:generate-keypair
 
 ## Mise à jour du fichier security.yaml
 Nous devons modifier le fichier `security.yaml`, nous pourrons l'ajuster en fonction de nos besoins.
-```yml
+```diff lang="yml"
 // config/packages/security.yaml
-# ...
+...
 
 providers:
     # used to reload user from session & other features (e.g. switch_user)
@@ -42,56 +42,56 @@ providers:
         entity:
             class: App\Entity\User
             property: email
-    
-    jwt:
-      lexik_jwt:
-      class: App\Entity\User
-  
-# ...
+
+...
 
 firewalls:
     dev:
         pattern: ^/(_(profiler|wdt)|css|images|js)/
         security: false
+        
++    login:
++          pattern: ^/api/login$
++          stateless: true
++          json_login:
++            check_path: /api/login
++            username_path: email
++            success_handler: lexik_jwt_authentication.handler.authentication_success
++            failure_handler: lexik_jwt_authentication.handler.authentication_failure
 
-    login:
-        pattern: ^/api/login$
-        stateless: true
-        provider: app_user_provider
-        json_login:
-            check_path: /api/login
-            username_path: email
-            success_handler: lexik_jwt_authentication.handler.authentication_success
-            failure_handler: lexik_jwt_authentication.handler.authentication_failure
++    api:
++        pattern: ^/api
++        stateless: true
++        entry_point: jwt
++        jwt: ~  
 
-    api:
-        pattern: ^/api
-        stateless: true
-        provider: jwt
-        entry_point: jwt
-        jwt: ~
+-    main:
+-        lazy: true
+-        provider: app_user_provider       
 
-  # ...
+...
 
     access_control:
         - { path: ^/$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
         - { path: ^/docs, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI docs
-        - { path: ^/api/login$, roles: PUBLIC_ACCESS } 
++        - { path: ^/api/login$, roles: PUBLIC_ACCESS } 
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
-# ...
+...
 ```
 
 ## Configuration API Platform
 Nous allons configurer API Platform grace au fichier `api_platform.yaml`.
-```yml
+```diff lang="yml"
 // config/packages/api_platform.yaml
-api_platform:
-    swagger:
-         api_keys:
-             JWT:
-                name: Authorization
-                type: header
+...
+  
++ api_platform:
++     swagger:
++          api_keys:
++              JWT:
++                 name: Authorization
++                 type: header
 ```
 
 ## Ajout des informations nécessaires pour l'authentification
@@ -107,10 +107,18 @@ lexik_jwt_authentication:
 
 ## Modification des routes
 Ajout de la route pour le login de l'utilisateur, dans `config/routes.yaml`.
-```yml
+```diff lang="yml"
 // config/routes.yaml
+
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
 api_login_check:
-    path: /api/login
++     path: /api/login
+-     path: /api/login_check
 ```
 
 ## Tester l'authentification

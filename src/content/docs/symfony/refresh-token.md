@@ -1,6 +1,6 @@
 ---
 title: Refresh Token - Symfony
-lastUpdated: 2024-01-31
+lastUpdated: 2024-03-19
 description: Guide implémenter refresh token JWT Symfony.
 sidebar:
     order: 7
@@ -22,7 +22,7 @@ composer require gesdinet/jwt-refresh-token-bundle
 ```
 
 ## Configuration du Bundle
-Créer le fichier `config/packages/gesdinet_jwt_refresh_token.yaml`.
+Le fichier `config/packages/gesdinet_jwt_refresh_token.yaml` a du être créé, dans le cas contraire vous devez le créer.
 ```yml
 // config/packages/gesdinet_jwt_refresh_token.yaml
 gesdinet_jwt_refresh_token:
@@ -31,16 +31,26 @@ gesdinet_jwt_refresh_token:
 
 ## Définition de la route refresh token
 Ajout de la route refresh token dans `routes.yaml`.
-```yml
+```diff lang="yml"
 // config/routes.yaml
-api_refresh_token:
-    path: /api/token/refresh
+controllers:
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+api_login_check:
+  path: /api/login
+
++ api_refresh_token:
++   path: /api/token/refresh
+
 ```
 
 Configuratin du firewall dans `config/packages/security.yaml`.
-```yml
+```diff lang="yml"
 // config/packages/security.yaml
-# ...
+...
 
 providers:
     # used to reload user from session & other features (e.g. switch_user)
@@ -48,23 +58,18 @@ providers:
         entity:
             class: App\Entity\User
             property: email
-    
-    jwt:
-      lexik_jwt:
-      class: App\Entity\User
-  
-# ...
+
+...
 
 firewalls:
     dev:
         pattern: ^/(_(profiler|wdt)|css|images|js)/
         security: false
-
+        
     login:
-        pattern: ^/api/login$
-        stateless: true
-        provider: app_user_provider
-        json_login:
+          pattern: ^/api/login$
+          stateless: true
+          json_login:
             check_path: /api/login
             username_path: email
             success_handler: lexik_jwt_authentication.handler.authentication_success
@@ -73,21 +78,21 @@ firewalls:
     api:
         pattern: ^/api
         stateless: true
-        provider: jwt
         entry_point: jwt
-        jwt: ~
+        jwt: ~  
         refresh_jwt:
-            check_path: /api/token/refresh
++            check_path: /api/token/refresh
 
-  # ...
+...
 
     access_control:
         - { path: ^/$, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
         - { path: ^/docs, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI docs
-        - { path: ^/api/(login|token/refresh), roles: PUBLIC_ACCESS }
++        - { path: ^/api/(login|token/refresh), roles: PUBLIC_ACCESS }
+-        - { path: ^/api/login$, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
-# ...
+...
 ```
 
 ## Modifier le `username` dans la base de données
