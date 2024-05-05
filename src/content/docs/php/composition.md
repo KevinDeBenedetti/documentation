@@ -144,7 +144,7 @@ L’héritage et la composition sont deux outils puissants pour la conception or
 
 
 :::tip[Exercice]
-### La Pizzeria Del PHP
+## La Pizzeria Del PHP
 
 Votre mission, si vous l'acceptez, nourrir les plus célèbres tortues masquées Michelangelo, Leonardo, Raphael et Donatello. Vous devrez développer un système de gestion de pizzeria en PHP en utilisant le concept de composition pour manipuler divers ingrédients et créer différentes recettes de pizzas.
 
