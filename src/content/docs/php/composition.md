@@ -207,7 +207,6 @@ Dans le royaume imaginaire de PhpVille, les anciens héros légendaires ont ét�
    - Créer une classe `Armure` qui pourrait être utilisée pour défendre contre des attaques.
 4. Mécaniques du Jeu :
    - Développer un système de combat simple où les héros peuvent s'affronter. Prendre en compte les attributs comme les points de vie et la puissance des armes.
-   - Créer un petit environnement où les héros peuvent explorer et trouver des objets.
 5. Interface utilisateur
    - Afficher des informations basiques sur l'écran, comme la santé du héros, l'arme équipée, et le héros actuellement en combat.
    - Offrir des options simples à l'utilisateur pour attaquer ou se défendre.
