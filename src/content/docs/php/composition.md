@@ -146,6 +146,8 @@ L’héritage et la composition sont deux outils puissants pour la conception or
 :::tip[Exercice]
 ## La Pizzeria Del PHP
 
+![La Pizzeria Del PHP Cover](../../../assets/images/php/la-pizzeria-del-php.webp)
+
 Votre mission, si vous l'acceptez, nourrir les plus célèbres tortues masquées Michelangelo, Leonardo, Raphael et Donatello. Vous devrez développer un système de gestion de pizzeria en PHP en utilisant le concept de composition pour manipuler divers ingrédients et créer différentes recettes de pizzas.
 
 Vous êtes chargé de développer une application pour une pizzeria qui souhaite informatiser la gestion de ses recettes de pizzas. Chaque pizza est composée de divers ingrédients et chaque ingrédient a un coût associé. Le système doit permettre de créer des pizzas personnalisées en combinant différents ingrédients et calculer le coût total de la pizza.
@@ -182,7 +184,7 @@ Prix Total: 9.75€
 :::tip[Exercice]
 ## WarClass
 
-![Informations jwt.io](../../../assets/images/php/warclass.webp)
+![WarClass Cover](../../../assets/images/php/warclass.webp)
 
 Dans le royaume imaginaire de PhpVille, les anciens héros légendaires ont été invoqués par magie après des siècles de paix pour se battre dans une arène mythique. Chaque héros possède des compétences uniques et des pouvoirs ancestraux. Les joueurs choisiront leur héros et formeront des alliances pour conquérir l'arène. Cependant, chaque héros doit apprendre à utiliser non seulement ses propres pouvoirs mais aussi à tirer parti des forces de ses alliés pour vaincre ses adversaires dans des combats stratégiques.
 
