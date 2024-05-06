@@ -210,4 +210,60 @@ Dans le royaume imaginaire de PhpVille, les anciens héros légendaires ont ét�
 5. Interface utilisateur
    - Afficher des informations basiques sur l'écran, comme la santé du héros, l'arme équipée, et le héros actuellement en combat.
    - Offrir des options simples à l'utilisateur pour attaquer ou se défendre.
+
+```php title="Exemple de code pour visualiser les combats"
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Jeu de Combat Simple</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .avatar img {
+            width: 100px
+        }
+
+        .health-bar {
+            height: 10px;
+            background-color: red;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+<?php
+// PHP pourrait être utilisé ici pour initialiser des variables de jeu
+?>
+<div class="avatar" id="player1">
+    <img src="avatars/avatar1.webp" alt="Avatar 1">
+    <div class="health-bar" id="health1" style="width: 100%;"></div>
+</div>
+<div class="avatar" id="player2">
+    <img src="avatars/avatar2.webp" alt="Avatar 2">
+    <div class="health-bar" id="health2" style="width: 100%;"></div>
+</div>
+<button onclick="attack('player1')">Attaquer Joueur 1</button>
+<button onclick="attack('player2')">Attaquer Joueur 2</button>
+<script>
+    function attack(playerId) {
+        const healthBar = document.getElementById(playerId === 'player1' ? 'health2' : 'health1');
+        const currentWidth = parseInt(healthBar.style.width);
+        const newWidth = Math.max(0, currentWidth - 20); // Réduire la vie de 20%
+        healthBar.style.width = newWidth + '%';
+
+        // Vérifier si le joueur est "mort"
+        if (newWidth <= 0) {
+            alert('Le joueur ' + (playerId === 'player1' ? '2' : '1') + ' a perdu!');
+        }
+    }
+</script>
+</body>
+</html>
+```
 :::
