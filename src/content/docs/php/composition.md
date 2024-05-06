@@ -177,34 +177,34 @@ Prix Total: 9.75€
 💡 Utilisez des méthodes appropriées pour ajouter des ingrédients et calculer le prix. <br>
 💡 Assurez-vous que le code est bien organisé et commenté pour faciliter la compréhension et la maintenance. <br>
 💡 Vous pouvez ajouter des fonctionnalités comme la suppression d'ingrédients ou la modification de recettes existantes. <br>
+:::
 
+:::tip[Exercice]
 ## WarClass
 
 ![Informations jwt.io](../../../assets/images/php/warclass.webp)
 
 Dans le royaume imaginaire de PhpVille, les anciens héros légendaires ont été invoqués par magie après des siècles de paix pour se battre dans une arène mythique. Chaque héros possède des compétences uniques et des pouvoirs ancestraux. Les joueurs choisiront leur héros et formeront des alliances pour conquérir l'arène. Cependant, chaque héros doit apprendre à utiliser non seulement ses propres pouvoirs mais aussi à tirer parti des forces de ses alliés pour vaincre ses adversaires dans des combats stratégiques.
 
-## Objectif de l'exercice
+### Objectif de l'exercice
 - Utilisation de la programmation orientée objet en PHP : Les élèves devront utiliser des classes pour représenter les différents héros, leurs compétences et les éléments du jeu.
 - Comprendre et appliquer l'héritage : Les types de héros peuvent hériter de classes parentes communes.
 - Utiliser la composition : Implémenter des objets qui utilisent d'autres objets (par exemple, un héros peut avoir un objet "Arme" ou "Armure").
 
-## Consignes
+### Consignes
 
 1. Création des Classes de Base :
-    - Classe Hero : Doit avoir des attributs comme `nom`, `niveau`, `pointsDeVie`, et `pointsDeForce`. Inclure des méthodes pour `attaquer` et `défendre`.
-    - Classe Arme : Avec des attributs tels que `nom` et `puissance`. Ajouter une méthode pour `utiliser`.
+   - Classe Hero : Doit avoir des attributs comme `nom`, `niveau`, `pointsDeVie`, et `pointsDeForce`. Inclure des méthodes pour `attaquer` et `défendre`.
+   - Classe Arme : Avec des attributs tels que `nom` et `puissance`. Ajouter une méthode pour `utiliser`.
 2. Héritage :
-    - Classes dérivées de `Hero` comme `Guerrier`, `Sorcier`, et `Archer`, chacune avec des compétences spécifiques (par exemple, `Guerrier pourrait avoir une méthode `frapperFort`).
+   - Classes dérivées de `Hero` comme `Guerrier`, `Sorcier`, et `Archer`, chacune avec des compétences spécifiques (par exemple, `Guerrier pourrait avoir une méthode `frapperFort`).
 3. Composition :
-    - Intégrer des objets `Arme` dans les objets `Hero` pour augmenter leur puissance d'attaque.
-    - Créer une classe `Armure` qui pourrait être utilisée pour défendre contre des attaques.
+   - Intégrer des objets `Arme` dans les objets `Hero` pour augmenter leur puissance d'attaque.
+   - Créer une classe `Armure` qui pourrait être utilisée pour défendre contre des attaques.
 4. Mécaniques du Jeu :
-    - Développer un système de combat simple où les héros peuvent s'affronter. Prendre en compte les attributs comme les points de vie et la puissance des armes.
-    - Créer un petit environnement où les héros peuvent explorer et trouver des objets.
+   - Développer un système de combat simple où les héros peuvent s'affronter. Prendre en compte les attributs comme les points de vie et la puissance des armes.
+   - Créer un petit environnement où les héros peuvent explorer et trouver des objets.
 5. Interface utilisateur
-    - Afficher des informations basiques sur l'écran, comme la santé du héros, l'arme équipée, et le héros actuellement en combat.
-    - Offrir des options simples à l'utilisateur pour attaquer ou se défendre.
-
+   - Afficher des informations basiques sur l'écran, comme la santé du héros, l'arme équipée, et le héros actuellement en combat.
+   - Offrir des options simples à l'utilisateur pour attaquer ou se défendre.
 :::
-
