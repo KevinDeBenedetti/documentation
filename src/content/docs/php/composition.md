@@ -150,20 +150,22 @@ L’héritage et la composition sont deux outils puissants pour la conception or
 
 Votre mission, si vous l'acceptez, nourrir les plus célèbres tortues masquées Michelangelo, Leonardo, Raphael et Donatello. Vous devrez développer un système de gestion de pizzeria en PHP en utilisant le concept de composition pour manipuler divers ingrédients et créer différentes recettes de pizzas.
 
+### Objectif de l'exercice
+
 Vous êtes chargé de développer une application pour une pizzeria qui souhaite informatiser la gestion de ses recettes de pizzas. Chaque pizza est composée de divers ingrédients et chaque ingrédient a un coût associé. Le système doit permettre de créer des pizzas personnalisées en combinant différents ingrédients et calculer le coût total de la pizza.
 
-#### Instructions
+### Consignes
 
-##### 1. Définir les classes :
+#### 1. Définir les classes :
 - Ingrédient : Créez une classe pour représenter un ingrédient. Chaque ingrédient possède un nom et un prix.
 - Pizza : Créez une classe pour représenter une pizza. Une pizza est composée de plusieurs ingrédients. Elle devra pouvoir : ajouter un ingrédient et calculer le prix total en fonction des ingrédients utilisés.
 
-##### 2. Implémentation :
+#### 2. Implémentation :
 - Instanciez plusieurs ingrédients (par exemple : tomate, fromage, champignons, pepperoni).
 - Créez différentes pizzas en ajoutant des ingrédients choisis.
 - Afficher le nom de chaque pizza, ses ingrédients et le coût total.
 
-##### 3. Affichage :
+#### 3. Affichage :
 - Pour chaque pizza créée, générer une sortie qui liste son nom, les ingrédients ajoutés, et le prix total.
 
 ```shell title="Exemple d'affichage attendu"
@@ -189,7 +191,7 @@ Prix Total: 9.75€
 Dans le royaume imaginaire de PhpVille, les anciens héros légendaires ont été invoqués par magie après des siècles de paix pour se battre dans une arène mythique. Chaque héros possède des compétences uniques et des pouvoirs ancestraux. Les joueurs choisiront leur héros et formeront des alliances pour conquérir l'arène. Cependant, chaque héros doit apprendre à utiliser non seulement ses propres pouvoirs mais aussi à tirer parti des forces de ses alliés pour vaincre ses adversaires dans des combats stratégiques.
 
 ### Objectif de l'exercice
-- Utilisation de la programmation orientée objet en PHP : Les élèves devront utiliser des classes pour représenter les différents héros, leurs compétences et les éléments du jeu.
+- Utilisation de la programmation orientée objet en PHP : vous devrez utiliser des classes pour représenter les différents héros, leurs compétences et les éléments du jeu.
 - Comprendre et appliquer l'héritage : Les types de héros peuvent hériter de classes parentes communes.
 - Utiliser la composition : Implémenter des objets qui utilisent d'autres objets (par exemple, un héros peut avoir un objet "Arme" ou "Armure").
 
