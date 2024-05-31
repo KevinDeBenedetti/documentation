@@ -1,6 +1,6 @@
 ---
 title: API & Web services
-lastUpdated: 2024-05-30
+lastUpdated: 2024-05-31
 description: Un guide sur les API et Web Services avec PHP.
 sidebar:
     order: 3
@@ -495,6 +495,12 @@ switch ($method) {
 }
 ```
 
+:::tip[Aller plus loin]
+🚀  Lier l'API à une base de données en utilisant le design pattern MVC.
+
+🚀  Utiliser l'API avec un framework frontend (Vue JS par exemple).
+:::
+
 <hr>
 
 ## Utilisation d'un service de paiement
@@ -581,3 +587,61 @@ try {
 </body>
 </html>
 ```
+
+<hr>
+
+:::tip[Exercice]
+## Créer une API d'Authentification
+
+Vous êtes un développeur chargé de créer une API d'authentification pour protéger les accès à une base de données de personnages de la Terre du Milieu. Seuls les utilisateurs autorisés peuvent accéder à certaines ressources protégées. Pour cette tâche, vous utiliserez PHP  en suivant le modèle MVC et une base de données MySQL locale.
+
+> Pour toute tentative d'accès sans authentification réussie, le système doit retourner "Vous ne passerez pas !", en référence à la célèbre phrase de Gandalf.
+
+![Auth Cover](../../../assets/images/php/auth.webp)
+
+### Étapes et Scénario de l'Exercice
+
+#### 1. Inscription d'un Utilisateur
+Créez un formulaire et une fonctionnalité d'inscription pour ajouter de nouveaux utilisateurs à la base de données. Par exemple, Frodon et Sam veulent accéder à la base de données. Ils doivent s'inscrire avec un nom d'utilisateur et un mot de passe.
+
+- **Tâche :** Implémentez le formulaire d'inscription et la logique associée.
+- **Exemple :**
+  - Nom d'utilisateur : frodon
+  - Mot de passe : monprecieux
+
+#### 2. Connexion d'un Utilisateur
+Après l'inscription, Frodon souhaite se connecter pour accéder à la base de données des personnages. Vous devez implémenter une page de connexion qui vérifie les informations d'identification de l'utilisateur.
+
+- **Tâche :** Implémentez le formulaire de connexion et la logique associée.
+- **Exemple :**
+    - Nom d'utilisateur : frodon
+    - Mot de passe : monprecieux
+
+#### 3. Accès Protégé aux Ressources
+Frodon souhaite consulter les informations sur Aragorn dans la base de données. Vous devez protéger cette route pour que seules les personnes authentifiées puissent y accéder. Si quelqu'un tente d'accéder à cette route sans être authentifié, le système doit répondre "Vous ne passerez pas !".
+
+- **Tâche :** Implémentez une protection des routes pour vérifier que l'utilisateur est connecté avant d'accéder aux données protégées.
+- **Exemple :**
+    - Ressource protégée : /characters/aragorn
+
+#### 4. Déconnexion d'un Utilisateur
+Frodon a terminé sa session et souhaite se déconnecter. Vous devez implémenter une fonctionnalité de déconnexion pour détruire la session de l'utilisateur.
+
+- **Tâche :** Implémentez la déconnexion.
+
+#### Scénario complet
+
+1. **Inscription :**
+Frodon s'inscrit avec le nom d'utilisateur frodon et le mot de passe monprecieux.
+
+2. **Connexion :**
+Frodon se connecte avec ses informations d'identification.
+
+1. **Accès Protégé :**
+Frodon accède à la route /characters/aragorn et reçoit les informations sur Aragorn.
+Un utilisateur non connecté tente d'accéder à la route /characters/aragorn et reçoit le message "Vous ne passerez pas !".
+
+1. **Déconnexion :**
+Frodon se déconnecte et sa session est détruite.
+
+:::
