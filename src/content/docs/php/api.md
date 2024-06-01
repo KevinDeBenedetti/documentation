@@ -113,7 +113,7 @@ Pour cela nous utiliserons les outils suivants :
 ### Qu'est-ce que SOAP ?
 **SOAP** (Simple Object Access Protocol) est un protocole basé sur XML utilisé pour l'échange d'informations structurées dans l'implémentation de services web. SOAP permet de communiquer entre applications exécutées sur différentes plateformes avec des protocoles de transport comme HTTP et SMTP. Les messages SOAP sont enveloppés dans une enveloppe SOAP qui contient un en-tête et un corps.
 
-### Extenstion PHP SOAP
+### Extension PHP SOAP
 PHP offre une extension SOAP qui permet de créer des services SOAP et de consommer des services SOAP existants. Cette extension facilite la manipulation des messages SOAP et l'interaction avec les services web SOAP.
 
 Pour vérifier si l'extension SOAP est installée, vous pouvez exécuter :
@@ -301,22 +301,22 @@ switch ($method) {
 
 Nous testons maintenant notre API avec Insmonia, nous avons les réponses suivantes.
 ```json
-// (GET) => http://localhost:8888/todo-api/public/api.php | 200 OK
+// (GET) => http://localhost:8888/api.php | 200 OK
 {
 	"Message": "GET METHOD"
 }
 
-// (POST) => http://localhost:8888/todo-api/public/api.php | 200 OK
+// (POST) => http://localhost:8888/api.php | 200 OK
 {
 	"Message": "POST METHOD"
 }
 
-// (PUT) => http://localhost:8888/todo-api/public/api.php | 200 OK
+// (PUT) => http://localhost:8888/api.php | 200 OK
 {
 	"Message": "PUT METHOD"
 }
 
-// (DELETE) => http://localhost:8888/todo-api/public/api.php | 200 OK
+// (DELETE) => http://localhost:8888/api.php | 200 OK
 {
 	"Message": "DELETE METHOD"
 }
@@ -402,7 +402,6 @@ class TaskController {
             if ($task['id'] == $id) {
                 $task['title'] = $data['title'] ?? $task['title'];
                 $task['description'] = $data['description'] ?? $task['description'];
-                $task['status'] = $data['status'] ?? $task['status'];
                 break;
             }
         }
@@ -505,7 +504,7 @@ switch ($method) {
 
 ## Utilisation d'un service de paiement
 
-Nous allons apprendre Apprendre à intégrer un système de paiement en ligne dans une application web en utilisant l'API de Mollie.
+Nous allons apprendre apprendre à intégrer un système de paiement en ligne dans une application web en utilisant l'API de Mollie.
 
 ![Payment Cover](../../../assets/images/php/payment.webp)
 
@@ -562,7 +561,7 @@ try {
             "value" => $_POST['amount']
         ],
         "description" => "Ma première API de paiement",
-        "redirectUrl" => "http://localhost:8888/greta/mollie-demo/thank-you.html",
+        "redirectUrl" => "http://localhost:8888/thank-you.html",
     ]);
 
     header("Location: " . $payment->getCheckoutUrl(), true, 303);
