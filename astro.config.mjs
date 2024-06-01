@@ -39,21 +39,16 @@ export default defineConfig({
         { label: 'GitHub', autogenerate: { directory: 'github' }, collapsed: true},
         { label: 'Deployer', autogenerate: { directory: 'deployer' }, collapsed: true},
         { label: 'Docker', autogenerate: { directory: 'docker' }, collapsed: true },
-      ]
-    },
-    {
-      label: 'VPS',
-      items: [
-        { label: 'Debian', autogenerate: { directory: 'debian' }, collapsed: true },
-        { label: 'Ubuntu', autogenerate: { directory: 'ubuntu' }, collapsed: true },
-        { label: 'Hébergements', autogenerate: { directory: 'hosting' }, collapsed: true }
+        { label: 'Hébergement', autogenerate: { directory: 'hosting' }, collapsed: true },
+
       ]
     },
     {
       label: 'Systèmes d\'exploitation',
       items: [
-        { label: 'Mac OS',  autogenerate: { directory: 'macos'
-        }, collapsed: true }
+        { label: 'Mac OS',  autogenerate: { directory: 'macos' }, collapsed: true },
+        { label: 'Debian', autogenerate: { directory: 'debian' }, collapsed: true },
+        { label: 'Ubuntu', autogenerate: { directory: 'ubuntu' }, collapsed: true },
       ]
     }],
     defaultLocale: 'root',
