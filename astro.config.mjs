@@ -30,7 +30,8 @@ export default defineConfig({
       items: [
         { label: 'PHP', autogenerate: { directory: 'php' }, collapsed: true },
         { label: 'Symfony', autogenerate: { directory: 'symfony' }, collapsed: true },
-        { label: 'Express.js', autogenerate: { directory: 'express' }, collapsed: true }
+        { label: 'Express.js', autogenerate: { directory: 'express' }, collapsed: true },
+        { label: 'Fast API', autogenerate: { directory: 'fast-api' }, collapsed: true }
       ]
     },
     {
