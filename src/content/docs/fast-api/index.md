@@ -53,7 +53,7 @@ async def root():
 
 ### Démarrer le serveur de développement
 ```shell title="Avec uvicorn (recommandé)"
-uvicorn main:app
+uvicorn main:app --reload
 ```
 
 :::tips
