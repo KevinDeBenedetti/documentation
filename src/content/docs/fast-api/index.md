@@ -67,3 +67,20 @@ pip freeze
 pip freeze > requirements.txt
 ```
 :::
+
+
+## Automatiser le démarrage
+
+### Ajouter un script `start.sh`
+A la racine du projet.
+```diff lang="shell"
+// start.sh
+#!venv/bin/activate
+uvicorn main:app --reload
+```
+
+### Lancer le projet
+Exécuter le script, avec la commande.
+```shell
+sh start.sh
+```
