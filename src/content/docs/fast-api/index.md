@@ -1,6 +1,6 @@
 ---
 title: Installer Fast API
-lastUpdated: 2024-07-19
+lastUpdated: 2024-07-25
 description: Un guide pour démarrer avec Fast API.
 sidebar:
     order: 0
@@ -75,7 +75,8 @@ pip freeze > requirements.txt
 A la racine du projet.
 ```diff lang="shell"
 // start.sh
-#!venv/bin/activate
+#!bin/bash
+source venv/bin/activate
 uvicorn main:app --reload
 ```
 
