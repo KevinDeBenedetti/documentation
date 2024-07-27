@@ -1,6 +1,10 @@
 ---
 title: Démarrer avec Nuxt.js
-description: A guide to start easily with Nuxt.js, the Vue.js framework.
+lastUpdated: 2024-07-28
+description: Un guide pour démarrer avec Nuxt.js.
+sidebar:
+    order: 1
+    label: Installer
 ---
 
 Nuxt.js est un framework Vue.

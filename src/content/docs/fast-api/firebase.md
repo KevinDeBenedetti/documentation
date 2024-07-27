@@ -42,7 +42,7 @@ from backend.router import router
 +from firebase_admin import credentials
 
 +cred = credentials.Certificate("service-account.json")
-+firebase_admin.initialize_app(cre
++firebase_admin.initialize_app(cred)
 
 app = FastAPI()
 
