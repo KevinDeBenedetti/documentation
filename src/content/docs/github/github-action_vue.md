@@ -5,9 +5,9 @@ description: Un guide pour démarrer avec Github Actions.
 sidebar:
     order: 1
     label: GitHub Actions / Vue 3 - Vite
-    badge:
-      text: Nouveau
-      variant: success
+    # badge:
+    #   text: Nouveau
+    #   variant: success
 ---
 
 Vous pourrez déployer et publier votre code Vue 3 avec GitHub Actions et Github Pages.

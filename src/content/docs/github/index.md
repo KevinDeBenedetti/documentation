@@ -5,9 +5,9 @@ description: Un guide pour démarrer avec GitHub Actions.
 sidebar:
     order: 0
     label: Démarrer avec Github
-    badge:
-      text: Nouveau
-      variant: success
+    # badge:
+    #   text: Nouveau
+    #   variant: success
 ---
 
 GitHub est une plateforme de gestion de code source basée sur Git, un système de contrôle de version distribué. Elle offre un espace en ligne pour héberger vos projets, collaborer avec d'autres développeurs, suivre les problèmes et gérer les versions de votre code. GitHub facilite la collaboration en fournissant des outils puissants pour le travail en équipe, le suivi des modifications et la gestion des branches.

@@ -30,7 +30,6 @@ export default defineConfig({
       items: [
         { label: 'PHP', autogenerate: { directory: 'php' }, collapsed: true },
         { label: 'Symfony', autogenerate: { directory: 'symfony' }, collapsed: true },
-        { label: 'Express.js', autogenerate: { directory: 'express' }, collapsed: true },
         { label: 'Fast API', autogenerate: { directory: 'fast-api' }, collapsed: true }
       ]
     },
@@ -38,10 +37,15 @@ export default defineConfig({
       label: 'CI / CD',
       items: [
         { label: 'GitHub', autogenerate: { directory: 'github' }, collapsed: true},
-        { label: 'Deployer', autogenerate: { directory: 'deployer' }, collapsed: true},
         { label: 'Docker', autogenerate: { directory: 'docker' }, collapsed: true },
         { label: 'Hébergement', autogenerate: { directory: 'hosting' }, collapsed: true },
 
+      ]
+    },
+    {
+      label: 'CMS',
+      items: [
+        { label: 'WordPress', autogenerate: { directory: 'wordpress' }, collapsed: true},
       ]
     },
     {
