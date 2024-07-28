@@ -114,19 +114,19 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-+    - name: Set lowercase repository owner
-+      run: echo "REPO_OWNER=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-
 +    - name: Build and push Api Docker image
 +      run: |
-+        docker build -t ghcr.io/${{ env.REPO_OWNER }}/<TAG_NAME>:latest ./<APP_CODE>
-+        docker push ghcr.io/${{ env.REPO_OWNER }}/<TAG_NAME>:latest
++        docker build -t ghcr.io/${{ vars.REPO_OWNER }}/<TAG_NAME>:latest ./<APP_CODE>
++        docker push ghcr.io/${{ vars.REPO_OWNER }}/<TAG_NAME>:latest
 
     - name: Logout from GHCR
       run: docker logout ghcr.io
 ```
 
 ### Déployer sur un VPS
+Pour le déploiment avec SSH nous utiliserons l'utilitaire GitHub Actions, [appleboy](https://github.com/appleboy/ssh-action).
+
+#### Connexion avec identifiant et mot de passe
 ```diff lang="yaml"
 // .github/workflows/ghcr.yaml
 name: GitHub Container Registry 
@@ -179,15 +179,41 @@ jobs:
 +            password: ${{ secrets.SSH_PASSWORD }}
 +            port: ${{ secrets.SSH_PORT }}
 +            script: |
-+              docker pull ghcr.io/${{ env.REPO_OWNER }}/<TAG_NAME>:latest
++              echo ${{ secrets.GHCR_PAT }} | docker login ghcr.io -u ${{ github.REPOSITORY_OWNER }} --password-stdin
++              docker pull ghcr.io/${{ vars.REPO_OWNER }}/<TAG_NAME>:latest
 +              docker compose.prod.yaml
++              docker logout ghcr.io
 ```
+#### Connexion avec identifiant et clé privée ssh
+Au préalable, configurer les clés sur le VPS, vous pouvez créer des clés dans votre VPS Ubuntu avec la [documentation](/documentation/ubuntu/ssh/) dans la section `Clés` et ajouter le secret `SSH_KEY` dans le répertoire GitHub (clé privée).
+```diff lang="yaml"
+// .github/workflows/ghcr.yaml
+...
 
-### Configurer le VPS
+  deploy:
+    needs: [ghcr]
+    runs-on: ubuntu-latest
+    steps:
+        - name: Deploy using ssh
+          uses: appleboy/ssh-action@v1.0.3
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: ${{ secrets.SSH_USERNAME }}
+            key: ${{ secrets.SSH_KEY }}
+            port: ${{ secrets.SSH_PORT }}
+            script: |
+              echo ${{ secrets.GHCR_PAT }} | docker login ghcr.io -u ${{ github.REPOSITORY_OWNER }} --password-stdin
+              docker pull ghcr.io/${{ env.REPO_OWNER }}/<TAG_NAME>:latest
+              docker compose compose.prod.yaml
+              docker logout ghcr.io
+```
+Configurer les clés ssh pour GitHub [documentation](https://docs.github.com/fr/authentication/connecting-to-github-with-ssh/about-ssh).
+
+### Configurer sur le VPS
 
 #### Créer un fichier `compose.prod.yaml`
 ```diff lang="yaml"
-// ./<PROJECT_NAME>/compose.prod.yaml
+// ./PROJECT_NAME/compose.prod.yaml
 services:
   app:
     image: ghcr.io/${{ env.REPO_OWNER }}/<TAG_NAME>:latest

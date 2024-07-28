@@ -1,6 +1,6 @@
 ---
 title: Ubuntu | SSH
-lastUpdated: 2024-02-27
+lastUpdated: 2024-07-28
 description: Un guide pour configurer SSH de Ubuntu 23.
 sidebar:
     order: 2
@@ -54,4 +54,27 @@ scp -r <NOM_DU_FICHIER> username@adresse_ip:~/
 
 ```bash title="Copier un fichier en ssh, sur un port personnalisé"
 scp -r -P <PORT> <NOM_DU_FICHIER> username@adresse_ip:~/ 
+```
+
+## Clés
+
+Pour générer une paire de clés ssh.
+```shell
+ssh-keygen -t rsa -b 4096 -C "email@email.email" -f ~/.ssh/<key_name>
+```
+
+Voir la clé publique.
+```shell
+cat ~/.ssh/<key_name>.pub
+```
+
+Authoriser la clé dans le fichier `authorised_keys`
+```shell
+echo "<public_key>" >> ~/.ssh/authorised_keys
+```
+
+Copier la clé privée où vous voulez.
+Voir la clé publique.
+```shell
+cat ~/.ssh/<key_name>
 ```
