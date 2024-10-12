@@ -11,30 +11,28 @@ hero:
       variant: primary
 ---
 
-import { Tabs, TabItem, LinkButton } from '@astrojs/starlight/components';
+import { Card, LinkButton } from '@astrojs/starlight/components';
 
-<Tabs>
-    <TabItem label="Frameworks">
-        <LinkButton icon="seti:vue" iconPlacement="start" href="/documentation/vue/" variant="minimal">Vue</LinkButton>
-        <LinkButton icon="seti:vue" iconPlacement="start" href="/documentation/nuxt/" variant="minimal">Nuxt</LinkButton>
-        <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/symfony/" variant="minimal">Symfony</LinkButton>
-        <LinkButton icon="seti:python" iconPlacement="start" href="/documentation/fast-api/" variant="minimal">Fast API</LinkButton>
-        <LinkButton icon="seti:python" iconPlacement="start" href="/documentation/django/" variant="minimal">Django</LinkButton>
-    </TabItem>
-    <TabItem label="Langages">
-        <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/php/" variant="minimal">PHP</LinkButton>
-    </TabItem>
-    <TabItem label="CI / CD">
-        <LinkButton icon="seti:github" iconPlacement="start" href="/documentation/github/" variant="minimal">GitHub</LinkButton>
-        <LinkButton icon="seti:docker" iconPlacement="start" href="/documentation/docker/" variant="minimal">Docker</LinkButton>
-        <LinkButton icon="seti:db" iconPlacement="start" href="/documentation/hosting/" variant="minimal">Hébergement</LinkButton>
-    </TabItem>
-    <TabItem label="CMS">
-        <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/wordpress/" variant="minimal">WordPress</LinkButton>
-    </TabItem>
-    <TabItem label="Systèmes d'exploitation">
-        <LinkButton icon="apple" iconPlacement="start" href="/documentation/macos/" variant="minimal">MacOS</LinkButton>
-        <LinkButton icon="linux" iconPlacement="start" href="/documentation/debian/" variant="minimal">Debian</LinkButton>
-        <LinkButton icon="linux" iconPlacement="start" href="/documentation/ubuntu/" variant="minimal">Ubuntu</LinkButton>
-    </TabItem>
-</Tabs>
+<Card title="Frameworks">
+    <LinkButton icon="seti:vue" iconPlacement="start" href="/documentation/vue/" variant="minimal">Vue</LinkButton>
+    <LinkButton icon="seti:vue" iconPlacement="start" href="/documentation/nuxt/" variant="minimal">Nuxt</LinkButton>
+    <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/symfony/" variant="minimal">Symfony</LinkButton>
+    <LinkButton icon="seti:python" iconPlacement="start" href="/documentation/fast-api/" variant="minimal">Fast API</LinkButton>
+    <LinkButton icon="seti:python" iconPlacement="start" href="/documentation/django/" variant="minimal">Django</LinkButton>
+</Card>
+<Card title="Langages">
+    <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/php/" variant="minimal">PHP</LinkButton>
+</Card>
+<Card title="CI / CD">
+    <LinkButton icon="seti:github" iconPlacement="start" href="/documentation/github/" variant="minimal">GitHub</LinkButton>
+    <LinkButton icon="seti:docker" iconPlacement="start" href="/documentation/docker/" variant="minimal">Docker</LinkButton>
+    <LinkButton icon="seti:db" iconPlacement="start" href="/documentation/hosting/" variant="minimal">Hébergement</LinkButton>
+</Card>
+<Card title="CMS">
+    <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/wordpress/" variant="minimal">WordPress</LinkButton>
+</Card>
+<Card title="Systèmes d'exploitation">
+    <LinkButton icon="apple" iconPlacement="start" href="/documentation/macos/" variant="minimal">MacOS</LinkButton>
+    <LinkButton icon="linux" iconPlacement="start" href="/documentation/debian/" variant="minimal">Debian</LinkButton>
+    <LinkButton icon="linux" iconPlacement="start" href="/documentation/ubuntu/" variant="minimal">Ubuntu</LinkButton>
+</Card>
