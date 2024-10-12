@@ -14,7 +14,7 @@ sidebar:
 ## Configurer les variables d'environneemnt
 
 ### Créer un fichier .env
-```diff lang="env"
+```diff
 // .env
 ENV=dev
 FRONTEND_URL="http://localhost:3000"

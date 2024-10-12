@@ -1,8 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
-import vue from "@astrojs/vue";
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://KevinDeBenedetti.github.io',
@@ -15,22 +13,24 @@ export default defineConfig({
     },
     sidebar: [
     {
-      label: 'Documentation',
+      label: 'Accueil',
       link: '/home/'
     },
     {
-      label: 'Frontend',
+      label: 'Frameworks',
       items: [
         { label: 'Vue', autogenerate: { directory: 'vue' }, collapsed: true },
-        { label: 'Nuxt', autogenerate: { directory: 'nuxt' }, collapsed: true }
+        { label: 'Nuxt', autogenerate: { directory: 'nuxt' }, collapsed: true },
+        { label: 'Symfony', autogenerate: { directory: 'symfony' }, collapsed: true },
+        { label: 'Fast API', autogenerate: { directory: 'fast-api' }, collapsed: true },
+        { label: 'Django', autogenerate: { directory: 'django' }, collapsed: true },
       ]
     },
     {
-      label: 'Backend',
+      label: 'Langages',
       items: [
         { label: 'PHP', autogenerate: { directory: 'php' }, collapsed: true },
-        { label: 'Symfony', autogenerate: { directory: 'symfony' }, collapsed: true },
-        { label: 'Fast API', autogenerate: { directory: 'fast-api' }, collapsed: true }
+
       ]
     },
     {
@@ -67,5 +67,5 @@ export default defineConfig({
         lang: 'en-EN'
       }
     }
-  }), vue()]
+  })]
 });

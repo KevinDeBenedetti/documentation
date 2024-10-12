@@ -18,7 +18,7 @@ pip install firebase-admin
 ```
 
 ## Créer .env
-```diff lang="env"
+```diff
 // .env
 ENV=dev
 +GOOGLE_APPLICATION_CREDENTIALS="./service-account.json"

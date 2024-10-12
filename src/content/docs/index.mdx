@@ -3,33 +3,38 @@ title: RunesDoc
 description: Documentation de développeur web, Kevin De Benedetti
 template: splash
 hero:
-  tagline: Bienvenue dans ma documentation de développeur !
+  tagline: Ressources Fullstack, maîtrisez le développement moderne.
   actions:
     - text: Voir la documentation
       link: /documentation/home/
-      icon: external
+      icon: open-book
       variant: primary
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { Tabs, TabItem, LinkButton } from '@astrojs/starlight/components';
 
-## 🚀 Derniers ajouts
-
-<CardGrid stagger>
-    <Card title="Fast API" icon="star">
-        Commencer avec Fast API
-        <LinkCard title="Voir la doc" href="/documentation/fast-api/" />
-    </Card>
-    <Card title="Fast API" icon="star">
-        Fast API / Routeur
-        <LinkCard title="Voir la doc" href="/documentation/fast-api/router/" />
-    </Card>
-    <Card title="Fast API" icon="star">
-        Fast API / Variables d'environnement
-        <LinkCard title="Voir la doc" href="/documentation/fast-api/env/" />
-    </Card>
-    <Card title="Fast API" icon="star">
-        Fast API / Firebase
-        <LinkCard title="Voir la doc" href="/documentation/fast-api/firebase/" />
-    </Card>
-</CardGrid>
+<Tabs>
+    <TabItem label="Frameworks">
+        <LinkButton icon="seti:vue" iconPlacement="start" href="/documentation/vue/" variant="minimal">Vue</LinkButton>
+        <LinkButton icon="seti:vue" iconPlacement="start" href="/documentation/nuxt/" variant="minimal">Nuxt</LinkButton>
+        <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/symfony/" variant="minimal">Symfony</LinkButton>
+        <LinkButton icon="seti:python" iconPlacement="start" href="/documentation/fast-api/" variant="minimal">Fast API</LinkButton>
+        <LinkButton icon="seti:python" iconPlacement="start" href="/documentation/django/" variant="minimal">Django</LinkButton>
+    </TabItem>
+    <TabItem label="Langages">
+        <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/php/" variant="minimal">PHP</LinkButton>
+    </TabItem>
+    <TabItem label="CI / CD">
+        <LinkButton icon="seti:github" iconPlacement="start" href="/documentation/github/" variant="minimal">GitHub</LinkButton>
+        <LinkButton icon="seti:docker" iconPlacement="start" href="/documentation/docker/" variant="minimal">Docker</LinkButton>
+        <LinkButton icon="seti:db" iconPlacement="start" href="/documentation/hosting/" variant="minimal">Hébergement</LinkButton>
+    </TabItem>
+    <TabItem label="CMS">
+        <LinkButton icon="seti:php" iconPlacement="start" href="/documentation/wordpress/" variant="minimal">WordPress</LinkButton>
+    </TabItem>
+    <TabItem label="Systèmes d'exploitation">
+        <LinkButton icon="apple" iconPlacement="start" href="/documentation/macos/" variant="minimal">MacOS</LinkButton>
+        <LinkButton icon="linux" iconPlacement="start" href="/documentation/debian/" variant="minimal">Debian</LinkButton>
+        <LinkButton icon="linux" iconPlacement="start" href="/documentation/ubuntu/" variant="minimal">Ubuntu</LinkButton>
+    </TabItem>
+</Tabs>

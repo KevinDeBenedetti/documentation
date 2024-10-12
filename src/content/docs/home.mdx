@@ -1,49 +1,71 @@
 ---
-title: Documentation
-lastUpdated: 2024-02-19
-description: Ma documentation de développeur
+title: Accueil
+description: Ma documentation de développeur Fullstack
+next: false
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkCard, LinkButton } from '@astrojs/starlight/components';
 
-## Frontend
+## Frameworks
 
-<Card title="Frameworks" icon="open-book">
-    <CardGrid>
-        <LinkCard title="Vue 3" href="/documentation/vue/" description="🚧 En cours" />
-        <LinkCard title="Nuxt.js" href="/documentation/nuxt/" description="🚧 En cours" />
-    </CardGrid>
-</Card>
+<CardGrid>
+    <Card title="Vue" icon="seti:vue">
+        <LinkCard title="Voir plus" href="/documentation/vue/" />
+    </Card>
+    <Card title="Nuxt" icon="node">
+        <LinkCard title="Voir plus" href="/documentation/nuxt/" />
+    </Card>
+    <Card title="Symfony" icon="seti:php">
+        <LinkCard title="Voir plus" href="/documentation/symfony/" />
+    </Card>
+    <Card title="Fast API" icon="seti:python">
+        <LinkCard title="Voir plus" href="/documentation/fast-api/" />
+    </Card>
+    <Card title="Django" icon="seti:python">
+        <LinkCard title="Voir plus" href="/documentation/django/" />
+    </Card>
+</CardGrid>
 
-## Backend
-<Card title="Frameworks" icon="open-book">
-    <CardGrid>
-        <LinkCard title="Symfony" href="/documentation/symfony/" description="🚧 En cours" />
-        <LinkCard title="Express.js" href="/documentation/express/" description="⏱️ Prochainement" />
-    </CardGrid>
-</Card>
+## Langages
+
+<CardGrid>
+    <Card title="PHP" icon="seti:php">
+        <LinkCard title="Voir plus" href="/documentation/php/" />
+    </Card>
+</CardGrid>
 
 ## CI / CD
-<Card icon="open-book">
-    <CardGrid>
-        <LinkCard title="Github Actions" description="Utiliser Github Actions" href="/documentation/github/" description="🚧 En cours" />
-        <LinkCard title="Deployer" href="/documentation/deployer/" description="⏱️ Prochainement" />
-    </CardGrid>
-</Card>
 
-## Outils de développement
-<Card icon="open-book">
-    <CardGrid>
-        <LinkCard title="Docker" href="/documentation/github/" description="⏱️ Prochainement"/>
-        <LinkCard title="Git" href="/documentation/git/" description="⏱️ Prochainement" />
-        <LinkCard title="Linters" href="/documentation/linters/" description="⏱️ Prochainement" />
-    </CardGrid>
-</Card>
+<CardGrid>
+    <Card title="GitHub" icon="seti:github">
+        <LinkCard title="Voir plus" href="/documentation/github/" />
+    </Card>
+    <Card title="GitHub" icon="seti:docker">
+        <LinkCard title="Voir plus" href="/documentation/docker/" />
+    </Card>
+    <Card title="Hébergement" icon="seti:db">
+        <LinkCard title="Voir plus" href="/documentation/hosting/" />
+    </Card>
+</CardGrid>
 
-## Systèmes d'exploitation
-<Card icon="open-book">
-    <CardGrid>
-        <LinkCard title="Mac OS" href="/documentation/github/" description="🚧 En cours" />
-        <LinkCard title="Ubuntu" href="/documentation/git/" description="⏱️ Prochainement" />
-    </CardGrid>
-</Card>
+## CMS
+
+<CardGrid>
+    <Card title="WordPress" icon="seti:php">
+        <LinkCard title="Voir plus" href="/documentation/wordpress/" />
+    </Card>
+</CardGrid>
+
+## Systémes d'exploitation
+
+<CardGrid>
+    <Card title="MacOS" icon="apple">
+        <LinkCard title="Voir plus" href="/documentation/macos/" />
+    </Card>
+    <Card title="Debian" icon="linux">
+        <LinkCard title="Voir plus" href="/documentation/debian/" />
+    </Card>
+    <Card title="Ubuntu" icon="linux">
+        <LinkCard title="Voir plus" href="/documentation/ubuntu/" />
+    </Card>
+</CardGrid>
