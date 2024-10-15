@@ -1,0 +1,316 @@
+---
+title: Django todo list
+lastUpdated: 2024-10-12
+description: Un guide pour créer une todo list avec Django.
+sidebar:
+    order: 1
+    label: Todo List
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+## Initialisation du projet
+
+<Steps>
+1. Démarrage de l'envrionnement Python :
+
+    Dans le répertoire `root`, nommé `backend` pour ce projet.
+
+    ```sh
+    python3 -m venv env
+    source env/bin/activate
+    ```
+
+2. Installation de la dernière version de Django :
+
+    ```sh
+    pip install django
+    ```
+
+3. Création du projet, nommé `task_manager` :
+
+    ```sh
+    django-admin startproject task_manager .
+    ```
+
+4. Démarrage du serveur :
+
+    ```sh
+    python manage.py runserver
+    ```
+</Steps>
+
+## Création de l'application
+
+<Steps>
+1. Création de l'application, nommée `todolist` :
+
+    ```sh
+    python manage.py startapp todolist
+    ```
+
+2. Configuration l'application dans le projet :
+
+    Modification du fichier `task_manager/settings.py`, dans la section `INSTALLED_APPS`.
+
+    ```diff lang="python"
+    // task_manager/settings.py
+    ...
+    INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    + 'todolist'
+    ]
+    ...
+    ```
+
+3. Modélisation des données :
+
+    Modification du fichier `todolist/models.py`, définition du modèle de `todolist`.
+
+    ```diff lang="python"
+    // todolist/models.py
+    from django.db import models
+
+    +class Task(models.Model):
+    +    title = models.CharField(max_length=200)
+    +    description = models.TextField(blank=True)
+    +    completed = models.BooleanField(default=False)
+    +    due_date = models.DateField()
+    +    assigned_to = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    +    created_at = models.DateTimeField(auto_now_add=True)
+    +    updated_at = models.DateTimeField(auto_now=True)
+
+    +    def __str__(self):
+    +        return self.title
+    ```
+
+4. Enregistrement du modèle :
+
+    Modification du fichier `todolist/admin.py` pour y ajouter l'enregistrement du modèle Todo.
+
+    ```diff lang="python"
+    // todolist/admin.py
+
+    from django.contrib import admin
+    +from .models import Task
+
+    +@admin.register(Task)
+    +class TaskAdmin(admin.ModelAdmin):
+    +    list_display = ('title', 'description', 'completed', 'due_date', 'assigned_to' ,'created_at', 'updated_at')
+    +    list_filter = ('completed', 'due_date', 'assigned_to')
+    +    search_fields = ('title', 'description')
+    ```
+
+5. Application des migrations :
+
+    Vous pourrez démarrer le projet pour vérifier son bon fonctionnement avec la commande suivante.
+
+    ```sh
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+</Steps>
+
+## Configuration de l'interface `/admin`
+
+<Steps>
+1. Création d'un super utilisateur
+
+    Renseigner un nom d'utilisateur, une adresse e-mail et un mot de passe.
+
+    ```sh
+    python manage.py createsuperuser
+    ```
+</Steps>
+
+### Affichage des tâches triées par date d'échéance
+
+<Steps>
+1. Création de la vue pour afficher la liste des tâches
+
+    Modification du fichier `todolist/views.py`.
+
+    ```diff lang="python"
+    // todolist/views.py
+    from django.shortcuts import render
+    +from .models import Task
+
+    +def task_list(request):
+    +    tasks = Task.objects.all().order_by('due_date')
+    +    return render(request, 'todolist/task_list.html', {'tasks': tasks})
+    ```
+
+2. Création du template
+
+    Création du fichier `todolist/templates/task_list.html`.
+
+    ```diff lang="html"
+    // todolist/templates/task_list.html
+    +<h1>Liste des tâches</h1>
+    +<table>
+    +    <thead>
+    +        <tr>
+    +           <th>Titre</th>
+    +           <th>Description</th>
+    +           <th>Attribué à</th>
+    +           <th>Date d'échéance</th>
+    +           <th>Statut</th>
+    +        </tr>
+    +    </thead>
+    +    <tbody>
+    +       {% for task in tasks %}
+    +           <tr>
+    +               <td>{{ task.title }}</td>
+    +               <td>{{ task.description }}</td>
+    +               <td>{{ task.assigned_to }}</td>
+    +               <td>{{ task.due_date }}</td>
+    +               <td>{{ task.completed|yesno:"Terminé,En cours" }}</td>
+    +           </tr>
+    +       {% endfor %}
+    +    </tbody>
+    +</table>
+    ```
+3. Ajouter de l'URL correspondante
+
+    Ajout d'une route pour afficher la liste des tâches dans `task_manager/urls.py`.
+
+    ```diff lang="python"
+    // task_manager/urls.py
+    from django.contrib import admin
+    from django.urls import path
+    +from todolist import views
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+    +    path('tasks/', views.task_list, name='task_list'),
+    ]
+    ```
+
+    La page est maintenant accessible à l'url, `<url>/tasks/`
+</Steps>
+
+### Filtrage des tâches
+
+<Steps>
+1. Installation de Django Filtrage
+
+    ```sh
+    pip install django-filter
+    ```
+
+2. Création d'un filtre personnalisé
+
+    ```diff lang="python"
+    // todolist/filters.py
+    +import django_filters
+    +from .models import Task
+
+    +class TaskFilter(django_filters.FilterSet):
+    +    class Meta:
+    +        model = Task
+    +        fields = {
+    +            'title': ['icontains'],
+    +            'assigned_to': ['exact'],
+    +            'completed': ['exact'],
+    +            'due_date': ['gte', 'lte'],
+    +        }
+    ```
+
+3. Modification de la vue pour utiliser les filters
+
+    ```diff lang="python"
+    // todolist/views.py
+    from django.shortcuts import render
+    +from django_filters.views import FilterView
+    from .models import Task
+    +from .filters import TaskFilter
+
+    def task_list(request):
+    -    tasks = Task.objects.all().order_by('due_date')
+    -    return render(request, 'task_list.html', {'tasks': tasks})
+    +    task_filter = TaskFilter(request.GET, queryset=Task.objects.all().order_by('due_date'))
+    +    return render(request, 'task_list.html', {'filter': task_filter})
+    ```
+
+4. Mise à jour du template
+
+    ```diff lang="html"
+    <h1>Liste des tâches</h1>
+    +<form method="get">
+    +    {{ filter.form.as_p }}
+    +    <button type="submit">Rechercher</button>
+    +</form>
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Attribué à</th>
+                <th>Date d'échéance</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+    -        {% for task in tasks %}
+    +        {% for task in filter.qs %}
+                <tr>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.assigned_to }}</td>
+                    <td>{{ task.due_date }}</td>
+                    <td>{{ task.completed|yesno:"Terminé,En cours" }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    ```
+</Steps>
+
+### Pagination des tâches
+
+<Steps>
+1. Ajouter la pagination dans la vue
+
+    ```diff lang="python"
+    // todolist/views.py
+    from django.shortcuts import render
+    from django_filters.views import FilterView
+    from .models import Task
+    from .filters import TaskFilter
+    +from django.core.paginator import Paginator
+
+    def task_list(request):
+        task_filter = TaskFilter(request.GET, queryset=Task.objects.all().order_by('due_date'))
+    +    paginator = Paginator(task_filter.qs, 10)
+    +    page_number = request.GET.get('page')
+    +    page_obj = paginator.get_page(page_number)
+    -    return render(request, 'task_list.html', {'filter': task_filter})
+    +    return render(request, 'task_list.html', {'filter': task_filter, 'page_obj': page_obj})
+    ```
+
+2. Modification du template
+
+    ```diff lang="html"
+    // todolist/templates/task_list.html
+    +<div class="pagination">
+    +<span class="step-links">
+    +    {% if page_obj.has_previous %}
+    +        <a href="?page=1">&laquo; première</a>
+    +        <a href="?page={{ page_obj.previous_page_number }}">précédente</a>
+    +    {% endif %}
+
+    +    <span>Page {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+
+    +    {% if page_obj.has_next %}
+    +        <a href="?page={{ page_obj.next_page_number }}">suivante</a>
+    +        <a href="?page={{ page_obj.paginator.num_pages }}">dernière &raquo;</a>
+    +    {% endif %}
+    </span>
+    </div>
+    ```
+</Steps>

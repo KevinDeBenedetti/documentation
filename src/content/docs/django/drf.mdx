@@ -1,0 +1,276 @@
+---
+title: Django REST Framework (DRF)
+lastUpdated: 2024-10-14
+description: Un guide pour utiliser Django REST Framework.
+sidebar:
+    order: 2
+    label: Django REST Framework (DRF)
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+## Installation et Configuration
+
+<Steps>
+1. ### Installation de Django REST Framework (DRF)
+
+    ```sh
+    pip install djangorestframework
+    ````
+
+2. ### Configuration de DRF dans le projet
+
+    ```diff lang="python"
+    // task_manager/settings.py
+
+    ...
+    INSTALLED_APPS = [
+        'django.contrib.admin',
+        'django.contrib.auth',
+        'django.contrib.contenttypes',
+        'django.contrib.sessions',
+        'django.contrib.messages',
+        'django.contrib.staticfiles',
+        'todolist',
+    +    'rest_framework',
+    ]
+    ...
+
+    ```
+
+3. ### Désactiver CSRF
+
+    ```diff lang="python"
+    // task_manager/settings.py
+
+    ...
+    # Désactiver CSRF pour les API
+    +CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8000']
+    ...
+
+    ```
+
+4. ### Création des serializers
+
+    Les serializers transforment les instances des modèles en JSON (et inversemenent).
+
+    ```diff lang="python"
+    // todolist/serializers.py
+
+    +from rest_framework import serializers
+    +from .models import Task
+
+    +class TaskSerializer(serializers.ModelSerializer):
+    +    class Meta:
+    +        model = Task
+    +        fields = ['id', 'title', 'description', 'completed', 'due_date', 'assigned_to']
+    ```
+
+5. ### Création des views
+
+    Création des vues basées sur Django REST Framework pour gérer les opérations CRUD des tâches.
+
+    ```diff lang="python"
+    // todolist/views.python
+
+    +from rest_framework import viewsets
+    +from .models import Task
+    +from .serializers import TaskSerializer
+
+    +class TaskViewSet(viewsets.ModelViewSet):
+    +    queryset = Task.objects.all().order_by('due_date')
+    +    serializer_class = TaskSerializer
+    ```
+
+6. ### Ajout des routes
+
+    Création des routeurs pour accéder à l'API en utilisant un routeur fourni par Django REST Framework.
+
+    ```diff lang="python"
+    // task_manager/urls.py
+    
+    from django.contrib import admin
+    -from django.urls import path
+    +from django.urls import path, include
+    +from todolist import views
+    +from rest_framework import routers
+
+    +router = routers.DefaultRouter()
+    +router.register(r'tasks', views.TaskViewSet)
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+    +    path('api/', include(router.urls)),
+    ]
+    ```
+
+7. ### Ajout de la pagination
+
+    ```diff lang="python"
+    // task_manager/settings.py
+
+    ...
+    +REST_FRAMEWORK = {
+    +    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    +    'PAGE_SIZE': 10
+    +}
+    ...
+    ```
+
+8. ### Ajout des filtres
+
+    ```diff lang="python"
+    // todolist/views.py
+
+    from rest_framework import viewsets
+    from .models import Task
+    from .serializers import TaskSerializer
+    +from django_filters.rest_framework import DjangoFilterBackend
+
+    class TaskViewSet(viewsets.ModelViewSet):
+        queryset = Task.objects.all().order_by('due_date')
+        serializer_class = TaskSerializer
+    +    filter_backends = [DjangoFilterBackend]
+    +    filterset_fields = ['completed', 'assigned_to']
+    ```
+
+</Steps>
+
+## Swagger UI
+
+<Steps>
+1. ### Installation de drf-yasg
+
+    ```sh
+    pip install drf-yasg
+    ```
+
+2. ### Intégration d'OpenApi
+
+    Création d'un fichier `swagger.py`, pour configurer la documentation d'OpenApi.
+
+    ```lang="python"
+    from rest_framework import permissions
+    from drf_yasg.views import get_schema_view
+    from drf_yasg import openapi
+
+    schema_view = get_schema_view(
+        openapi.Info(
+            title="Mon API de todolist",
+            default_version='v1',
+            description="Test description",
+            terms_of_service="https://www.google.com/policies/terms/",
+            contact=openapi.Contact(email="contact@kevindb.dev"),
+            license=openapi.License(name="BSD License"),
+        ),
+        public=True,
+        permission_classes=(permissions.AllowAny,),
+    )
+    ```
+
+2. ### Ajout de la route
+
+    ```diff lang="python"
+    // task_manager/urls.py
+
+    from django.contrib import admin
+    from django.urls import path, include
+    from todolist import views
+    from rest_framework import routers
+
+    router = routers.DefaultRouter()
+    router.register(r'tasks', views.TaskViewSet)
+
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('tasks/', views.task_list, name='task_list'),
+        path('api/', include(router.urls)),
+    +    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    ]
+    ```
+
+3. ### Configuration de Swagger dans le projet
+
+    Modification du fichier `task_manager/settings.py`, ajout de la section `SWAGGER_SETTINGS`.
+
+    ```diff lang="python"
+    // task_manager/settings.py
+
+    ...
+    +SWAGGER_SETTINGS = {
+    +    'SECURITY_DEFINITIONS': {
+    +        'Bearer': {
+    +            'type': 'apiKey',
+    +            'name': 'Authorization',
+    +            'in': 'header'
+    +        }
+    +    },
+    +    'USE_SESSION_AUTH': False,
+    +}
+    ...
+    ```
+</Steps>
+
+## Sécurisation par Token indépendant
+
+<Steps>
+1. ### Modification du modèle
+
+    ```diff lang="python"
+    // todolist/models.py
+
+    ...
+    +class APIToken(models.Model):
+    +    token = models.CharField(max_length=255, unique=True)
+    +    description = models.CharField(max_length=255, blank=True, null=True)  # Facultatif, pour une description du token
+    +    created_at = models.DateTimeField(auto_now_add=True)
+        
+    +    def __str__(self):
+    +        return self.token
+    ```
+
+2. ### Authentification personnalisée
+
+    ```diff lang="python"
+    // todolist/authentification.py
+
+    from rest_framework.authentication import BaseAuthentication
+    from rest_framework.exceptions import AuthenticationFailed
+    from .models import APIToken
+
+    class StaticTokenAuthentication(BaseAuthentication):
+        def authenticate(self, request):
+            auth_header = request.headers.get('Authorization')
+            
+            if not auth_header:
+                return None  # Pas de header Authorization
+
+            if not auth_header.startswith('Bearer '):
+                raise AuthenticationFailed('Le token doit commencer par "Bearer"')
+
+            token = auth_header.split(' ')[1]  # Extraire le token après 'Bearer'
+
+            try:
+                APIToken.objects.get(token=token)
+            except APIToken.DoesNotExist:
+                raise AuthenticationFailed('Token invalide ou manquant')
+
+            return (None, None)  # Autorise la requête
+    ```
+
+3. ### Permisssion personnalisée
+
+    ```diff lang="python"
+    from rest_framework.permissions import BasePermission
+
+    class HasValidAPIToken(BasePermission):
+        """
+        Autorise uniquement les requêtes qui ont passé l'authentification par token statique.
+        """
+        def has_permission(self, request, view):
+            # Si la requête a un token valide, la permission est accordée
+            if request.auth is None and request.user is None:
+                return True
+            return False
+    ```
+</Steps>
