@@ -1,6 +1,6 @@
 ---
 title: Docker | Démarrer
-lastUpdated: 2024-02-25
+lastUpdated: 2024-10-17
 description: Un guide pour démarrer avec docker.
 sidebar:
     order: 0
@@ -56,3 +56,11 @@ sudo docker rm CONTAINER_ID
 ```bash title="Supprimer une image avec son ID"
 sudo docker rmi IMAGE_ID
 ```
+
+### Nettoyer
+
+```bash title="Effectuer un nettoyage complet"
+docker system prune --volumes -a
+```
+
+
