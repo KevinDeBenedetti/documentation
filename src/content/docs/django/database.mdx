@@ -1,6 +1,6 @@
 ---
 title: Base de données
-lastUpdated: 2024-10-15
+lastUpdated: 2024-10-16
 description: Un guide pour modifier la base de données d'un projet Django.
 sidebar:
     order: 4
@@ -15,10 +15,12 @@ Configuration initiale d'un projet Django.
 
 ## PostgreSQL
 
-<Steps>
-1. ### Installation de `psycopg[binary]`
+:::note[Documenation]
+[psycopg[binary]](https://www.psycopg.org/psycopg3/docs/basic/install.html)
+:::
 
-    [Documentation officielle](https://www.psycopg.org/psycopg3/docs/basic/install.html) pour les dernières versions de Python (à partir de 3.8) et PostgreSQL (à partir de 10).
+<Steps>
+1. ### Installation
 
     ```sh
     pip install "psycopg[binary]"
@@ -52,7 +54,7 @@ Configuration initiale d'un projet Django.
     ...
     ```
 
-3. Variables d'environnement
+3. ### Variables d'environnement
 
     ```env
     POSTGRES_DB="<database-name>"

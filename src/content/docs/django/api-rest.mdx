@@ -1,6 +1,6 @@
 ---
 title: API REST
-lastUpdated: 2024-10-14
+lastUpdated: 2024-10-16
 description: Un guide pour utiliser Django REST Framework.
 sidebar:
     order: 2
@@ -9,16 +9,16 @@ sidebar:
 
 import { Steps } from '@astrojs/starlight/components';
 
-## Installation et Configuration
+## Django REST Framework (DRF)
 
 <Steps>
-1. ### Installation de Django REST Framework (DRF)
+1. ### Installation
 
     ```sh
     pip install djangorestframework
     ````
 
-2. ### Configuration de DRF dans le projet
+2. ### Configuration
 
     ```diff lang="python"
     // task_manager/settings.py
@@ -50,7 +50,7 @@ import { Steps } from '@astrojs/starlight/components';
 
     ```
 
-4. ### Création des serializers
+4. ### Serializers
 
     Les serializers transforment les instances des modèles en JSON (et inversemenent).
 
@@ -66,7 +66,7 @@ import { Steps } from '@astrojs/starlight/components';
     +        fields = ['id', 'title', 'description', 'completed', 'due_date', 'assigned_to']
     ```
 
-5. ### Création des views
+5. ### Views
 
     Création des vues basées sur Django REST Framework pour gérer les opérations CRUD des tâches.
 
@@ -82,7 +82,7 @@ import { Steps } from '@astrojs/starlight/components';
     +    serializer_class = TaskSerializer
     ```
 
-6. ### Ajout des routes
+6. ### Routes
 
     Création des routeurs pour accéder à l'API en utilisant un routeur fourni par Django REST Framework.
 
@@ -104,7 +104,7 @@ import { Steps } from '@astrojs/starlight/components';
     ]
     ```
 
-7. ### Ajout de la pagination
+7. ### Pagination
 
     ```diff lang="python"
     // task_manager/settings.py
@@ -117,7 +117,7 @@ import { Steps } from '@astrojs/starlight/components';
     ...
     ```
 
-8. ### Ajout des filtres
+8. ### Filtres
 
     ```diff lang="python"
     // todolist/views.py
@@ -138,8 +138,12 @@ import { Steps } from '@astrojs/starlight/components';
 
 ## Swagger UI
 
+:::note[Documenation]
+[drf-yasg](https://drf-yasg.readthedocs.io/en/stable/index.html#)
+:::
+
 <Steps>
-1. ### Installation de drf-yasg
+1. ### Installation
 
     ```sh
     pip install drf-yasg
@@ -168,7 +172,7 @@ import { Steps } from '@astrojs/starlight/components';
     )
     ```
 
-2. ### Ajout de la route
+2. ### Route
 
     ```diff lang="python"
     // task_manager/urls.py
@@ -189,7 +193,7 @@ import { Steps } from '@astrojs/starlight/components';
     ]
     ```
 
-3. ### Configuration de Swagger dans le projet
+3. ### Configuration
 
     Modification du fichier `task_manager/settings.py`, ajout de la section `SWAGGER_SETTINGS`.
 
@@ -214,7 +218,7 @@ import { Steps } from '@astrojs/starlight/components';
 ## Sécurisation par Token indépendant
 
 <Steps>
-1. ### Modification du modèle
+1. ### Modèle
 
     ```diff lang="python"
     // todolist/models.py
@@ -272,5 +276,19 @@ import { Steps } from '@astrojs/starlight/components';
             if request.auth is None and request.user is None:
                 return True
             return False
+    ```
+</Steps>
+
+## CORS
+
+:::note[Documenation]
+[django-cors-headers](https://pypi.org/project/django-cors-headers/)
+:::
+
+<Steps>
+1. ### Installation
+
+    ```sh
+    pip install django-cors-headers
     ```
 </Steps>
