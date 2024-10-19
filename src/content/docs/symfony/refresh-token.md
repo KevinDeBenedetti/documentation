@@ -5,9 +5,6 @@ description: Guide implémenter refresh token JWT Symfony.
 sidebar:
     order: 7
     label: Refresh Token
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
 :::note[Documentation]

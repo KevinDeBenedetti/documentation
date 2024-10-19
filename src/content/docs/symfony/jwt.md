@@ -5,9 +5,6 @@ description: Guide pour utiliser les bases de donneés avec Symfony.
 sidebar:
     order: 6
     label: Authentification JWT
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
 :::note[Documentation]

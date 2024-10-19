@@ -5,9 +5,6 @@ description: Guide pour utiliser API Platform avec Symfony.
 sidebar:
     order: 5
     label: User - API
-    badge:
-      text: Nouveau
-      variant: success
 ---
 
 :::note[Documentation]

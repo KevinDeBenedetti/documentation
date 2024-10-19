@@ -8,8 +8,9 @@ sidebar:
 ---
 
 :::note[Documentation]
-[Firebase](https://firebase.google.com/docs/build?hl=fr) <br>
-[Ajouter le SDK](https://firebase.google.com/docs/admin/setup?hl=fr#python)
+[Firebase](https://firebase.google.com/docs/build?hl=fr)<br>
+[Ajouter le SDK](https://firebase.google.com/docs/admin/setup?hl=fr#python)<br>
+[Medium](https://medium.com/@gabriel.cournelle/firebase-authentication-in-the-backend-with-fastapi-4ff3d5db55ca)
 :::
 
 ## Installer le SDK Firebase
