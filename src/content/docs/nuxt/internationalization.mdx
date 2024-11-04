@@ -1,0 +1,109 @@
+---
+title: Internationalisation
+lastUpdated: 2024-10-31
+description: Guide implémenter l'internationalisation (multilingue) avec I18n.
+sidebar:
+    order: 6
+    label: Internationalisation
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+:::note[Documentation]
+[Module Nuxt](https://nuxt.com/modules/i18n)
+[i18n](https://i18n.nuxtjs.org/)
+:::
+
+## Module `@nuxtjs/i18n`
+
+<Steps>
+
+1. ### Installation
+
+    ```sh
+    npx nuxi@latest module add i18n
+    ```
+
+2. ### Configuration
+
+    ```diff lang="typescript"
+    // nuxt.config.ts
+    ...
+    i18n: {
+        vueI18n: './i18n.config.ts',
+        locales: ['en', 'fr'],
+        defaultLocale: 'fr',
+    },
+    ...
+    ```
+
+3. ### Personnalisation `i18n.config.ts`
+
+    ```diff lang="typescript"
+    // i18n.config.ts
+    export default defineI18nConfig(() => ({
+        legacy: false,
+        locale: 'fr',
+        messages: {
+            en: {
+                welcome: 'Welcome'
+            },
+            fr: {
+                welcome: 'Bienvenue'
+            }
+        }
+    }))
+    ```
+
+</Steps>
+
+## Routes
+
+<Steps>
+
+1. ### Ajouter des Routes
+
+    ```diff lang="typescript"
+        // nuxt.config.ts
+    ...
+    i18n: {
+        vueI18n: './i18n.config.ts',
+        locales: ['en', 'fr'],
+        defaultLocale: 'fr',
+    +    customRoutes: 'config',
+    +        pages: {
+    +            index: {
+    +                fr: '/',
+    +                en: '/'
+    +            },
+    },
+    ...
+    ```
+
+2. ### Ajouter des routes dynamiques
+
+    ```diff lang="typescript"
+        // nuxt.config.ts
+    ...
+    i18n: {
+        vueI18n: './i18n.config.ts',
+        locales: ['en', 'fr'],
+        defaultLocale: 'fr',
+        customRoutes: 'config',
+            pages: {
+                index: {
+                    fr: '/',
+                    en: '/'
+                },
+    +            articles: {
+    +                fr: '/articles',
+    +                en: '/articles'
+    +            },
+    +            'articles-slug': {
+    +                fr: '/articles/[slug]',
+    +                en: '/articles/[slug]'
+    +            }
+    },
+    ...
+    ```
+</Steps>

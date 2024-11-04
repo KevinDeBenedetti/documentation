@@ -1,0 +1,108 @@
+---
+title: Cookie
+lastUpdated: 2024-11-04
+description: Guide pour configurer une bannière de cookie avec Nuxt.
+sidebar:
+    order: 5
+    label: Cookie
+---
+
+import { Badge } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import { Aside } from '@astrojs/starlight/components';
+import { LinkButton } from '@astrojs/starlight/components';
+
+:::note[Documentation]
+<LinkButton href="https://nuxt.com/modules/cookie-control" variant="secondary">Module Nuxt</LinkButton>
+<LinkButton href="https://github.com/dargmuesli/nuxt-cookie-control" variant="secondary">Cookie</LinkButton>
+:::
+
+<Badge text="@dargmuesli/nuxt-cookie-control" variant="note" size="medium" /> Ce module permet de gérer le consentement des cookies dans une application Nuxt, offrant une bannière de consentement configurable pour respecter les exigences de confidentialité (RGPD, etc.). Ce guide fournit toutes les étapes pour installer et configurer @dargmuesli/nuxt-cookie-control, ainsi qu’un exemple d’intégration avec Google Analytics.
+
+## Module Cookie control
+
+
+
+<Steps>
+
+1. ### Installation du module
+
+    Pour installer le module de gestion des cookies, exécutez la commande suivante dans votre terminal :
+    ```sh
+    npx nuxi@latest module add cookie-control
+    ```
+    Cette commande installe le module et ajoute les dépendances nécessaires pour gérer le consentement des cookies dans votre application Nuxt.
+
+2. ### Configuration du Module dans `nuxt.config.ts`
+
+    Une fois le module installé, ajoutez-le à la configuration de Nuxt et personnalisez les options pour gérer les cookies que vous souhaitez contrôler.
+
+    ```diff lang="typescript"
+    // nuxt.config.ts
+    export default defineNuxtConfig({
+    ...
+    +    modules: {
+    +        '@dargmuesli/nuxt-cookie-control',
+    +    },
+    +    cookieControl: {
+    +        ...
+    +        ...
+    +    }
+    ...
+    });
+    ```
+
+3. ### Utilisation dans `App.vue`
+
+    Intégrez le composant `<CookieControl />` dans votre fichier App.vue pour afficher la bannière de consentement.
+    ```diff lang="vue"
+    // app.vue
+    <script setup lang="ts">
+    ...
+    + const { cookiesEnabledIds } = useCookieControl();
+    + watch(
+    +     () => cookiesEnabledIds.value,
+    +     (current, previous) => {
+    +         if (
+    +         !previous?.includes('google-analytics') &&
+    +         current?.includes('google-analytics')
+    +         ) {
+    +         // cookie with id `google-analytics` got added
+    +         window.location.reload();
+    +         }
+    +     },
+    +     { deep: true },
+    + )
+    ...
+    </script>
+    <template>
+    ...
+    +    <CookieControl locale="en" />
+    </template>
+    ```
+    - Composant `<CookieControl />` : Affiche la bannière de consentement et le modal de gestion des cookies.
+    - `watch` pour surveiller cookiesEnabledIds : Permet de détecter les changements dans le consentement des cookies et recharge la page si Google Analytics est activé pour appliquer le suivi.
+
+4. ### Exemple de plugin
+
+    ```diff lang="typescript"
+    // plugins/analytics.client.ts
+    export default defineNuxtPlugin(nuxtApp => {
+        const cookieControl = useCookieControl()
+
+        if (cookieControl.cookiesEnabledIds.value && cookieControl.cookiesEnabledIds.value.includes('google-analytics')) {
+            // init analytics function
+        }
+    })
+    ```
+    - `cookiesEnabledIds` : Vérifie si l’utilisateur a accepté les cookies de Google Analytics.
+
+5. ### Conseils et Précautions
+
+    - Toujours tester votre configuration : Après configuration, vérifiez si le comportement est conforme aux exigences de confidentialité, notamment pour la RGPD.
+    - Évitez de stocker les cookies optionnels sans consentement : Configurez toutes les intégrations de suivi (ex : Google Analytics) pour qu’elles respectent les préférences de consentement.
+    - Mises à jour régulières : Gardez le module et Nuxt à jour pour bénéficier des dernières fonctionnalités et correctifs de sécurité.
+
+</Steps>
+
+Le module @dargmuesli/nuxt-cookie-control offre une solution puissante et personnalisable pour gérer les cookies dans votre application Nuxt. En suivant ce guide, vous pouvez facilement ajouter une bannière de consentement, intégrer des outils de suivi comme Google Analytics en respectant la vie privée des utilisateurs, et personnaliser l’apparence pour qu’elle corresponde à votre marque.
