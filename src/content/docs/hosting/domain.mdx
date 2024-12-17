@@ -1,0 +1,47 @@
+---
+title: Domaines
+lastUpdated: 2024-12-16
+description: Un guide pour ajouter un nom de domaine.
+sidebar:
+    order: 1
+    label: Domaines
+---
+import { Steps } from '@astrojs/starlight/components';
+
+## Domaines
+
+<Steps>
+
+1. ### Modifier les enregistrements DNS
+
+    Modification de l'enregistrement `A`, ajouter l'adresse IP du VPS (`IPv4` et `IPv6`).
+
+    Modifier le champ `données` : adresse ip du VPS.
+
+2. ### Ajouter le nom de domaine
+
+    ***Dans l'espace de gestion OVH.***
+
+    Ajouter un domaine dans la partie DNS Secondaire.
+
+    Suivre les consignes pour ajouter le domaine à un DNS secondaire.
+
+</Steps>
+
+:::note[Ressources]
+🔖 [OVH](https://support.us.ovhcloud.com/hc/en-us/articles/360012042099-How-to-Connect-Your-VPS-to-Your-Domain-Name)
+:::
+
+## Sous domaines
+
+<Steps>
+
+1. ### Ajouter un enregistrement CNAME
+
+    `Nom` correspond au sous domaine, et `Donées` correspond au nom de domaine.
+
+</Steps>
+
+:::tip
+[Documentation](https://fr.godaddy.com/help/ajouter-un-enregistrement-cname-19236)
+:::

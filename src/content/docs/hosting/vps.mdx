@@ -1,0 +1,42 @@
+---
+title: VPS
+lastUpdated: 2024-12-16
+description: Un guide pour démarrer un VPS.
+sidebar:
+    order: 3
+    label: VPS
+---
+import { Steps } from '@astrojs/starlight/components';
+
+## Pulseheberg
+
+Commander et installer un VPS sur Pulseheberg. Choisir l'OS et la méthode d'authentification, pour notre usage on choisira clefs SSH.
+
+<Steps>
+
+1. ### Créer une clef SSH
+
+    Créer une paire de clefs SSH sur notre machine locale.
+
+    ```shell
+    ssh-keygen -t rsa -b 4096 -C "email@email.email" -f ~/.ssh/<key_name>
+    ```
+
+2. ### Ajouter la clef SSH publique à Pulseheberg
+
+    On peut la copier avec la commande suivante.
+
+    ```shell
+    pbcopy < ~/.ssh/<key_name>.pub
+    ```
+
+3. ### Se connecter au VPS
+
+    A partir du terminal de sa machine locale, on peut se connecter au VPS avec la commande suivante.
+
+    ```shell
+    ssh -i ~/.ssh/<key_name> root@<ip_vps>
+    ```
+
+</Steps>
+
