@@ -1,16 +1,33 @@
 ---
-title: VPS
-lastUpdated: 2024-12-16
-description: Un guide pour démarrer un VPS.
+title: SSH
+lastUpdated: 2024-12-20
+description: Un guide pour démarrer un ssh.
 sidebar:
-    order: 3
-    label: VPS
+    order: 1
+    label: SSH
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-## Pulseheberg
+## Commandes de base
 
-Commander et installer un VPS sur Pulseheberg. Choisir l'OS et la méthode d'authentification, pour notre usage on choisira clefs SSH.
+### Copier
+
+```bash title="Copier un fichier en ssh."
+scp -r <NOM_DU_FICHIER> username@adresse_ip:~/ 
+```
+
+```bash title="Copier un fichier en ssh, sur un port personnalisé"
+scp -r -P <PORT> <NOM_DU_FICHIER> username@adresse_ip:~/ 
+```
+
+### Supprimer
+
+```shell title="Supprimer une clef SSH"
+ssh-keygen -R <IP_VPS>
+```
+
+## Se connecter à un serveur
 
 <Steps>
 
@@ -40,8 +57,9 @@ Commander et installer un VPS sur Pulseheberg. Choisir l'OS et la méthode d'aut
 
 </Steps>
 
-#### Supprimer une clef SSH
+## Gestion des clefs
 
+Authoriser la clé dans le fichier `authorised_keys`
 ```shell
-ssh-keygen -R <IP_VPS>
+echo "<public_key>" >> ~/.ssh/authorised_keys
 ```

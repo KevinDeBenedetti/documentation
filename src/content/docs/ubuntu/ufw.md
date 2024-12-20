@@ -3,7 +3,7 @@ title: Ubuntu | UFW
 lastUpdated: 2024-02-25
 description: Un guide pour utiliser ufw avec ubuntu 23.10.
 sidebar:
-    order: 4
+    order: 3
     label: UFW
 ---
 

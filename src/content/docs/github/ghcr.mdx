@@ -1,11 +1,43 @@
 ---
-title: GHCR & GitHub Actions
-lastUpdated: 2024-07-27
+title: GHCR
+lastUpdated: 2024-12-20
 description: Un guide pour utiliser GHCR & GitHub Actions avec Docker.
 sidebar:
     order: 4
-    label: GHCR & GitHub Actions
+    label: GHCR
 ---
+import { Steps } from '@astrojs/starlight/components';
+
+## Ligne de commande
+
+<Steps>
+
+1. ### Générer un Personal Access Token (PAT)
+
+    Aller sur [GitHub](https://github.com/settings/tokens/new) et générer un PAT avec les droits `repo` et `packages`.
+
+    Se connecter à GitHub, aller dans `Settings` puis `Developer settings`. Une fois dans `Developer Settings`, dans `Personal access tokens` choisir `Tokens (classic)` et générer un nouveau token avec les droits sélectionnés (durée et authorisation `read:packages`).
+
+2. ### Se connecter à GHCR avec Docker
+
+    ```shell
+    echo "<TOKEN>" | docker login ghcr.io -u <USERNAME> --password-stdin
+    ```
+
+3. ### Télécharger et exécuter une image
+
+    ```shell
+    docker pull ghcr.io/<USERNAME>/<IMAGE_NAME>
+    docker run -d -p <PORT_HOST>:<PORT_CONTAINER> ghcr.io/<USERNAME>/<IMAGE_NAME>
+    ```
+
+4. ### Déconnecter de GHCR
+
+    ```shell
+    docker logout ghcr.io
+    ```
+
+</Steps>
 
 ## GitHub Actions
 
@@ -219,19 +251,6 @@ services:
     image: ghcr.io/${{ env.REPO_OWNER }}/<TAG_NAME>:latest
     ports:
     - "XXXX:XXXX"
-```
-
-#### Se connecter au VPS
-Dans le terminal, se connecter au service ghcr avec un personnal access tokens.
-
-Se connecter à GitHub, aller dans `Settings` puis `Developer settings`. Une fois dans `Developer Settings`, dans `Personal access tokens` choisir `Tokens (classic)` et générer un nouveau token avec les droits sélectionnés.
-
-```diff lang="shell"
-docker login ghcr.io -u <github_username>
-```
-
-```diff lang="shell"
-Password: <personal_access_tokens>
 ```
 
 :::tip[Ressources]

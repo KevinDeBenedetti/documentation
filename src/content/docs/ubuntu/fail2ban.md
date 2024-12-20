@@ -3,7 +3,7 @@ title: Debian | Fail2ban
 lastUpdated: 2024-02-25
 description: Un guide pour configurer fail2ban debian 12.
 sidebar:
-    order: 3
+    order: 2
     label: Fail2ban
 ---
 

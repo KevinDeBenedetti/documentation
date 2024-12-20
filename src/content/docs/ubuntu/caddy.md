@@ -3,7 +3,7 @@ title: Ubuntu | Caddy
 lastUpdated: 2024-02-27
 description: Un guide pour utiliser caddy avec ubuntu 23.10.
 sidebar:
-    order: 3
+    order: 1
     label: Caddy
 ---
 
