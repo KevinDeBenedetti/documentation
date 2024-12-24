@@ -11,14 +11,59 @@ import { Steps } from '@astrojs/starlight/components';
 
 ## Commandes de base
 
-### Copier
+### Connexion
 
-```bash title="Copier un fichier en ssh."
-scp -r <NOM_DU_FICHIER> username@adresse_ip:~/ 
+#### Standard
+```shell
+ssh <USERNAME>@<IP_VPS>
 ```
 
-```bash title="Copier un fichier en ssh, sur un port personnalisé"
-scp -r -P <PORT> <NOM_DU_FICHIER> username@adresse_ip:~/ 
+#### Avec la clef SSH
+```shell
+ssh -i ~/.ssh/<KEY_NAME>.pub <USERNAME>@<IP_VPS>
+```
+
+#### Avec alias
+
+Il faut créer un alias dans le fichier de configuration `~/.ssh/config`. Il faut renseigner la clef privée.
+
+```shell
+// ~/.ssh/config
+Host <ALIAS_NAME>
+    Hostname <IP_VPS>
+    User <USERNAME>
+    IdentityFile ~/.ssh/<KEY_NAME>
+    IdentitiesOnly yes
+```
+
+```shell
+ssh <ALIAS_NAME>
+```
+
+### Configurer
+
+Détail de la commande `ssh-copy-id` pour configurer l'accès SSH au serveur :
+
+<Steps>
+
+1. Copie de la clé publique sur le serveur distant.
+2. Configure automatiquement les permissions appropriées.
+3. Ajoute la clé au fichier `authorized_keys` sur le serveur distant.
+
+</Steps>
+
+```shell
+ssh-copy-id -i ~/.ssh/<key_name>.pub <username>@<ip_vps>
+```
+
+### Copier
+
+```shell title="Copier un fichier en ssh."
+scp -r <NOM_DU_FICHIER> <username>@<ip_vps>:~/ 
+```
+
+```shell title="Copier un fichier en ssh, sur un port personnalisé"
+scp -r -P <PORT> <NOM_DU_FICHIER> <username>@<ip_vps>:~/ 
 ```
 
 ### Supprimer
