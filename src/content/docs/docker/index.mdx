@@ -1,0 +1,150 @@
+---
+title: Docker | Démarrer
+lastUpdated: 2024-10-17
+description: Un guide pour démarrer avec docker.
+sidebar:
+    order: 0
+    label: Démarrer
+---
+
+import { Code } from '@astrojs/starlight/components';
+
+export const exampleCode = `console.log('This could come from a file or CMS!');`;
+export const fileName = 'example.js';
+export const highlights = ['file', 'CMS'];
+
+## Commandes de base
+
+### Afficher
+
+Afficher tous les conteneurs démarrés
+<Code
+    code="docker ps"
+    lang="bash" 
+    mark="ps"
+/>
+
+Afficher tous les conteneurs arrêtés
+<Code 
+    code="docker ps -a"
+    lang="bash" 
+    mark={['ps', '-a']}
+/>
+
+Afficher toutes les images
+<Code 
+    code="docker images"
+    lang="bash" 
+    mark={['build']}
+/>
+
+### Monter
+
+Monter l'image
+<Code 
+    code="docker build <image_name>"
+    lang="bash" 
+    mark={['build']}
+/>
+
+Monter l'image et le conteneur
+<Code 
+    code="docker compose up -d"
+    lang="bash" 
+    mark={['up', '-d']}
+/>
+
+:::tip
+`-d` pour le monter en arrière plan
+:::
+
+### Sauvegarder
+
+Créer une sauvegarde locale de son conteneur
+<Code 
+    code="docker save -o <SAUVEGARDE_.tar> <IMAGE_NAME>"
+    lang="bash" 
+    mark={['save', '-o']}
+/>
+
+### Supprimer
+
+#### Les conteneurs arrêtés
+
+Supprimer un coneneur avec son ID
+<Code 
+    code="docker rm <container_id>"
+    lang="bash" 
+    mark={['rm']}
+/>
+
+Supprimer tous les conteneurs arrêtés
+<Code 
+    code="docker rm $(docker ps -a -q)"
+    lang="bash" 
+    mark={['rm']}
+/>
+
+Supprimer tous les conteneurs non démarrés
+<Code 
+    code="docker rm $(sudo docker ps -a -q -f 'status=exited')"
+    lang="bash" 
+    mark={['rm']}
+/>
+
+#### Les images inutilisées
+
+Supprimer une image avec son ID
+<Code 
+    code="docker rmi <image_id>"
+    lang="bash" 
+    mark={['rmi']}
+/>
+
+Supprimer toutes les images inutilisées (non associées à un conteneur)
+<Code 
+    code="docker image prune"
+    lang="bash" 
+    mark={['image', 'prune']}
+/>
+
+#### Les volumes inutilisés
+
+Supprimer tous les volumes inutilisés
+<Code 
+    code="docker prune"
+    lang="bash" 
+    mark={['prune']}
+/>
+
+#### Les réseaux inutilisés
+
+Supprimer tous les volumes inutilisés
+<Code 
+    code="docker network prune"
+    lang="bash" 
+    mark={['network', 'prune']}
+/>
+
+### Nettoyer
+
+Supprimer tous les objets inutilisés (conteneurs, images, volumes et réseaux)
+<Code 
+    code="docker system prune"
+    lang="bash" 
+    mark={['system', 'prune']}
+/>
+
+Supprimer tous les objets inutilisés, y compris ceux qui ne sont pas référencés par des conteneurs en cours d'exécution
+<Code 
+    code="docker system prune -a"
+    lang="bash" 
+    mark={['system', 'prune', '-a']}
+/>
+
+Effectuer un nettoyage complet
+<Code 
+    code="docker system prune --volumes -a"
+    lang="bash" 
+    mark={['system', 'prune', '--volumes', '-a']}
+/>
