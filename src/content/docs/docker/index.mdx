@@ -9,10 +9,6 @@ sidebar:
 
 import { Code } from '@astrojs/starlight/components';
 
-export const exampleCode = `console.log('This could come from a file or CMS!');`;
-export const fileName = 'example.js';
-export const highlights = ['file', 'CMS'];
-
 ## Commandes de base
 
 ### Afficher
@@ -36,6 +32,19 @@ Afficher toutes les images
     code="docker images"
     lang="bash" 
     mark={['build']}
+/>
+
+Accéder au terminal d'un conteneur
+<Code 
+    code="docker exec -it <nom_du_conteneur> sh"
+    lang="bash" 
+    mark={['exec', '-it', 'sh']}
+/>
+
+<Code 
+    code="docker exec -it <nom_du_conteneur> bash"
+    lang="bash" 
+    mark={['exec', '-it', 'bash']}
 />
 
 ### Monter

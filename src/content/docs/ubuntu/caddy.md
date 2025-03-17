@@ -102,7 +102,7 @@ Sauvegarder et relancer caddy.
 
 Pour améliorer les performances de notre site statique, il nous faudra l'encoder. Voici un exemple de configuration avec `gzip`.
 
-```diff lang="text
+```diff lang="txt"
 // /etc/caddy/Caddyfile
 https://www.example.fr {
         redir https://exampe.fr permanent
