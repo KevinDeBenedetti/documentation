@@ -34,17 +34,24 @@ export default defineConfig({
       ]
     },
     {
+      label: 'Docker',
+      autogenerate: { directory: 'docker' },
+      collapsed: true
+    },
+    {
       label: 'Git',
       autogenerate: { directory: 'git' },
       collapsed: true
     },
     {
-      label: 'CI / CD',
-      items: [
-        { label: 'GitHub', autogenerate: { directory: 'github' }, collapsed: true},
-        { label: 'Docker', autogenerate: { directory: 'docker' }, collapsed: true },
-        { label: 'Hébergement', autogenerate: { directory: 'hosting' }, collapsed: true },
-      ]
+      label: 'GitHub',
+      autogenerate: { directory: 'github' },
+      collapsed: true
+    },
+    {
+      label: 'Hébergement',
+      autogenerate: { directory: 'hosting' },
+      collapsed: true
     },
     {
       label: 'CMS',
