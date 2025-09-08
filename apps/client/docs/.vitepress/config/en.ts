@@ -24,6 +24,7 @@ export const en = defineConfig({
         collapsed: true,
         items: [
           { text: 'Nuxt', link: '/nuxt/' },
+          { text: 'FastAPI', link: '/fastapi/' },
         ]
       },
       {
