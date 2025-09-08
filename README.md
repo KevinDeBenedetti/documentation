@@ -1,4 +1,4 @@
-# #codebase
+# Documentation Repository
 
 > Monorepo: VitePress documentation + FastAPI markdown translation service
 
