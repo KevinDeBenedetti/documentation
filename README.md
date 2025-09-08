@@ -1,51 +1,33 @@
-## Developer Docs and Translation API
+# #codebase
 
-Monorepo for two parts:
-- VitePress site for developer documentation (apps/client)
-- FastAPI service for translating Markdown using LLMs (apps/server)
+> Monorepo: VitePress documentation + FastAPI markdown translation service
 
-LLM backends:
-- Ollama (local, default)
-- OpenAI (optional/planned; adapter can be added later)
-
-### Quick start (Docker)
-- Requirements: Docker and Docker Compose
-- Start both services:
-    - docs: http://localhost:3001
-    - api: http://localhost:8000
+## 🚀 Quick Start
 
 ```bash
+# Using Docker Compose
 docker compose up -d
+
+# Or using Makefile
+make start
 ```
 
-Optional: create a .env at repo root for service config.
+## 🛠️ Makefile Commands
 
-### VitePress docs (local dev)
 ```bash
-cd apps/client
-pnpm install
-pnpm run docs:dev
+make help          # Show all available commands
+make start          # Clean, setup and start dev environment
+make setup-client   # Install frontend dependencies
+make setup-server   # Setup Python environment
+make lint           # Lint and fix code
+make upgrade        # Upgrade all dependencies
+make clean          # Clean build files and dependencies
 ```
 
-### Translation API (FastAPI)
-- Base URL: http://localhost:8000
-- Health and models (Ollama):
-    - GET /health/
-    - GET /health/api/version
-    - GET /health/models
-- Translate Markdown:
-    - POST /translate/upload
-    - multipart/form-data fields:
-        - file: .md file
-        - target_lang: e.g. fr
-        - model: e.g. gemma3:latest
-    - Response: translated markdown (text/plain)
+## 📁 Structure
 
-Run locally without Docker:
-```bash
-cd apps/server
-# option A (uvicorn)
-uvicorn app.main:app --reload --port 8000
-# option B (FastAPI CLI if installed)
-fastapi dev app/main.py --port 8000
+```
+apps/
+├── client/     # VitePress documentation site
+└── server/     # FastAPI translation service
 ```
