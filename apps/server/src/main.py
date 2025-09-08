@@ -1,6 +1,13 @@
+# setup logging as early as possible
+from src.utils.logger import setup_logging
+setup_logging()
+
+# main imports
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
+import logging
+
 from src.core.config import get_app_settings
 from src.core.logger import get_logger
 
@@ -8,7 +15,6 @@ from src.core.logger import get_logger
 from src.routes.router import base
 from src.routes import translate, translations
 
-logger = get_logger(__name__)
 settings = get_app_settings()
 app = FastAPI()
 
@@ -26,5 +32,5 @@ app.include_router(translations.router)
 
 @app.get("/", include_in_schema=False)
 def root_redirect_to_docs():
-    logger.info("Redirecting root to /docs")
+    logging.info("Redirecting root to /docs")
     return RedirectResponse(url="/docs")
