@@ -9,15 +9,21 @@ help: ## Show helper
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2}'
 
-stop: ## Stop the development environment
-	@echo "Stop dev environment..."
-	docker compose down
+lint: ## Lint Code
+	@echo "Linting code..."
+	cd apps/client && pnpm lint:fix
 
-clean: stop ## Clean build files and dependencies
+clean: ## Clean build files and dependencies
+	@echo "Cleaning dev environment..."
+	docker compose down
 	rm -rf apps/client/docs/.vitepress/cache apps/client/docs/.vitepress/dist apps/client/node_modules
 	rm -rf apps/server/.ruff_cache apps/server/.venv
 
-setup-server: clean ## Start the development server
+setup-client: ## Install dependencies for the apps
+	@echo "Setup frontend..."
+	cd apps/client && pnpm install
+
+setup-server: ## Start the development server
 	@echo "Setup api..."
 		cd apps/server && \
 		uv venv --clear && \
@@ -25,25 +31,12 @@ setup-server: clean ## Start the development server
 		uv sync --no-cache && \
 		uv cache clean
 
-setup-client: setup-server ## Install dependencies for the apps
-	@echo "Setup frontend..."
-	cd apps/client && pnpm install
-
-dev: setup-client ## Start the development environment (no automatic upgrade)
+start: clean setup-client setup-server ## Start the development environment
 	@echo "Start dev environment (no upgrade)..."
 	docker compose up -d
 
-build: ## Build Docker containers
-	@echo "Building containers..."
-	docker compose build --no-cache
-
-upgrade: ## Upgrade Nuxt
+upgrade: clean setup-client setup-server ## Upgrade Nuxt
 	@echo "Upgrade client..."
 	cd apps/client && pnpm upgrade
 	@echo "Upgrade server..."
 	cd apps/server && uv run python upgrade_pyproject.py
-
-# TODO
-# lint: ## Lint Nuxt code
-# 	@echo "Lint nuxt..."
-# 	cd apps/client && pnpm lint:fix
