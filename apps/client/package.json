@@ -2,10 +2,10 @@
   "author": "Kevin De Benedetti",
   "type": "module",
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.12",
+    "@tailwindcss/postcss": "^4.1.13",
     "axios": "^1.11.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4.1.12",
+    "tailwindcss": "^4.1.13",
     "vitepress": "^1.6.4",
     "yaml": "^2.8.1"
   },
@@ -26,5 +26,5 @@
       "esbuild"
     ]
   },
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.15.1"
 }

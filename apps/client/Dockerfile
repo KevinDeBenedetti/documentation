@@ -1,5 +1,5 @@
-ARG NODE_IMAGE=docker.io/node:22.17.1-slim
-ARG PNPM_VERSION=10.14.0
+ARG NODE_IMAGE=docker.io/node:22.19.0-slim
+ARG PNPM_VERSION=10.15.1
 
 FROM ${NODE_IMAGE} AS base
 
