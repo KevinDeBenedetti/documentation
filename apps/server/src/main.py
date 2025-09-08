@@ -5,23 +5,12 @@ from src.core.config import get_app_settings
 from src.core.logger import get_logger
 
 # routes
-from src.api.router import base
-from src.api.endpoints import ollama, translate, translations
-# middlewares
-from src.middlewares.logging import LoggingMiddleware
+from src.routes.router import base
+from src.routes import translate, translations
 
 logger = get_logger(__name__)
 settings = get_app_settings()
 app = FastAPI()
-
-app.add_middleware(
-    LoggingMiddleware,
-    skip_paths=["/docs", "/openapi.json", "/favicon.ico", "/"],
-    skip_methods=[],
-    log_request_body=settings.log_request_body,
-    log_response_body=settings.log_response_body,
-    max_body_size=settings.max_log_body_size,
-)
 
 app.add_middleware(
     CORSMiddleware,
@@ -32,7 +21,6 @@ app.add_middleware(
 )
 
 app.include_router(base)
-app.include_router(ollama.router)
 app.include_router(translate.router)
 app.include_router(translations.router)
 
