@@ -8,7 +8,7 @@ export default defineConfig({
 
   description: "My developer documentation.",
 
-  base: '/doc/',
+  base: '/documentation/',
 
   head: [
     ['meta', { name: 'robots', content: 'noindex, nofollow' }],

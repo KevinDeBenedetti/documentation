@@ -28,4 +28,4 @@ start: clean setup-client ## Start the development environment
 
 upgrade: clean setup-client ## Upgrade Nuxt
 	@echo "Upgrade client..."
-	cd apps/client && pnpm upgrade
+	pnpm upgrade

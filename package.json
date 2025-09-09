@@ -10,15 +10,9 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
-  "dependencies": {
-    "marked": "^15.0.12"
-  },
   "pnpm": {
-    "overrides": {
-      "esbuild": ">=0.25.0"
-    },
+    "overrides": {},
     "onlyBuiltDependencies": [
-      "@tailwindcss/oxide",
       "esbuild"
     ]
   },
