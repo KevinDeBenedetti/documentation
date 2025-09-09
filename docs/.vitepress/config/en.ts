@@ -3,9 +3,7 @@ import { defineConfig, type DefaultTheme } from 'vitepress'
 export const en = defineConfig({
   themeConfig: {
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Translator', link: '/admin-traductions' },
+      { text: 'Home', link: '/' }
     ],
 
     sidebar: [
