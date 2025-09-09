@@ -5,28 +5,14 @@ services:
     restart: always
     # working_dir: /app
     build:
-      context:  apps/client
+      context:  .
       dockerfile: Dockerfile
       target: dev
     volumes:
-      - ./apps/client:/app
-      - /app/node_modules
+      - ./docs:/app/docs
+      - /node_modules
     env_file:
     - .env
     ports:
     - 3001:5173
     # attach: true
-
-  api:
-    container_name: translator
-    platform: linux/amd64
-    env_file:
-      - .env
-    build:
-      context: apps/server
-      dockerfile: Dockerfile
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./apps/server/src:/app/src
-    restart: always

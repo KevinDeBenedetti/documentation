@@ -1,1 +1,0 @@
-# TODO : a CORS middleware
