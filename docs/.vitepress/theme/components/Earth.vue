@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div class="flex justify-center items-center mb-20">
+  <div class="container">
     <div class="section-banner">
       <div id="star-1">
         <div class="curved-corner-star">
@@ -86,6 +86,13 @@
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
 .section-banner {
   height: 250px;
   width: 250px;
