@@ -1,33 +1,18 @@
-# Documentation Repository
+# VitePress Documentation — Personal Dev Notes
 
-> Monorepo: VitePress documentation + FastAPI markdown translation service
+This repository contains my personal VitePress documentation: concise, practical notes about things I learned while building frontend, backend, AI, and DevOps projects. The goal is to capture useful patterns, commands, pitfalls, and small recipes I can re-use later.
 
-## 🚀 Quick Start
+- Audience: myself (primary), and any developer who finds these notes useful.
+- Scope: short explainers, code snippets, config tips, links, and troubleshooting steps.
 
-```bash
-# Using Docker Compose
-docker compose up -d
+## What you'll find here
 
-# Or using Makefile
-make start
-```
+- Frontend: frameworks, UI patterns, performance tips, accessibility notes, bundler configs.
+- Backend: APIs, database patterns, authentication, deployment notes.
+- AI / ML: model experiments, prompt examples, tooling, data handling notes.
+- DevOps: CI/CD, infra as code, containerization, monitoring, backup strategies.
+- General: productivity tips, testing habits, debugging tricks, useful CLI commands.
 
-## 🛠️ Makefile Commands
+---
 
-```bash
-make help          # Show all available commands
-make start          # Clean, setup and start dev environment
-make setup-client   # Install frontend dependencies
-make setup-server   # Setup Python environment
-make lint           # Lint and fix code
-make upgrade        # Upgrade all dependencies
-make clean          # Clean build files and dependencies
-```
-
-## 📁 Structure
-
-```
-apps/
-├── client/     # VitePress documentation site
-└── server/     # FastAPI translation service
-```
+Happy documenting — write what helps you remember and solve problems faster.
