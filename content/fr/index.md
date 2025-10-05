@@ -1,7 +1,7 @@
 ---
 seo:
-  title: Rédigez votre documentation en Markdown
-  description: Publiez instantanément une documentation élégante, optimisée pour le SEO, avec design déjà pensé. Docus intègre le meilleur de l'écosystème Nuxt.
+  title: Ma documentation
+  description: Documentation Python, Javascript/Typescript, DevOps, Intélligence Artificielle.
 ---
 
 ::u-page-hero
