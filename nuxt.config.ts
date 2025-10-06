@@ -1,4 +1,7 @@
 export default defineNuxtConfig({
+  site: {
+    name: 'Documentation',
+  },
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/content',
