@@ -25,5 +25,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Prepare Nuxt
+        run: pnpm nuxt prepare
+        
       - name: Lint client
         run: pnpm lint
