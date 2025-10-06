@@ -1,15 +1,16 @@
 name: CI
 
-pull_request:
-  types:
-  - opened
-  - reopened
-  - synchronize
-  - ready_for_review
-  branches:
-  - "**"
-workflow_dispatch:
+on:
+  pull_request:
+    types:
+    - opened
+    - reopened
+    - synchronize
+    - ready_for_review
+    branches:
+    - "**"
+  workflow_dispatch:
 
-jobs:
-  lint:
-    uses: ./.github/workflows/lint.yaml
+  jobs:
+    lint:
+      uses: ./.github/workflows/lint.yaml
