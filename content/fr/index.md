@@ -1,17 +1,17 @@
 ---
 seo:
-  title: Ma documentation
-  description: Documentation Python, Javascript/Typescript, DevOps, Intélligence Artificielle.
+  title: Documentation Technique Fullstack
+  description: Documentation complète sur Python, JavaScript/TypeScript, DevOps, Intelligence Artificielle et Sécurité pour développeurs fullstack.
 ---
 
 ::u-page-hero
 #title
-Créez votre documentation en Markdown
+Documentation Technique
 
 #description
-Publiez instantanément une documentation élégante, optimisée pour le SEO, avec design déjà pensé.
+Une documentation couvrant plusieurs domaines **DevOps**, **Intelligence Artificielle**, **Sécurité**, **Design** et les **technologies modernes**.
 
-Docus rassemble le meilleur de l'écosystème Nuxt en une seule CLI.
+Des guides pratiques avec exemples de code, diagrammes et bonnes pratiques.
 
 #links
   :::u-button
@@ -27,95 +27,150 @@ Docus rassemble le meilleur de l'écosystème Nuxt en une seule CLI.
   :::u-button
   ---
   color: neutral
-  icon: simple-icons-github
+  icon: i-lucide-github
   size: xl
-  to: https://github.com/nuxt-content/docus
+  to: https://github.com/kevindebenedetti
   variant: outline
+  target: _blank
   ---
-  Voir sur GitHub
+  GitHub
   :::
 ::
 
 ::u-page-section
 #title
-Livré avec de nombreuses fonctionnalités
+Explorez la documentation par domaine
 
 #features
   :::u-page-feature
   ---
-  icon: i-simple-icons-nuxt
-  target: _blank
-  to: https://nuxt.com
+  icon: i-lucide-server
+  to: /fr/devops/git
   ---
   #title
-  Construit avec [Nuxt 4]{.text-primary}
+  [DevOps & Infrastructure]{.text-primary}
   
   #description
-  Optimisé par votre meta framework Vue préféré. Docus vous donne tout ce dont vous avez besoin pour créer des sites rapides, performants et optimisés pour le SEO.
+  Git, CI/CD, Docker, Kubernetes, Infrastructure as Code. Maîtrisez les pratiques DevOps modernes avec des pipelines complets et des configurations prêtes à l'emploi.
   :::
 
   :::u-page-feature
   ---
-  icon: i-simple-icons-nuxt
-  target: _blank
-  to: https://ui.nuxt.com/
+  icon: i-lucide-brain
+  to: /fr/ai/introduction
   ---
   #title
-  Désigné par [Nuxt UI]{.text-primary}
+  [Intelligence Artificielle]{.text-primary}
   
   #description
-  Sexy, minimaliste et personnalisable. Docus intègre Nuxt UI pour vous offrir la meilleure expérience pour écrire une documentation sans boilerplate, concentrez-vous simplement sur votre contenu.
+  Machine Learning, Deep Learning, LLMs, Prompt Engineering. Découvrez les algorithmes, implémentations pratiques et déploiement de modèles IA en production.
   :::
 
   :::u-page-feature
   ---
-  icon: i-simple-icons-nuxt
-  target: _blank
-  to: https://content.nuxt.com
+  icon: i-lucide-code-2
+  to: /fr/javascript-typescript/vue
   ---
   #title
-  Markdown amélioré par [Nuxt Content]{.text-primary}
+  [Python & TypeScript]{.text-primary}
   
   #description
-  La seule chose dont vous devez vous soucier est d'écrire votre contenu. Rédigez vos pages en Markdown et intégrer des composants Nuxt UI ou des composants Vue personnalisés. La structure, le routing et le rendu sont gérés pour vous.
+  Langages de programmation modernes, frameworks, patterns de conception. Guides complets avec exemples de code testés et architectures recommandées.
   :::
 
   :::u-page-feature
   ---
-  icon: i-simple-icons-nuxt
-  target: _blank
-  to: https://nuxt.com/docs/guide/directory-structure/app-config
+  icon: i-lucide-database
+  to: /fr/database/introduction
   ---
   #title
-  Personnalisation avec [Nuxt App Config]{.text-primary}
+  [Bases de données]{.text-primary}
   
   #description
-  Mettez à jour les couleurs, les liens sociaux, les logos ou même le style de vos composants globalement via le `app.config.ts`, sans modification directe du code.
+  SQL, NoSQL, optimisation, modélisation. Concevez des architectures de données performantes et scalables avec des exemples de requêtes optimisées.
+  :::
+::
+
+::u-page-section
+---
+class: bg-neutral-50 dark:bg-neutral-900
+---
+
+#title
+Une documentation technique complète
+
+#description
+Cette documentation est conçue pour les développeurs fullstack qui recherchent des guides détaillés, des exemples pratiques et des explications techniques approfondies.
+
+::card-group
+  :::card
+  ---
+  icon: i-lucide-book-open
+  ---
+  #title
+  Guides détaillés
+  
+  #description
+  Chaque sujet est traité en profondeur avec contexte, concepts, implémentations et cas d'usage réels.
   :::
 
-  :::u-page-feature
+  :::card
   ---
-  icon: i-simple-icons-nuxt
-  target: _blank
-  to: https://content.nuxt.com/studio
+  icon: i-lucide-code
   ---
   #title
-  Collaborez sur [Nuxt Studio]{.text-primary}
+  Exemples de code
   
   #description
-  Rédigez et gérez votre contenu visuellement, sans aucune connaissance de Markdown requise. Laissez vos collègues non techniques collaborer sur la documentation et intégrer des composants Vue sans compétences en code.
+  Tous les exemples sont testés, commentés et prêts à être utilisés dans vos projets.
   :::
 
-  :::u-page-feature
+  :::card
   ---
-  icon: i-simple-icons-nuxt
-  target: _blank
-  to: https://ui.nuxt.com/components/content-search
+  icon: i-lucide-chart-line
   ---
   #title
-  Navigation intégrée et [recherche textuelle]{.text-primary}
+  Diagrammes & Visualisations
   
   #description
-  Concentrez-vous uniquement sur votre contenu, Docus génère automatiquement une modale de recherche et la navigation latérale pour vous.
+  Architectures, flux de données, séquences d'interactions illustrés avec Mermaid et schémas clairs.
   :::
-:: 
+
+  :::card
+  ---
+  icon: i-lucide-check-circle
+  ---
+  #title
+  Best Practices
+  
+  #description
+  Bonnes pratiques, pièges courants et recommandations de sécurité pour chaque technologie.
+  :::
+
+  :::card
+  ---
+  icon: i-lucide-gauge
+  ---
+  #title
+  Performance & Optimisation
+  
+  #description
+  Métriques, benchmarks et techniques d'optimisation pour améliorer vos applications.
+  :::
+
+  :::card
+  ---
+  icon: i-lucide-layers
+  ---
+  #title
+  Multi-langages
+  
+  #description
+  Exemples en Python, TypeScript, JavaScript avec comparaisons et cas d'usage appropriés.
+  :::
+::
+::
+
+::note
+📚 **Documentation en constante évolution** : Cette documentation est régulièrement mise à jour avec les dernières technologies et pratiques du développement moderne.
+::

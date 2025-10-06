@@ -1,10 +1,12 @@
 export default defineNuxtConfig({
   site: {
     name: 'Documentation',
+    url: process.env.NUXT_SITE_URL, 
   },
-  app: {
-    baseURL: '/documentation/',
-  },
+  // app: {
+  //   baseURL: '/documentation/',
+  // },
+  // robots: { robotsTxt: false },
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/content',
@@ -13,6 +15,7 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@nuxt/ui',
+    '@nuxtjs/sitemap',
   ],
   i18n: {
     defaultLocale: 'fr',
