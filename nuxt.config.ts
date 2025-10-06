@@ -3,9 +3,9 @@ export default defineNuxtConfig({
     name: 'Documentation',
     url: process.env.NUXT_SITE_URL, 
   },
-  // app: {
-  //   baseURL: '/documentation/',
-  // },
+  app: {
+    baseURL: '/documentation/',
+  },
   // robots: { robotsTxt: false },
   modules: [
     '@nuxtjs/i18n',
