@@ -8,4 +8,8 @@ on:
     
 jobs:
   deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     uses: ./.github/workflows/deploy.yaml
