@@ -5,23 +5,6 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/documentation/',
   },
-
-  // nitro: {
-  //   prerender: {
-  //     routes: ['/'], // Ajoute la route racine
-  //     crawlLinks: true, // Parcourt automatiquement tous les liens
-  //     failOnError: false,
-  //   },
-  //   // Configuration pour servir les fichiers statiques correctement
-  //   static: true,
-  // },
-  // ssr: true,
-  // router: {
-  //   options: {
-  //     strict: false,
-  //   },
-  // },
-
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/content',
@@ -32,8 +15,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
   ],
   i18n: {
-    defaultLocale: 'en',
-    strategy: 'prefix_except_default',
+    defaultLocale: 'fr',
     locales: [{
       code: 'en',
       name: 'English',
@@ -41,6 +23,5 @@ export default defineNuxtConfig({
       code: 'fr',
       name: 'Français',
     }],
-    // detectBrowserLanguage: false
   },
 })
