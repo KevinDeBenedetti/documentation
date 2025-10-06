@@ -1,3 +1,7 @@
+---
+applyTo: '**'
+---
+
 # Project Overview
 
 This project is a multilingual documentation site built with Nuxt.js and Docus. It uses Nuxt Content for managing markdown files with MDC (Markdown Components) syntax, and Nuxt Studio for visual content editing.
