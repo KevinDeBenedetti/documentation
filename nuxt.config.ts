@@ -2,6 +2,9 @@ export default defineNuxtConfig({
   site: {
     name: 'Documentation',
   },
+  app: {
+    baseURL: '/documentation/',
+  },
 
   // nitro: {
   //   prerender: {
