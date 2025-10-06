@@ -13,6 +13,7 @@ clean: ## Clean build files and dependencies
 	@echo "Removing all..."
 	@find . -type d -name "node_modules" -prune -print -exec rm -rf {} +
 	@find . -type d -name ".nuxt" -prune -print -exec rm -rf {} +
+	@find . -type d -name ".output" -prune -print -exec rm -rf {} +
 
 setup: ## Setup docus
 	@echo "Setting up docus..."

@@ -2,7 +2,7 @@
   "name": "documentation",
   "scripts": {
     "dev": "nuxt dev --extends docus",
-    "build": "nuxt build --extends docus",
+    "build": "nuxt build --prerender --extends docus",
     "lint": "eslint .",
     "format": "eslint --fix ."
   },
