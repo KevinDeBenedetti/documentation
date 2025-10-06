@@ -31,10 +31,6 @@ navigation: true
 
 # Main Title
 
-::callout{icon="i-heroicons-information-circle"}
-📌 **TL;DR**: One-sentence summary for busy readers
-::
-
 ## Overview
 
 Context and subject introduction (2-3 paragraphs)
