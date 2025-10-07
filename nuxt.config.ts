@@ -3,11 +3,13 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
+      siteUrl: process.env.NUXT_SITE_URL,
       isAdmin: process.env.NUXT_ADMIN === 'true' || false,
     },
   },
   site: {
     name: 'Documentation',
+    url: process.env.NUXT_SITE_URL || 'http://localhost:3000',
   },
   app: {
     baseURL: '/documentation/',
@@ -23,6 +25,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
   ],
   i18n: {
+    baseUrl: process.env.NUXT_SITE_URL || 'http://localhost:3000',
     defaultLocale: 'fr',
     locales: [{
       code: 'en',
