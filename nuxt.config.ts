@@ -3,13 +3,11 @@ import { defineNuxtConfig } from 'nuxt/config'
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_SITE_URL,
       isAdmin: process.env.NUXT_ADMIN === 'true' || false,
     },
   },
   site: {
     name: 'Documentation',
-    url: process.env.NUXT_SITE_URL, 
   },
   app: {
     baseURL: '/documentation/',
