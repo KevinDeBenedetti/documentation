@@ -7,12 +7,21 @@ export default defineNuxtConfig({
       isAdmin: process.env.NUXT_ADMIN === 'true' || false,
     },
   },
-  site: {
-    name: 'Documentation',
-    url: process.env.NUXT_SITE_URL || 'http://localhost:3000',
-  },
+  // site: {
+  //   name: 'Documentation',
+  //   url: process.env.NUXT_SITE_URL || 'http://localhost:3000',
+  // },
   app: {
     baseURL: '/documentation/',
+    head: {
+      title: 'Documentation',
+      meta: [
+        { name: 'description', content: 'Documentation site' },
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      ],
+    },
   },
   robots: { robotsTxt: false },
   modules: [
