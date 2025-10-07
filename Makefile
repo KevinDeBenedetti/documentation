@@ -29,4 +29,5 @@ upgrade: clean setup ## Upgrade api dependencies
 
 lint: ## Lint code
 	@echo "Linting code..."
-
+	pnpm lint && pnpm format
+	
