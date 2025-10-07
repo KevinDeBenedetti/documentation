@@ -4,8 +4,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_SITE_URL,
-      isAdmin: process.env.NUXT_ADMIN === 'true' || false,
-    },
+      isAdmin: process.env.NUXT_ADMIN === 'true' || false
+    }
   },
   // site: {
   //   name: 'Documentation',
@@ -16,12 +16,12 @@ export default defineNuxtConfig({
     head: {
       title: 'Documentation',
       meta: [
-        { name: 'description', content: 'Documentation site' },
+        { name: 'description', content: 'Documentation site' }
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      ],
-    },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      ]
+    }
   },
   robots: { robotsTxt: false },
   modules: [
@@ -31,17 +31,17 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    '@nuxt/ui',
+    '@nuxt/ui'
   ],
   i18n: {
     baseUrl: process.env.NUXT_SITE_URL || 'http://localhost:3000',
     defaultLocale: 'fr',
     locales: [{
       code: 'en',
-      name: 'English',
+      name: 'English'
     }, {
       code: 'fr',
-      name: 'Français',
-    }],
-  },
+      name: 'Français'
+    }]
+  }
 })
