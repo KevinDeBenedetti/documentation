@@ -16,3 +16,9 @@ jobs:
       group: "pages"
       cancel-in-progress: false
     uses: ./.github/workflows/deploy.yaml
+
+  release:
+    uses: ./.github/workflows/release.yaml
+    permissions:
+      contents: write
+      pull-requests: write
