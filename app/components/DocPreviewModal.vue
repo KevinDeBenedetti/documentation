@@ -1,72 +1,54 @@
 <script setup lang="ts">
-import { ContentRenderer } from '#components'
-
 interface Props {
-  path: string
+  path: string,
+  lang: string
 }
 
 const props = defineProps<Props>()
 const emit = defineEmits<{ close: [] }>()
 
-// Utiliser queryCollection pour obtenir l'AST complet
-const { data: docContent, status, error } = await useAsyncData(
+const { data: docContent } = await useAsyncData(
   `doc-${props.path}`,
   async () => {
     console.log('🔍 Fetching document at path:', props.path)
     
     try {
-      // Chercher le document par son chemin
-      const result = await queryCollection('content')
-        .path(props.path)
-        .first()
-      
-      console.log('✅ Document found:', result)
-      return result
+      let doc = null
+      console.log('Lang : ', props.lang)
+      if (props.path === '/fr/index' || props.path === '/en/index') {
+        doc = await queryCollection('content')
+          .path(`/${props.lang}`)
+          .first()
+      } else {
+        doc = await queryCollection('content')
+          .path(props.path)
+          .first()
+      }
+      console.log('✅ Document found:', doc)
+      return doc
     } catch (err) {
       console.error('❌ Error fetching document:', err)
-      throw err
+      return null
     }
-  },
-  {
-    lazy: true,
-    watch: [() => props.path]
   }
 )
 
-// Watchers pour débugger
-watch(() => status.value, (newStatus) => {
-  console.log('📊 Status changed to:', newStatus)
-})
+const shortDescription = computed(() => {
+  const desc = docContent?.value?.description
+  if (!desc || typeof desc !== 'string') return undefined
 
-watch(() => docContent.value, (newContent) => {
-  console.log('📄 Document content:', newContent)
-  if (newContent) {
-    console.log('📝 Body exists:', !!newContent.body)
-    console.log('📋 Title:', newContent.title)
-    console.log('🔗 Path:', newContent.path)
-  }
-})
+  const words = desc.trim().split(/\s+/).filter(Boolean)
+  if (words.length === 0) return undefined
 
-watch(() => error.value, (newError) => {
-  if (newError) {
-    console.error('⚠️ Error occurred:', newError)
-  }
-})
-
-// Calculer le titre à afficher
-const displayTitle = computed(() => {
-  if (docContent.value?.title) {
-    return docContent.value.title
-  }
-  // Extraire le titre du chemin (dernier segment)
-  const segments = props.path.split('/')
-  return segments[segments.length - 1] || 'Document'
+  const truncated = words.slice(0, 10).join(' ')
+  return words.length > 10 ? `${truncated}...` : truncated
 })
 </script>
 
 <template>
   <UModal
-    :title="displayTitle"
+    :title="docContent?.title"
+    :description="shortDescription"
     :close="{ onClick: () => emit('close') }"
     :ui="{ 
       content: 'max-w-4xl',
@@ -74,26 +56,8 @@ const displayTitle = computed(() => {
     }"
   >
     <template #body>
-      <!-- État de chargement -->
-      <div v-if="status === 'pending'" class="flex items-center justify-center py-12">
-        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
-        <span class="ml-3 text-sm text-muted">Chargement du document...</span>
-      </div>
-
-      <!-- Erreur -->
-      <div v-else-if="error" class="text-center py-12">
-        <div class="text-error text-4xl mb-4">⚠️</div>
-        <p class="text-error font-semibold mb-2">Erreur lors du chargement</p>
-        <p class="text-sm text-muted mb-4">{{ error.message || error }}</p>
-        <details class="text-left text-xs text-muted max-w-md mx-auto bg-elevated p-4 rounded">
-          <summary class="cursor-pointer font-semibold mb-2">Détails techniques</summary>
-          <pre class="mt-2 overflow-auto">{{ error }}</pre>
-        </details>
-      </div>
-
-      <!-- Contenu trouvé et valide -->
       <ContentRenderer
-        v-else-if="docContent?.body"
+        v-if="docContent?.body"
         :value="docContent"
         class="markdown-content"
       />
@@ -105,24 +69,6 @@ const displayTitle = computed(() => {
         <p class="text-sm text-muted mb-4">
           Le document <code class="px-2 py-1 bg-elevated rounded">{{ path }}</code> n'existe pas ou est vide.
         </p>
-        
-        <details class="text-left text-xs text-muted max-w-md mx-auto bg-elevated p-4 rounded">
-          <summary class="cursor-pointer font-semibold mb-2">Informations de débogage</summary>
-          <div class="mt-2 space-y-2">
-            <div>
-              <strong>Chemin demandé:</strong>
-              <pre class="mt-1 p-2 bg-default rounded overflow-auto">{{ path }}</pre>
-            </div>
-            <div>
-              <strong>Statut:</strong>
-              <pre class="mt-1 p-2 bg-default rounded overflow-auto">{{ status }}</pre>
-            </div>
-            <div>
-              <strong>Document reçu:</strong>
-              <pre class="mt-1 p-2 bg-default rounded overflow-auto">{{ docContent || 'null' }}</pre>
-            </div>
-          </div>
-        </details>
       </div>
     </template>
 
@@ -134,7 +80,6 @@ const displayTitle = computed(() => {
           variant="outline"
           @click="emit('close')"
         />
-        
       </div>
     </template>
   </UModal>
