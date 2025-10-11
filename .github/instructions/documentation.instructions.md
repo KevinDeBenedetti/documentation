@@ -499,15 +499,15 @@ Pre-Publication Checklist
 
 #content
 
-- [ ] Optimized title and description
-- [ ] Clear structure with subheadings
-- [ ] Functional and tested code examples
-- [ ] Diagrams if necessary
-- [ ] Callouts for important points
-- [ ] Best practices and pitfalls documented
-- [ ] Links to additional resources
-- [ ] Spelling proofread
-- [ ] Complete frontmatter metadata
+- Optimized title and description
+- Clear structure with subheadings
+- Functional and tested code examples
+- Diagrams if necessary
+- Callouts for important points
+- Best practices and pitfalls documented
+- Links to additional resources
+- Spelling proofread
+- Complete frontmatter metadata
       ::
 
 ## Examples of Tone and Style
