@@ -4,10 +4,14 @@ export default defineContentConfig({
   collections: {
     content: defineCollection({
       type: 'page',
-      source: '**/**/*.md',
+      source: '**/*.md',
       schema: z.object({
         title: z.string().optional(),
-        description: z.string().optional()
+        description: z.string().optional(),
+        seo: z.object({
+          title: z.string().optional(),
+          description: z.string().optional()
+        })
       })
     })
   }
