@@ -3,14 +3,6 @@ name: Versions
 on:
   workflow_call:
 
-outputs:
-  node-version:
-    description: "Node.js version to use"
-    value: ${{ jobs.versions.outputs.node-version }}
-  pnpm-version:
-    description: "pnpm version to use"
-    value: ${{ jobs.versions.outputs.pnpm-version }}
-
 jobs:
   versions:
     runs-on: ubuntu-latest
