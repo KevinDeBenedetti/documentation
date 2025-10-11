@@ -1,37 +1,16 @@
 <script setup lang="ts">
 interface Props {
   path: string,
-  lang: string
+  lang: string,
+  id: string
 }
 
 const props = defineProps<Props>()
 const emit = defineEmits<{ close: [] }>()
 
-const { data: docContent } = await useAsyncData(
-  `doc-${props.path}`,
-  async () => {
-    console.log('🔍 Fetching document at path:', props.path)
-    
-    try {
-      let doc = null
-      console.log('Lang : ', props.lang)
-      if (props.path === '/fr/index' || props.path === '/en/index') {
-        doc = await queryCollection('content')
-          .path(`/${props.lang}`)
-          .first()
-      } else {
-        doc = await queryCollection('content')
-          .path(props.path)
-          .first()
-      }
-      console.log('✅ Document found:', doc)
-      return doc
-    } catch (err) {
-      console.error('❌ Error fetching document:', err)
-      return null
-    }
-  }
-)
+const { data: docContent } = await useAsyncData(`doc-${props.path}`, async () => {
+  return queryCollection('content').where('id', '=', props.id).first()
+})
 
 const shortDescription = computed(() => {
   const desc = docContent?.value?.description

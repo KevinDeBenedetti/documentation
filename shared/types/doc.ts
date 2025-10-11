@@ -14,6 +14,7 @@ export interface Doc {
   _path: string
   _file: string
   _dir: string
+  _id: string
   _lang: string
   category: string
   categoryOrder: number

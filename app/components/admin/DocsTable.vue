@@ -15,9 +15,9 @@ const UButton = resolveComponent('UButton')
 
 const overlay = useOverlay()
 
-function openDocPreview (path: string, lang: string) {
+function openDocPreview (path: string, lang: string, id: string) {
   const modal = overlay.create(DocPreviewModal)
-  modal.open({ path, lang })
+  modal.open({ path, lang, id })
 }
 
 const columns: TableColumn<Doc>[] = [
@@ -87,7 +87,7 @@ const columns: TableColumn<Doc>[] = [
           variant: 'outline',
           icon: 'i-lucide-eye',
           size: 'sm',
-          onClick: () => openDocPreview(row.original._path, row.original._lang)
+          onClick: () => openDocPreview(row.original._path, row.original._lang, row.original._id)
         })
       ])
     },

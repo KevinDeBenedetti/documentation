@@ -142,6 +142,7 @@ export async function getMarkdownFiles (dir: string, baseDir: string): Promise<D
         _file: entry.name,
         _dir: relative(baseDir, dir).replace(/\\/g, '/'),
         _lang: lang,
+        _id: `content${pathWithSlash}.md`,
         category,
         categoryOrder,
         fileOrder,
