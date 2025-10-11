@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/KevinDeBenedetti/documentation/compare/v0.3.0...v0.3.1) (2025-10-11)
+
+
+### Bug Fixes
+
+* remove checklist formatting for clarity in documentation ([be5b1c7](https://github.com/KevinDeBenedetti/documentation/commit/be5b1c75f3895eb136c097bb33cf46afcd0ddabc))
+
 ## [0.3.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.2.0...v0.3.0) (2025-10-11)
 
 
