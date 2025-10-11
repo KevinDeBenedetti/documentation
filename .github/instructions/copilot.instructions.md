@@ -1,5 +1,5 @@
 ---
-applyTo: '**'
+applyTo: "**"
 ---
 
 # Project Overview
@@ -22,6 +22,7 @@ This project is a multilingual documentation site built with Nuxt.js and Docus. 
 - `/content`: Contains markdown files for documentation.
 - `/nuxt.config.ts`: Contains the configuration for the Nuxt.js application.
 - `/app/components`: Contains documentation for the project, including API specifications and user guides.
+- `/shared/types`: Contains TypeScript type definitions shared between app and server.
 
 ## Libraries and Frameworks
 
@@ -73,3 +74,21 @@ This project is a multilingual documentation site built with Nuxt.js and Docus. 
 - Use `sidebar` property in frontmatter to define sidebar content.
 - Keep navigation structure consistent across documentation.
 - Update navigation configuration in `nuxt.config.ts` as needed.
+
+## TypeScript Guidelines
+
+- All types should be properly documented with JSDoc comments.
+- Use `export` for types that need to be shared between app and server.
+- Place shared types in `/shared/types` directory.
+- Use type imports with `import type` for better tree-shaking.
+- Document complex types with examples in JSDoc.
+
+### Using Shared Types
+
+```typescript
+// In app code
+import type { DocFile, FrontmatterData } from "~/shared/types/doc";
+
+// In server code
+import type { DocFile } from "#shared/types/doc";
+```
