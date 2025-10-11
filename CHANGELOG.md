@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.3.1...v0.4.0) (2025-10-11)
+
+
+### Features
+
+* add document ID to Doc interface and update related components ([58e7b54](https://github.com/KevinDeBenedetti/documentation/commit/58e7b546b309117f07e6c159bd165377676e8725))
+
 ## [0.3.1](https://github.com/KevinDeBenedetti/documentation/compare/v0.3.0...v0.3.1) (2025-10-11)
 
 
