@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.2.0...v0.3.0) (2025-10-11)
+
+
+### Features
+
+* add files extract metadatas and filter ([5864a96](https://github.com/KevinDeBenedetti/documentation/commit/5864a9690f9cdd4d2dcdb70c623701da64a0fb0e))
+* refactor CI/CD workflows to use dynamic version inputs for Node.js and pnpm ([54e226b](https://github.com/KevinDeBenedetti/documentation/commit/54e226bf21ba9fb947e020c2c1542f344f140789))
+* show datas for docs (page, components & content) ([4e9b12c](https://github.com/KevinDeBenedetti/documentation/commit/4e9b12c92ad0ff1bfaba47b8aaeb07c73b6d6b56))
+
+
+### Bug Fixes
+
+* remove unnecessary outputs from versions workflow ([51eb19d](https://github.com/KevinDeBenedetti/documentation/commit/51eb19d438cf061a61ffc477448d886f9461ccc1))
+* update Admin button to use dynamic language routing ([284e7cf](https://github.com/KevinDeBenedetti/documentation/commit/284e7cf46163f8777020612070ecf07794ebdd67))
+* update pnpm version to 10.18.2 in package.json ([a460c2b](https://github.com/KevinDeBenedetti/documentation/commit/a460c2b618b698ae645c99c3b901c9102d74e83a))
+* versions workflow ([f127c73](https://github.com/KevinDeBenedetti/documentation/commit/f127c736c18ad325596a3d587003f857034a0259))
+
 ## [0.2.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.1.0...v0.2.0) (2025-10-10)
 
 
