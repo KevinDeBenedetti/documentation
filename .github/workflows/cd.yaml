@@ -3,11 +3,15 @@ name: CD
 on:
   push:
     branches:
-    - main
+      - main
   workflow_dispatch:
 
 jobs:
+  versions:
+    uses: ./.github/workflows/versions.yaml
+
   deploy:
+    needs: versions
     permissions:
       contents: read
       pages: write
@@ -16,6 +20,9 @@ jobs:
       group: "pages"
       cancel-in-progress: false
     uses: ./.github/workflows/deploy.yaml
+    with:
+      node-version: ${{ needs.versions.outputs.node-version }}
+      pnpm-version: ${{ needs.versions.outputs.pnpm-version }}
 
   release:
     uses: ./.github/workflows/release.yaml
