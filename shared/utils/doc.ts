@@ -1,7 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises'
 import { join, relative } from 'node:path'
 import type { FrontmatterData, Doc } from '#shared/types/doc'
-
+import { docIdToSlug } from '#shared/formatters/doc'
 
 // FIXME : Get datas from YAML frontmatter in markdown files - title / description / seo
 // if title or description are missing, use seo
@@ -134,15 +134,18 @@ export async function getMarkdownFiles (dir: string, baseDir: string): Promise<D
       const data = parseFrontmatter(content)
       const relativePath = relative(baseDir, fullPath)
       const pathWithSlash = `/${relativePath.replace(/\.md$/, '').replace(/\\/g, '/')}`
+      const id = `content${pathWithSlash}.md`
+      const route = docIdToSlug(pathWithSlash)
       
       const { cleanPath, categoryOrder, fileOrder, category, lang } = extractOrderAndCleanPath(pathWithSlash)
       
       files.push({
-        _path: cleanPath,
-        _file: entry.name,
         _dir: relative(baseDir, dir).replace(/\\/g, '/'),
+        _id: id,
+        _file: entry.name,
         _lang: lang,
-        _id: `content${pathWithSlash}.md`,
+        _path: cleanPath,
+        _route: route,
         category,
         categoryOrder,
         fileOrder,

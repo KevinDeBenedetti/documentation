@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { h, resolveComponent } from 'vue'
-import type { TableColumn } from '@nuxt/ui'
 import type { Doc } from '#shared/types/doc'
 import DocPreviewModal from '@/components/DocPreviewModal.vue'
 
 interface Props {
-  docs: Doc[],
+  docs: Doc[]
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
-const UBadge = resolveComponent('UBadge')
-const UButton = resolveComponent('UButton')
+console.log('docs', props.docs)
 
 const overlay = useOverlay()
 
@@ -20,83 +17,13 @@ function openDocPreview (path: string, lang: string, id: string) {
   modal.open({ path, lang, id })
 }
 
-const columns: TableColumn<Doc>[] = [
-  {
-    accessorKey: 'category',
-    header: 'Catégorie',
-    cell: ({ row }) => {
-      return h(UBadge, {
-        variant: 'subtle',
-        color: 'primary'
-      }, () => row.original.category)
-    },
-    meta: {
-      style: {
-        td: { width: '15%' }
-      }
-    }
-  },
-  {
-    accessorKey: 'title',
-    header: 'Titre',
-    cell: ({ row }) => row.getValue('title'),
-    meta: {
-      style: {
-        td: { width: '30%' }
-      }
-    }
-  },
-  {
-    accessorKey: 'translationsCount',
-    header: 'Traductions',
-    cell: ({ row }) => {
-      const translations = row.original.translations || []
-      
-      if (translations.length === 0) {
-        return null
-      }
-      
-      return h('div', { class: 'flex items-center gap-2' }, [
-        h(UBadge, {
-          variant: 'subtle',
-          color: 'success'
-        }, () => `${translations.length}`),
-        ...translations.map((t) => 
-          h(UBadge, {
-            variant: 'outline',
-            color: 'neutral',
-            size: 'sm'
-          }, () => t.lang.toUpperCase())
-        )
-      ])
-    },
-    meta: {
-      style: {
-        td: { width: '25%' }
-      }
-    }
-  },
-  {
-    id: 'actions',
-    header: 'Actions',
-    cell: ({ row }) => {
-      return h('div', { class: 'flex gap-2' }, [
-        h(UButton, {
-          label: 'Aperçu',
-          color: 'neutral',
-          variant: 'outline',
-          icon: 'i-lucide-eye',
-          size: 'sm',
-          onClick: () => openDocPreview(row.original._path, row.original._lang, row.original._id)
-        })
-      ])
-    },
-    meta: {
-      style: {
-        td: { width: '10%' }
-      }
-    }
-  }
+// Colonnes simplifiées sans renderers personnalisés
+const columns = [
+  { accessorKey: 'category', header: 'Catégorie' },
+  { accessorKey: 'title', header: 'Titre' },
+  { accessorKey: 'translationsCount', header: 'Traductions' },
+  { id: 'actions', header: 'Actions' },
+  { id: 'detail', header: 'Détails' }
 ]
 </script>
 
@@ -107,5 +34,63 @@ const columns: TableColumn<Doc>[] = [
     :columns="columns"
     sticky
     class="max-h-[600px]"
-  />
+  >
+    <!-- Slot pour la colonne category -->
+    <template #category-cell="{ row }">
+      <UBadge variant="subtle" color="primary">
+        {{ row.original.category }}
+      </UBadge>
+    </template>
+
+    <!-- Slot pour la colonne title -->
+    <template #title-cell="{ row }">
+      {{ row.original.title }}
+    </template>
+
+    <!-- Slot pour la colonne translationsCount -->
+    <template #translationsCount-cell="{ row }">
+      <div v-if="row.original.translations?.length" class="flex items-center gap-2">
+        <UBadge variant="subtle" color="success">
+          {{ row.original.translations.length }}
+        </UBadge>
+        <UBadge
+          v-for="t in row.original.translations"
+          :key="t.lang"
+          variant="outline"
+          color="neutral"
+          size="sm"
+        >
+          {{ t.lang.toUpperCase() }}
+        </UBadge>
+      </div>
+    </template>
+
+    <!-- Slot pour la colonne actions -->
+    <template #actions-cell="{ row }">
+      <div class="flex gap-2">
+        <UButton
+          label="Aperçu"
+          color="neutral"
+          variant="outline"
+          icon="i-lucide-eye"
+          size="sm"
+          @click="openDocPreview(row.original._path, row.original._lang, row.original._id)"
+        />
+      </div>
+    </template>
+
+    <!-- Slot pour la colonne detail -->
+    <template #detail-cell="{ row }">
+      <div class="flex gap-2">
+        <UButton
+          label="Voir"
+          color="neutral"
+          variant="outline"
+          icon="i-lucide-arrow-right"
+          size="sm"
+          @click="navigateTo(`/doc/${row.original._route}`)"
+        />
+      </div>
+    </template>
+  </UTable>
 </template>
