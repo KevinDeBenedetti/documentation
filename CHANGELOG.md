@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.4.0...v0.5.0) (2025-10-12)
+
+
+### Features
+
+* add doc page with slug by id ([772dc02](https://github.com/KevinDeBenedetti/documentation/commit/772dc021ebcb8930ef8fee57ff5d778926270508))
+* add github copilot instruction ([8f1f55d](https://github.com/KevinDeBenedetti/documentation/commit/8f1f55d515109e68920437d140c9c895454ba24e))
+* refactor DocsTable & add route ([cdad1d9](https://github.com/KevinDeBenedetti/documentation/commit/cdad1d95ca769dd6a9498d32d4f6b56140988a94))
+
 ## [0.4.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.3.1...v0.4.0) (2025-10-11)
 
 
