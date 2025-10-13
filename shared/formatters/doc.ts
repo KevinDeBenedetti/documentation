@@ -24,7 +24,7 @@ export function docIdToSlug (idOrStem: string): string {
   slug = slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 
   // Replace dots and slashes with hyphens
-  slug = slug.replace(/[\/.]/g, '-')
+  slug = slug.replace(/[/.]/g, '-')
 
   // Convert to lowercase
   slug = slug.toLowerCase()
