@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.1](https://github.com/KevinDeBenedetti/documentation/compare/v0.5.0...v0.5.1) (2025-10-13)
+
+
+### Bug Fixes
+
+* correct regex ([15ca1f5](https://github.com/KevinDeBenedetti/documentation/commit/15ca1f5d5abfa94e051e1d7ad4e07d626d3e4b86))
+* use queryContent to get docs ([d185b58](https://github.com/KevinDeBenedetti/documentation/commit/d185b582d88fcdab8277211b9de35e43a0de4845))
+
 ## [0.5.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.4.0...v0.5.0) (2025-10-12)
 
 
