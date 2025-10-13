@@ -1,14 +1,14 @@
 <script setup lang="ts">
-const { defaultLocale, locales } = useI18n()
+import type { Doc } from '#shared/types/doc'
+import type { Collections } from '@nuxt/content'
+
+const { defaultLocale } = useI18n()
 const route = useRoute()
 const lang = computed(() => (route.query.lang as string) ?? defaultLocale)
 
-const { data } = await useFetch('/api/docs', {
-  method: 'GET',
-  query: {
-    lang: lang.value,
-    langs: locales
-  }
+const { data } = await useAsyncData(`doc-${lang.value}`, async () => {
+  const collection = ('content_' + lang.value) as keyof Collections
+  return queryCollection(collection).order('id', 'ASC').all()
 })
 </script>
 
@@ -24,11 +24,11 @@ const { data } = await useFetch('/api/docs', {
       <div v-if="data" class="space-y-4">
         <div class="flex items-center gap-4 px-4 py-3.5 border-b border-accented">
           <div class="ml-auto text-sm text-muted">
-            {{ data.count }} document(s) trouvé(s)
+            {{ data.length }} document(s) trouvé(s)
           </div>
         </div>
 
-        <AdminDocsTable :docs="data.docs" />
+        <AdminDocsTable :docs="data as Doc[]" :lang="lang" />
       </div>
       
       <div v-else class="text-center py-12 text-muted">
