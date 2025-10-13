@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import type { Collections } from '@nuxt/content'
 import { slugToDocId } from '#shared/formatters/doc'
 
+const { defaultLocale } = useI18n()
 const route = useRoute()
+const lang = computed(() => (route.query.lang as string) ?? defaultLocale)
+
 const formattedId = route.params.id as string
 
-const id = slugToDocId(formattedId, 'fr')
+const id = slugToDocId(formattedId, lang.value)
 
 const { data } = await useAsyncData(`doc-${formattedId}`, async () => {
-  return queryCollection('content').where('id', '=', id).first()
+  const collection = ('content_' + lang.value) as keyof Collections
+  return queryCollection(collection).where('stem', '=', id).first()
 })
 </script>
 
@@ -17,7 +22,7 @@ const { data } = await useAsyncData(`doc-${formattedId}`, async () => {
     <div class="py-8 border-b border-default">
       <div class="flex items-start gap-4">
         <UIcon 
-          v-if="data.navigation?.icon" 
+          v-if="typeof data.navigation === 'object' && data.navigation.icon" 
           :name="data.navigation.icon" 
           class="w-12 h-12 text-primary flex-shrink-0"
         />

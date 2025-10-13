@@ -1,15 +1,17 @@
 <script setup lang="ts">
+import type { Collections } from '@nuxt/content'
+
 interface Props {
-  path: string,
-  lang: string,
   id: string
+  lang: string
 }
 
 const props = defineProps<Props>()
 const emit = defineEmits<{ close: [] }>()
 
-const { data: docContent } = await useAsyncData(`doc-${props.path}`, async () => {
-  return queryCollection('content').where('id', '=', props.id).first()
+const { data: docContent } = await useAsyncData(`doc-${props.id}`, async () => {
+  const collection = ('content_' + props.lang) as keyof Collections
+  return queryCollection(collection).where('id', '=', props.id).first()
 })
 
 const shortDescription = computed(() => {
@@ -46,7 +48,7 @@ const shortDescription = computed(() => {
         <div class="text-muted text-4xl mb-4">📄</div>
         <p class="text-highlighted font-semibold mb-2">Document introuvable</p>
         <p class="text-sm text-muted mb-4">
-          Le document <code class="px-2 py-1 bg-elevated rounded">{{ path }}</code> n'existe pas ou est vide.
+          Le document <code class="px-2 py-1 bg-elevated rounded">{{ id }}</code> n'existe pas ou est vide.
         </p>
       </div>
     </template>
