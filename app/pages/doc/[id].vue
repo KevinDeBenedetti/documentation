@@ -2,196 +2,106 @@
 import type { Collections } from '@nuxt/content'
 import { slugToDocId } from '#shared/formatters/doc'
 
-const { defaultLocale } = useI18n()
+const { defaultLocale, locales } = useI18n()
 const route = useRoute()
+const router = useRouter()
 const lang = computed(() => (route.query.lang as string) ?? defaultLocale)
 
 const formattedId = route.params.id as string
 
-const id = slugToDocId(formattedId, lang.value)
+const { data } = await useAsyncData(
+  () => `doc-${formattedId}-${lang.value}`,
+  async () => {
+    const collection = ('content_' + lang.value) as keyof Collections
+    return queryCollection(collection).where('stem', '=', slugToDocId(formattedId, lang.value)).first()
+  },
+  {
+    watch: [lang]
+  }
+)
 
-const { data } = await useAsyncData(`doc-${formattedId}`, async () => {
-  const collection = ('content_' + lang.value) as keyof Collections
-  return queryCollection(collection).where('stem', '=', id).first()
-})
+const { data: translations } = await useAsyncData(
+  () => `doc-${formattedId}-translations-${lang.value}`,
+  async () => {
+    const availableTranslations = []
+    
+    for (const locale of locales.value) {
+      try {
+        const collection = ('content_' + locale.code) as keyof Collections
+        const doc = await queryCollection(collection).where('stem', '=', slugToDocId(formattedId, locale.code)).first()
+
+        if (doc) {
+          availableTranslations.push({
+            locale: locale.code,
+            localeName: locale.name,
+            doc
+          })
+        }
+      } catch (error) {
+        console.error(error)
+        console.log(`No translation found for ${locale.code}`)
+      }
+    }
+    
+    return availableTranslations
+  },
+  {
+    watch: [lang]
+  }
+)
+
+async function switchLanguage (localeCode: string) {
+  await router.push({
+    path: route.path,
+    query: { ...route.query, lang: localeCode }
+  })
+}
 </script>
 
 <template>
   <UContainer v-if="data">
-    <!-- Header with metadata -->
-    <div class="py-8 border-b border-default">
-      <div class="flex items-start gap-4">
-        <UIcon 
-          v-if="typeof data.navigation === 'object' && data.navigation.icon" 
-          :name="data.navigation.icon" 
-          class="w-12 h-12 text-primary flex-shrink-0"
+    <AdminDocumentHeader
+      :doc="data"
+      :current-locale="lang"
+      :locales="locales"
+      :available-translations="translations || []"
+      @switch-language="switchLanguage"
+    >
+      <template #metadata>
+        <AdminDocumentMetadata
+          :doc="data"
+          :translations-count="translations?.length || 0"
         />
-        <div class="flex-1">
-          <h1 class="text-4xl font-bold text-highlighted mb-2">
-            {{ data.title }}
-          </h1>
-          <p v-if="data.description" class="text-lg text-muted">
-            {{ data.description }}
-          </p>
-          
-          <!-- Additional metadata -->
-          <div class="flex flex-wrap gap-2 mt-4">
-            <UBadge v-if="data.extension" color="neutral" variant="subtle">
-              {{ data.extension.toUpperCase() }}
-            </UBadge>
-            <UBadge v-if="data.path" color="primary" variant="subtle">
-              {{ data.path }}
-            </UBadge>
-          </div>
-        </div>
-      </div>
-    </div>
+      </template>
+    </AdminDocumentHeader>
 
-    <!-- Main layout with TOC sidebar -->
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 py-8">
-      <!-- Main content -->
       <div class="min-w-0 space-y-8">
-        <!-- Markdown content -->
         <ContentRenderer
           v-if="data.body"
           :value="data.body"
           class="prose prose-primary dark:prose-invert max-w-none"
         />
 
-        <!-- Debug section: all information -->
-        <UCard>
-          <template #header>
-            <h2 class="text-xl font-semibold text-highlighted">
-              Document information
-            </h2>
-          </template>
+        <AdminDocumentTranslations
+          v-if="translations && translations.length > 1"
+          :translations="translations"
+          :current-locale="lang"
+          @switch-language="switchLanguage"
+        />
 
-          <div class="space-y-4">
-            <!-- Basic information -->
-            <div>
-              <h3 class="text-sm font-semibold text-highlighted mb-2">
-                Basic information
-              </h3>
-              <UTable 
-                :data="[
-                  { key: 'ID', value: data.id },
-                  { key: 'Title', value: data.title },
-                  { key: 'Description', value: data.description },
-                  { key: 'Extension', value: data.extension },
-                  { key: 'Path', value: data.path },
-                  { key: 'Stem', value: data.stem },
-                  { key: 'Hash', value: data.__hash__ },
-                ]"
-                :columns="[
-                  { accessorKey: 'key', header: 'Property' },
-                  { accessorKey: 'value', header: 'Value' }
-                ]"
-              />
-            </div>
-
-            <!-- SEO -->
-            <div v-if="data.seo">
-              <h3 class="text-sm font-semibold text-highlighted mb-2">
-                SEO
-              </h3>
-              <UTable 
-                :data="Object.entries(data.seo).map(([key, value]) => ({ key, value }))"
-                :columns="[
-                  { accessorKey: 'key', header: 'Property' },
-                  { accessorKey: 'value', header: 'Value' }
-                ]"
-              />
-            </div>
-
-            <!-- Navigation -->
-            <div v-if="data.navigation">
-              <h3 class="text-sm font-semibold text-highlighted mb-2">
-                Navigation
-              </h3>
-              <UTable 
-                :data="Object.entries(data.navigation).map(([key, value]) => ({ key, value }))"
-                :columns="[
-                  { accessorKey: 'key', header: 'Property' },
-                  { accessorKey: 'value', header: 'Value' }
-                ]"
-              />
-            </div>
-
-            <!-- Meta -->
-            <div v-if="data.meta && Object.keys(data.meta).length > 0">
-              <h3 class="text-sm font-semibold text-highlighted mb-2">
-                Meta
-              </h3>
-              <UTable 
-                :data="Object.entries(data.meta).map(([key, value]) => ({ key, value }))"
-                :columns="[
-                  { accessorKey: 'key', header: 'Property' },
-                  { accessorKey: 'value', header: 'Value' }
-                ]"
-              />
-            </div>
-
-            <!-- Full JSON object (collapsed by default) -->
-            <UCard>
-              <template #header>
-                <h3 class="text-sm font-semibold text-highlighted">
-                  Full JSON object
-                </h3>
-              </template>
-              <pre class="text-xs overflow-auto max-h-96 bg-elevated p-4 rounded">{{ JSON.stringify(data, null, 2) }}</pre>
-            </UCard>
-          </div>
-        </UCard>
+        <AdminDocumentDebugInfo :doc="data" />
       </div>
 
-      <!-- Sidebar: Table of contents -->
       <aside class="hidden lg:block space-y-4">
-        <!-- Table of contents -->
-        <div v-if="data.body?.toc?.links?.length" class="sticky top-20 space-y-4">
-          <UCard>
-            <template #header>
-              <h3 class="text-sm font-semibold text-highlighted">
-                {{ data.body.toc.title || 'On this page' }}
-              </h3>
-            </template>
-            
-            <nav class="space-y-1">
-              <a
-                v-for="link in data.body.toc.links"
-                :key="link.id"
-                :href="`#${link.id}`"
-                class="block text-sm text-muted hover:text-primary transition-colors py-1"
-                :class="{
-                  'pl-0': link.depth === 2,
-                  'pl-4': link.depth === 3,
-                  'pl-8': link.depth === 4,
-                }"
-              >
-                {{ link.text }}
-              </a>
-            </nav>
-          </UCard>
-
-          <!-- Quick statistics -->
-          <UCard>
-            <template #header>
-              <h3 class="text-sm font-semibold text-highlighted">
-                Statistics
-              </h3>
-            </template>
-            
-            <div class="space-y-2 text-sm">
-              <div class="flex justify-between">
-                <span class="text-muted">Sections</span>
-                <span class="font-medium">{{ data.body?.toc?.links?.length || 0 }}</span>
-              </div>
-            </div>
-          </UCard>
-        </div>
+        <AdminDocumentTableOfContents
+          v-if="data.body?.toc?.links?.length"
+          :links="data.body.toc.links"
+          :title="data.body.toc.title"
+        />
       </aside>
     </div>
 
-    <!-- Previous/next navigation -->
     <div class="border-t border-default pt-8 mt-8">
       <div class="flex justify-between items-center">
         <UButton
@@ -205,7 +115,6 @@ const { data } = await useAsyncData(`doc-${formattedId}`, async () => {
     </div>
   </UContainer>
 
-  <!-- Loading or error state -->
   <UContainer v-else class="py-8">
     <UCard>
       <div class="text-center py-12">
