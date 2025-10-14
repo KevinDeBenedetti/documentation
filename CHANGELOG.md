@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.5.1...v0.6.0) (2025-10-14)
+
+
+### Features
+
+* components to show infos, translations & content ([603fa60](https://github.com/KevinDeBenedetti/documentation/commit/603fa60ac06ac3c0246ae40e5d0e53cc5c20f014))
+
 ## [0.5.1](https://github.com/KevinDeBenedetti/documentation/compare/v0.5.0...v0.5.1) (2025-10-13)
 
 
