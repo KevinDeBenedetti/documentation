@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.7.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.6.0...v0.7.0) (2025-10-19)
+
+
+### Features
+
+* add a submodul & simplify Makefile ([dcec196](https://github.com/KevinDeBenedetti/documentation/commit/dcec1965547fbc9550809d5dd022cd7d892f6981))
+* add actions in the header ([5417641](https://github.com/KevinDeBenedetti/documentation/commit/54176415cce90373d8143ab78fc687f897539ab5))
+* refactor Makefile to use sparse checkout for make-library ([b47d07a](https://github.com/KevinDeBenedetti/documentation/commit/b47d07a22e6cf8ad9858e2c770e3970bf18e0106))
+* remove submodule and integrate its functionality into Makefile ([e5a189c](https://github.com/KevinDeBenedetti/documentation/commit/e5a189ce1ea4c94a88b9010ec1a2e664bad1f859))
+* update git doc ([d8b8970](https://github.com/KevinDeBenedetti/documentation/commit/d8b89707f596d90f0fbf25e9381fbc09252ec1c6))
+
+
+### Bug Fixes
+
+* update favicon path in nuxt.config.ts ([65d2784](https://github.com/KevinDeBenedetti/documentation/commit/65d2784a069eef93a9366260682960ead8d74dff))
+* update submodule ([a9af4cb](https://github.com/KevinDeBenedetti/documentation/commit/a9af4cb29b8d82bec259adac561daa62cd7344c2))
+
 ## [0.6.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.5.1...v0.6.0) (2025-10-14)
 
 
