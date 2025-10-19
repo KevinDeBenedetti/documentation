@@ -1,4 +1,0 @@
-[submodule "mk"]
-	path = mk
-	url = https://github.com/kevindebenedetti/make-library.git
-	branch = main
