@@ -67,6 +67,8 @@ const languageItems = computed(() => {
         </div>
         
         <slot name="metadata" />
+
+        <slot name="actions" />
       </div>
     </div>
   </div>

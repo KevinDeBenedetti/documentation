@@ -73,6 +73,12 @@ async function switchLanguage (localeCode: string) {
           :translations-count="translations?.length || 0"
         />
       </template>
+      <template #actions>
+        <AdminDocumentActions
+          :doc="data"
+          :translations-count="translations?.length || 0"
+        />
+      </template>
     </AdminDocumentHeader>
 
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8 py-8">
