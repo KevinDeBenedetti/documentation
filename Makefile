@@ -1,33 +1,15 @@
-PYTHONPATH=$(PWD)
+PROJECT_NAME := documentation
+STACK := nuxt
 
-.PHONY: help setup apps start dev build clean
-.DEFAULT_GOAL := help
+JS_PKG_MANAGER := pnpm
 
-help: ## Show helper
-	@echo "Usage: make <command>"
-	@echo ""
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
-		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2}'
+MKLIB_DIR := mk
+INCLUDES := $(MKLIB_DIR)/common.mk
 
-clean: ## Clean build files and dependencies
-	@echo "Removing all..."
-	@find . -type d -name "node_modules" -prune -print -exec rm -rf {} +
-	@find . -type d -name ".nuxt" -prune -print -exec rm -rf {} +
-	@find . -type d -name ".output" -prune -print -exec rm -rf {} +
-	@find . -type d -name ".data" -prune -print -exec rm -rf {} +
+ifeq ($(findstring nuxt,$(STACK)),nuxt)
+  INCLUDES += $(MKLIB_DIR)/nuxt.mk
+endif
 
-setup: ## Setup docus
-	@echo "Setting up docus..."
-	pnpm install
+$(foreach file,$(INCLUDES),$(if $(wildcard $(file)),,$(error File $(file) does not exist)))
 
-start: setup ## Start the development environment
-	@echo "Start docus..."
-	pnpm run dev
-
-upgrade: clean setup ## Upgrade api dependencies
-	pnpm up --latest
-
-lint: ## Lint code
-	@echo "Linting code..."
-	pnpm lint && pnpm format
-	
+include $(INCLUDES)
