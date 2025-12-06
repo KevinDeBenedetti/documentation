@@ -12,34 +12,33 @@ help: ## Show helper
 clean: ## Clean project
 	@echo "Removing all..."
 	@find . -type f -name "pnpm-lock.yaml" -prune -print -exec rm -rf {} +
-	@find . -type f -name "bun.lock" -prune -print -exec rm -rf {} +
 	@find . -type d -name "node_modules" -prune -print -exec rm -rf {} +
 
 	@echo "Client cleaning..."
-	bun store prune
+	pnpm store prune
 
 lint:  ## Run linting
 	@echo "Client linting..."
-	bun lint && \
-	bun format
+	pnpm lint && \
+	pnpm format
 
 husky: ## Setup husky git hooks
 	@echo "Setting up husky..."
-	bun install
+	pnpm install
 	chmod +x .husky/pre-commit
 
 setup: ## Initialize
 	@echo "Initializing..."
-	bun install
+	pnpm install
 
 update: setup ## Upgrade client dependencies
 	@echo "Upgrading client dependencies..."
-	bun up --latest
+	pnpm up --latest
 
 dev: clean husky setup ## Start the Nuxt Docus development server
 	@echo "Starting Nuxt Docus development server..."
-	bun run dev
+	pnpm run dev
 
 build: setup ## Build the Nuxt Docus project
 	@echo "Building Nuxt Docus project..."
-	bun run build
+	pnpm run build

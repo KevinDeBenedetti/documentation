@@ -1,3 +1,0 @@
-[preset.github_pages]
-entrypoints = ["src/index.ts"]
-outdir = "dist"

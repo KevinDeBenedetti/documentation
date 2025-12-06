@@ -7,8 +7,8 @@ on:
         description: "Node.js version to use"
         required: true
         type: string
-      bun-version:
-        description: "bun version to use"
+      pnpm-version:
+        description: "pnpm version to use"
         required: true
         type: string
 
@@ -24,11 +24,11 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      - name: Install bun
-        uses: oven-sh/setup-bun@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          bun-version: ${{ inputs.bun-version }}
-          
-      - run: bun install
-      - run: bun nuxt prepare
-      - run: bun lint
+          version: ${{ inputs.pnpm-version }}
+
+      - run: pnpm install
+      - run: pnpm nuxt prepare
+      - run: pnpm lint
