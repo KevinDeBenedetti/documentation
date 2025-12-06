@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.8.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.7.0...v0.8.0) (2025-12-06)
+
+
+### Features
+
+* migrate workflows from pnpm to bun ([7fcd012](https://github.com/KevinDeBenedetti/documentation/commit/7fcd012cbf05e65da4a2e105562e0703056384f1))
+
+
+### Bug Fixes
+
+* format errors & orphan links ([17d32d7](https://github.com/KevinDeBenedetti/documentation/commit/17d32d7d2008672adadcf485293061203431efb3))
+* remove redundant lint step and cache configuration ([8ec2793](https://github.com/KevinDeBenedetti/documentation/commit/8ec2793bbc18b1be60975a39eb1065df0f5d7419))
+
 ## [0.7.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.6.0...v0.7.0) (2025-10-19)
 
 
