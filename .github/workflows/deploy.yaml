@@ -29,7 +29,7 @@ jobs:
           version: ${{ inputs.pnpm-version }}
 
       - run: pnpm install
-      - run: nuxt build --preset github_pages
+      - run: pnpx nuxt build --preset github_pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
