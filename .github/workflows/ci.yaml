@@ -21,3 +21,17 @@ jobs:
     with:
       node-version: ${{ needs.versions.outputs.node-version }}
       pnpm-version: ${{ needs.versions.outputs.pnpm-version }}
+
+  ci-success:
+    name: CI Success
+    runs-on: ubuntu-latest
+    needs: [versions, lint]
+    if: always()
+    steps:
+      - name: Check all jobs status
+        run: |
+          if [[ "${{ needs.versions.result }}" != "success" ]] || [[ "${{ needs.lint.result }}" != "success" ]]; then
+            echo "One or more jobs failed"
+            exit 1
+          fi
+          echo "All jobs passed successfully"
