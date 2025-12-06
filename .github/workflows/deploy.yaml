@@ -18,18 +18,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ inputs.node-version }}
-
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: ${{ inputs.pnpm-version }}
 
-      - run: pnpm install
-      - run: pnpx nuxt build --preset github_pages
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+          cache: "pnpm"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build --preset github_pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
