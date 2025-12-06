@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.10.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.9.0...v0.10.0) (2025-12-06)
+
+
+### Features
+
+* add a guide for `tree` & update dependencies ([f232afd](https://github.com/KevinDeBenedetti/documentation/commit/f232afd986d9bf4e9dd98920c703b4b78ca8ac9c))
+* add english docs Linux, Debian, Ubuntu, SSH, Fail2ban, UFW & Caddy ([53a4d8f](https://github.com/KevinDeBenedetti/documentation/commit/53a4d8ffb8f738f1946f0aebc790145e90c52a5c))
+* add FastAPI, UV, and Ruff documentation ([e7308fa](https://github.com/KevinDeBenedetti/documentation/commit/e7308fa1c1c09ef705c05c9b17954d0b66ead535))
+
 ## [0.9.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.8.0...v0.9.0) (2025-12-06)
 
 
