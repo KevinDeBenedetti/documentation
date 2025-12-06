@@ -23,6 +23,7 @@ jobs:
     with:
       node-version: ${{ needs.versions.outputs.node-version }}
       pnpm-version: ${{ needs.versions.outputs.pnpm-version }}
+      
   release:
     uses: ./.github/workflows/release.yaml
     permissions:
