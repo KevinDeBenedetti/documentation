@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.9.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.8.0...v0.9.0) (2025-12-06)
+
+
+### Features
+
+* add dependabot config weekly ([d567a10](https://github.com/KevinDeBenedetti/documentation/commit/d567a10e32b44328c9b43747edb04fad90f90d10))
+
+
+### Bug Fixes
+
+* let release please open in the ci ([7c88946](https://github.com/KevinDeBenedetti/documentation/commit/7c8894639b1f3c10fb04dbfa2c037c6a57f028b8))
+* migrate from bun to pnpm in workflows and configurations ([717af75](https://github.com/KevinDeBenedetti/documentation/commit/717af75657708f17c235fa6025a2c6d93c03c023))
+* remove cache configuration for bun in deploy workflow ([2a51fd9](https://github.com/KevinDeBenedetti/documentation/commit/2a51fd9c21dd11a4e9285acd4a3b043225879120))
+* replace bun build with npx nuxt build in deploy workflow ([76279e3](https://github.com/KevinDeBenedetti/documentation/commit/76279e3376583104f8cb3e3db8bcdbd621b4be6c))
+* update bun setup to version 2 and streamline workflows ([38b98c5](https://github.com/KevinDeBenedetti/documentation/commit/38b98c5bf95ab1ac661fa347ef25f745015a3d76))
+* update Node.js setup and install steps in workflows to use pnpm caching and frozen lockfile ([b6a9923](https://github.com/KevinDeBenedetti/documentation/commit/b6a9923ee9528576c3b312e0b3011851f846eec9))
+* update package-ecosystem in dependabot configuration from pnpm to npm ([84a06f7](https://github.com/KevinDeBenedetti/documentation/commit/84a06f7f27139591d11caca71fc91eaba7b19b92))
+* use pnpx to run nuxt build in deployment workflow ([0d2b0f9](https://github.com/KevinDeBenedetti/documentation/commit/0d2b0f99bc67eddee63c6a55db674b89f1c19baf))
+
 ## [0.8.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.7.0...v0.8.0) (2025-12-06)
 
 
