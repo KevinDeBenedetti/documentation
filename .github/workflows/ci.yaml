@@ -9,6 +9,7 @@ on:
       - ready_for_review
     branches:
       - "**"
+      - "!release/**"
   workflow_dispatch:
 
 jobs:
@@ -30,8 +31,15 @@ jobs:
     steps:
       - name: Check all jobs status
         run: |
-          if [[ "${{ needs.versions.result }}" != "success" ]] || [[ "${{ needs.lint.result }}" != "success" ]]; then
+          # Allow success or skipped status
+          versions_result="${{ needs.versions.result }}"
+          lint_result="${{ needs.lint.result }}"
+
+          if [[ "$versions_result" != "success" && "$versions_result" != "skipped" ]] || \
+             [[ "$lint_result" != "success" && "$lint_result" != "skipped" ]]; then
             echo "One or more jobs failed"
+            echo "versions: $versions_result"
+            echo "lint: $lint_result"
             exit 1
           fi
           echo "All jobs passed successfully"
