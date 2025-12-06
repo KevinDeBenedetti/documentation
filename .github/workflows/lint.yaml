@@ -27,7 +27,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: "bun"
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -35,7 +34,5 @@ jobs:
       - name: Prepare Nuxt
         run: bun nuxt prepare
 
-      - name: Lint client
-        run: bun lint
       - name: Lint client
         run: bun lint
