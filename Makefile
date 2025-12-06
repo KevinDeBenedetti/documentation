@@ -1,33 +1,45 @@
-MK_DIR := mk
-MK_REPO := https://github.com/KevinDeBenedetti/make-library.git
-MK_BRANCH := main
-PROJECT_NAME := documentation
-STACK := nuxt
-JS_PKG_MANAGER := pnpm
+PYTHONPATH=$(PWD)
 
-MK_FILES := $(addsuffix .mk,$(STACK))
-SPARSE_CHECKOUT_FILES := common.mk $(MK_FILES)
+.PHONY: help for datasets generator
+.DEFAULT_GOAL := help clean lint dev
 
-.PHONY: init
-init:
-	@if [ ! -d $(MK_DIR) ]; then \
-		echo "==> Cloning make-library with sparse checkout..."; \
-		git clone --no-checkout --depth 1 --branch $(MK_BRANCH) --filter=blob:none $(MK_REPO) $(MK_DIR); \
-		cd $(MK_DIR) && \
-		git sparse-checkout init --no-cone && \
-		echo "common.mk" > .git/info/sparse-checkout && \
-		$(foreach file,$(MK_FILES),echo "$(file)" >> .git/info/sparse-checkout &&) true && \
-		git checkout $(MK_BRANCH); \
-	else \
-		echo "==> Updating make-library..."; \
-		cd $(MK_DIR) && \
-		git sparse-checkout init --no-cone && \
-		echo "common.mk" > .git/info/sparse-checkout && \
-		$(foreach file,$(MK_FILES),echo "$(file)" >> .git/info/sparse-checkout &&) true && \
-		git fetch origin && \
-		git reset --hard origin/$(MK_BRANCH); \
-	fi
+help: ## Show helper
+	@echo "Usage: make <command>"
+	@echo ""
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
+		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-25s\033[0m %s\n", $$1, $$2}'
 
-INCLUDES := $(MK_DIR)/common.mk $(addprefix $(MK_DIR)/,$(MK_FILES))
+clean: ## Clean project
+	@echo "Removing all..."
+	@find . -type f -name "pnpm-lock.yaml" -prune -print -exec rm -rf {} +
+	@find . -type f -name "bun.lock" -prune -print -exec rm -rf {} +
+	@find . -type d -name "node_modules" -prune -print -exec rm -rf {} +
 
--include $(INCLUDES)
+	@echo "Client cleaning..."
+	bun store prune
+
+lint:  ## Run linting
+	@echo "Client linting..."
+	bun lint && \
+	bun format
+
+husky: ## Setup husky git hooks
+	@echo "Setting up husky..."
+	bun install
+	chmod +x .husky/pre-commit
+
+setup: ## Initialize
+	@echo "Initializing..."
+	bun install
+
+update: setup ## Upgrade client dependencies
+	@echo "Upgrading client dependencies..."
+	bun up --latest
+
+dev: clean husky setup ## Start the Nuxt Docus development server
+	@echo "Starting Nuxt Docus development server..."
+	bun run dev
+
+build: setup ## Build the Nuxt Docus project
+	@echo "Building Nuxt Docus project..."
+	bun run build
