@@ -7,8 +7,8 @@ on:
         description: "Node.js version to use"
         required: true
         type: string
-      pnpm-version:
-        description: "pnpm version to use"
+      bun-version:
+        description: "bun version to use"
         required: true
         type: string
 
@@ -18,22 +18,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ inputs.pnpm-version }}
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: "pnpm"
+          cache: "bun"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Build
-        run: pnpm build --preset github_pages
+        run: bun build --preset github_pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
