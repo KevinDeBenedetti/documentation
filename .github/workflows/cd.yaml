@@ -22,7 +22,7 @@ jobs:
     uses: ./.github/workflows/deploy.yaml
     with:
       node-version: ${{ needs.versions.outputs.node-version }}
-      bun-version: ${{ needs.versions.outputs.bun-version }}
+      pnpm-version: ${{ needs.versions.outputs.pnpm-version }}
   release:
     uses: ./.github/workflows/release.yaml
     permissions:
