@@ -49,7 +49,7 @@ Explorez la documentation par domaine
   ---
   #title
   [DevOps & Infrastructure]{.text-primary}
-  
+
   #description
   Git, CI/CD, Docker, Kubernetes, Infrastructure as Code. Maîtrisez les pratiques DevOps modernes avec des pipelines complets et des configurations prêtes à l'emploi.
   :::
@@ -61,7 +61,7 @@ Explorez la documentation par domaine
   ---
   #title
   [Intelligence Artificielle]{.text-primary}
-  
+
   #description
   Machine Learning, Deep Learning, LLMs, Prompt Engineering. Découvrez les algorithmes, implémentations pratiques et déploiement de modèles IA en production.
   :::
@@ -73,7 +73,7 @@ Explorez la documentation par domaine
   ---
   #title
   [Python & TypeScript]{.text-primary}
-  
+
   #description
   Langages de programmation modernes, frameworks, patterns de conception. Guides complets avec exemples de code testés et architectures recommandées.
   :::
@@ -81,13 +81,13 @@ Explorez la documentation par domaine
   :::u-page-feature
   ---
   icon: i-lucide-database
-  to: /fr/database/introduction
+  to: /fr/python/fastapi
   ---
   #title
-  [Bases de données]{.text-primary}
-  
+  [Python / FastAPI]{.text-primary}
+
   #description
-  SQL, NoSQL, optimisation, modélisation. Concevez des architectures de données performantes et scalables avec des exemples de requêtes optimisées.
+  Développement backend avec Python et FastAPI. Créez des API performantes, sécurisées et scalables avec des exemples concrets et meilleures pratiques.
   :::
 ::
 
@@ -109,7 +109,7 @@ Cette documentation est conçue pour les développeurs fullstack qui recherchent
   ---
   #title
   Guides détaillés
-  
+
   #description
   Chaque sujet est traité en profondeur avec contexte, concepts, implémentations et cas d'usage réels.
   :::
@@ -120,7 +120,7 @@ Cette documentation est conçue pour les développeurs fullstack qui recherchent
   ---
   #title
   Exemples de code
-  
+
   #description
   Tous les exemples sont testés, commentés et prêts à être utilisés dans vos projets.
   :::
@@ -131,7 +131,7 @@ Cette documentation est conçue pour les développeurs fullstack qui recherchent
   ---
   #title
   Diagrammes & Visualisations
-  
+
   #description
   Architectures, flux de données, séquences d'interactions illustrés avec Mermaid et schémas clairs.
   :::
@@ -142,7 +142,7 @@ Cette documentation est conçue pour les développeurs fullstack qui recherchent
   ---
   #title
   Best Practices
-  
+
   #description
   Bonnes pratiques, pièges courants et recommandations de sécurité pour chaque technologie.
   :::
@@ -153,7 +153,7 @@ Cette documentation est conçue pour les développeurs fullstack qui recherchent
   ---
   #title
   Performance & Optimisation
-  
+
   #description
   Métriques, benchmarks et techniques d'optimisation pour améliorer vos applications.
   :::
@@ -164,7 +164,7 @@ Cette documentation est conçue pour les développeurs fullstack qui recherchent
   ---
   #title
   Multi-langages
-  
+
   #description
   Exemples en Python, TypeScript, JavaScript avec comparaisons et cas d'usage appropriés.
   :::
