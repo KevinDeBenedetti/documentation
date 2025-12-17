@@ -1,2 +1,2 @@
 pnpm lint
-bun type:check
+pnpm type:check
