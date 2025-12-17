@@ -1,1 +1,2 @@
 pnpm lint
+bun type:check
