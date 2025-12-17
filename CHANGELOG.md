@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.11.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.10.0...v0.11.0) (2025-12-17)
+
+
+### Features
+
+* add type checking to pre-commit hook and package scripts ([1304a6d](https://github.com/KevinDeBenedetti/documentation/commit/1304a6d7cce64ac8b7d34256c5fd7dc710da56b9))
+
+
+### Bug Fixes
+
+* update dependencies ([31e389e](https://github.com/KevinDeBenedetti/documentation/commit/31e389e87f36027d88f1ddae07976ab745f3998d))
+* update linting and type checking in CI and pre-commit hooks ([cae5d96](https://github.com/KevinDeBenedetti/documentation/commit/cae5d96c62b2c4649fb504074527bc9459d64184))
+
 ## [0.10.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.9.0...v0.10.0) (2025-12-06)
 
 
