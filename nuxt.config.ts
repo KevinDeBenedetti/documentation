@@ -31,6 +31,7 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: process.env.NUXT_SITE_URL || "http://localhost:3000",
     defaultLocale: "fr",
+    strategy: "prefix_except_default",
     locales: [
       {
         code: "en",

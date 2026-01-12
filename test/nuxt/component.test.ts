@@ -86,12 +86,7 @@ describe("component test examples", () => {
   it("can test components with multiple children", async () => {
     const TestComponent = defineComponent({
       setup() {
-        return () =>
-          h("div", [
-            h("h1", "Title"),
-            h("p", "Description"),
-            h("footer", "Footer"),
-          ]);
+        return () => h("div", [h("h1", "Title"), h("p", "Description"), h("footer", "Footer")]);
       },
     });
 
@@ -111,10 +106,7 @@ describe("component test examples", () => {
         },
       },
       setup(props) {
-        return () =>
-          h("div", [
-            props.show ? h("p", "Visible") : h("p", "Hidden"),
-          ]);
+        return () => h("div", [props.show ? h("p", "Visible") : h("p", "Hidden")]);
       },
     });
 

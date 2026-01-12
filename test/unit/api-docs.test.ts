@@ -93,11 +93,7 @@ describe("docs API endpoint logic", () => {
   });
 
   it("should return correct count", () => {
-    const docs = [
-      { title: "Doc 1" },
-      { title: "Doc 2" },
-      { title: "Doc 3" },
-    ];
+    const docs = [{ title: "Doc 1" }, { title: "Doc 2" }, { title: "Doc 3" }];
 
     const result = {
       count: docs.length,

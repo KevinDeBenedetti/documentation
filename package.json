@@ -11,6 +11,7 @@
     "update": "up --latest",
     "clean": "rm -rf node_modules .nuxt .output .cache .husky .data .content dist && pnpm store prune",
     "test": "vitest",
+    "test:run": "vitest run",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
     "test:unit": "vitest --project unit",

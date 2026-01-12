@@ -33,9 +33,28 @@ export default defineConfig(async () => ({
         },
       }),
     ],
+    reporters: process.env.GITHUB_ACTIONS
+      ? ["default", "github-actions"]
+      : ["default"],
     coverage: {
       enabled: true,
       provider: "v8",
+      reporter: ["text", "json", "html", "json-summary"],
+      include: ["shared/**/*.ts", "server/**/*.ts"],
+      exclude: [
+        "**/*.config.ts",
+        "**/*.d.ts",
+        "**/test/**",
+        "**/node_modules/**",
+        "**/coverage/**",
+        "**/*.vue",
+      ],
+      thresholds: {
+        lines: 60,
+        functions: 60,
+        branches: 60,
+        statements: 60,
+      },
     },
   },
 }));
