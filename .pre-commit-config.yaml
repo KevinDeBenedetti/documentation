@@ -3,17 +3,16 @@ repos:
     hooks:
       - id: oxlint
         name: oxlint
-        entry: pnpm exec oxlint
+        entry: pnpm exec oxlint -c config/oxlintrc.json .
         language: system
         types: [javascript, jsx, ts, tsx, vue]
         pass_filenames: false
 
       - id: oxfmt
         name: oxfmt
-        entry: pnpm exec oxfmt
+        entry: pnpm exec oxfmt --check .
         language: system
         types: [javascript, jsx, ts, tsx, vue]
-        exclude: "CHANGELOG.md"
         pass_filenames: false
 
       - id: type-check
@@ -21,4 +20,11 @@ repos:
         entry: pnpm run type:check
         language: system
         types: [ts, tsx, vue]
+        pass_filenames: false
+
+      - id: unit-tests
+        name: Unit tests
+        entry: pnpm run test:unit --run
+        language: system
+        types: [javascript, jsx, ts, tsx]
         pass_filenames: false

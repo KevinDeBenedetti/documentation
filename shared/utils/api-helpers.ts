@@ -21,7 +21,7 @@ export interface DocWithTranslations extends Doc {
  */
 export function parseAvailableLangs(
   langs: string[] | undefined,
-  currentLang: string | undefined
+  currentLang: string | undefined,
 ): string[] {
   if (!langs || !Array.isArray(langs)) {
     return [];
@@ -53,14 +53,12 @@ export function addTranslationsToDoc(
   doc: Doc,
   allDocs: Doc[],
   currentLang: string,
-  availableLangs: string[]
+  availableLangs: string[],
 ): DocWithTranslations {
   const translations = availableLangs
     .map((lang) => {
       const translatedPath = doc._path.replace(`/${currentLang}/`, `/${lang}/`);
-      const translatedDoc = allDocs.find(
-        (d) => d._path === translatedPath && d._lang === lang
-      );
+      const translatedDoc = allDocs.find((d) => d._path === translatedPath && d._lang === lang);
 
       return translatedDoc ? { lang, path: translatedDoc._path } : null;
     })
@@ -86,10 +84,7 @@ export function sortDocs<T extends Doc>(docs: T[]): T[] {
 /**
  * Process docs with language filtering and translations
  */
-export function processDocsWithQuery(
-  docs: Doc[],
-  query: QueryParams
-): DocWithTranslations[] {
+export function processDocsWithQuery(docs: Doc[], query: QueryParams): DocWithTranslations[] {
   const availableLangs = parseAvailableLangs(query.langs, query.lang);
 
   let filteredDocs: DocWithTranslations[] = docs;
@@ -99,7 +94,7 @@ export function processDocsWithQuery(
 
     if (availableLangs.length > 0) {
       filteredDocs = filteredDocs.map((doc) =>
-        addTranslationsToDoc(doc, docs, query.lang!, availableLangs)
+        addTranslationsToDoc(doc, docs, query.lang!, availableLangs),
       );
     }
   }
