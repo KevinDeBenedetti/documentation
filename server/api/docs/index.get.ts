@@ -15,3 +15,17 @@ export default defineEventHandler(async (event) => {
     const filteredDocs = processDocsWithQuery(docs, {
       lang,
       langs,
+    });
+
+    return {
+      count: filteredDocs.length,
+      docs: filteredDocs,
+    };
+  } catch {
+    return {
+      count: 0,
+      docs: [],
+      error: "Directory not found",
+    };
+  }
+});

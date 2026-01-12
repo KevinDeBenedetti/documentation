@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "nuxt dev --extends docus",
     "build": "nuxt build --prerender --extends docus",
-    "lint": "oxlint -c config/oxlintrc.json .",
+    "lint": "oxlint -c oxlintrc.json .",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
     "type:check": "tsc --noEmit",
