@@ -17,7 +17,7 @@
     "@nuxt/test-utils": "3.23.0",
     "@nuxt/ui": "4.3.0",
     "@unhead/vue": "^2.1.2",
-    "better-sqlite3": "^12.5.0",
+    "better-sqlite3": "^12.6.0",
     "docus": "latest",
     "eslint": "^9.39.2",
     "nuxt": "^4.2.2",
