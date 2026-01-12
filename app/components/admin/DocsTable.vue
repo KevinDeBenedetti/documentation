@@ -1,39 +1,33 @@
 <script setup lang="ts">
-import type { Doc } from '#shared/types/doc'
-import DocPreviewModal from '@/components/DocPreviewModal.vue'
-import { docIdToSlug } from '#shared/formatters/doc'
+import type { Doc } from "#shared/types/doc";
+import DocPreviewModal from "@/components/DocPreviewModal.vue";
+import { docIdToSlug } from "#shared/formatters/doc";
 
 interface Props {
-  docs: Doc[],
-  lang: string
+  docs: Doc[];
+  lang: string;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 
-const overlay = useOverlay()
+const overlay = useOverlay();
 
-function openDocPreview (id: string, lang: string) {
-  const modal = overlay.create(DocPreviewModal)
-  modal.open({ id, lang })
+function openDocPreview(id: string, lang: string) {
+  const modal = overlay.create(DocPreviewModal);
+  modal.open({ id, lang });
 }
 
 const columns = [
-  { accessorKey: 'category', header: 'Catégorie' },
-  { accessorKey: 'title', header: 'Titre' },
-  { accessorKey: 'translationsCount', header: 'Traductions' },
-  { id: 'actions', header: 'Actions' },
-  { id: 'detail', header: 'Détails' }
-]
+  { accessorKey: "category", header: "Catégorie" },
+  { accessorKey: "title", header: "Titre" },
+  { accessorKey: "translationsCount", header: "Traductions" },
+  { id: "actions", header: "Actions" },
+  { id: "detail", header: "Détails" },
+];
 </script>
 
 <template>
-  <UTable
-    ref="table"
-    :data="docs"
-    :columns="columns"
-    sticky
-    class="max-h-[600px]"
-  >
+  <UTable ref="table" :data="docs" :columns="columns" sticky class="max-h-[600px]">
     <!-- Slot pour la colonne category -->
     <template #category-cell="{ row }">
       <UBadge variant="subtle" color="primary">

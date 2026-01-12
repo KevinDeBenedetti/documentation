@@ -1,28 +1,26 @@
 <script setup lang="ts">
-import type { Doc } from '#shared/types/doc'
+import type { Doc } from "#shared/types/doc";
 
 interface Props {
   translations: Array<{
-    locale: string
-    localeName: string
-    doc: Doc
-  }>
-  currentLocale: string
+    locale: string;
+    localeName: string;
+    doc: Doc;
+  }>;
+  currentLocale: string;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 
 const emit = defineEmits<{
-  'switch-language': [localeCode: string]
-}>()
+  "switch-language": [localeCode: string];
+}>();
 </script>
 
 <template>
   <UCard v-if="translations.length > 1">
     <template #header>
-      <h2 class="text-xl font-semibold text-highlighted">
-        Traductions disponibles
-      </h2>
+      <h2 class="text-xl font-semibold text-highlighted">Traductions disponibles</h2>
     </template>
 
     <div class="space-y-3">
@@ -33,8 +31,10 @@ const emit = defineEmits<{
         :class="{ 'bg-elevated': translation.locale === currentLocale }"
       >
         <div class="flex items-center gap-3">
-          <UIcon 
-            :name="translation.locale === currentLocale ? 'i-lucide-check-circle' : 'i-lucide-globe'" 
+          <UIcon
+            :name="
+              translation.locale === currentLocale ? 'i-lucide-check-circle' : 'i-lucide-globe'
+            "
             class="w-5 h-5"
             :class="translation.locale === currentLocale ? 'text-success' : 'text-muted'"
           />
@@ -47,7 +47,7 @@ const emit = defineEmits<{
             </p>
           </div>
         </div>
-        
+
         <UButton
           v-if="translation.locale !== currentLocale"
           color="neutral"
@@ -56,9 +56,7 @@ const emit = defineEmits<{
           label="Voir"
           @click="emit('switch-language', translation.locale)"
         />
-        <UBadge v-else color="success" variant="subtle">
-          Actuelle
-        </UBadge>
+        <UBadge v-else color="success" variant="subtle"> Actuelle </UBadge>
       </div>
     </div>
   </UCard>

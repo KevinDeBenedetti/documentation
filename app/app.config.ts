@@ -1,6 +1,6 @@
 export default defineAppConfig({
   seo: {
-    title: 'Documentation',
-    description: 'Documentation for the project'
-  }
-})
+    title: "Documentation",
+    description: "Documentation for the project",
+  },
+});

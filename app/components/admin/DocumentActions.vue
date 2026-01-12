@@ -1,90 +1,90 @@
 <script setup lang="ts">
-import type { Doc } from '#shared/types/doc'
+import type { Doc } from "#shared/types/doc";
 
 interface Props {
-  doc: Doc
-  translationsCount: number
+  doc: Doc;
+  translationsCount: number;
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Props>();
 
-const { locales } = useI18n()
-const toast = useToast()
+const { locales } = useI18n();
+const toast = useToast();
 
-const showTranslationModal = ref(false)
-const targetLocale = ref<string>('')
-const isGenerating = ref(false)
+const showTranslationModal = ref(false);
+const targetLocale = ref<string>("");
+const isGenerating = ref(false);
 
 // Filtrer les locales disponibles (exclure la locale actuelle du document)
 const availableLocales = computed(() => {
   return locales.value.filter((l) => {
-    const localeCode = typeof l === 'string' ? l : l.code
+    const localeCode = typeof l === "string" ? l : l.code;
     // Exclure la locale actuelle du document si elle existe dans le path
-    const docLocale = props.doc.path?.split('/')[1] // Assuming path structure like /fr/...
-    return localeCode !== docLocale
-  })
-})
+    const docLocale = props.doc.path?.split("/")[1]; // Assuming path structure like /fr/...
+    return localeCode !== docLocale;
+  });
+});
 
-async function generateTranslation () {
+async function generateTranslation() {
   if (!targetLocale.value) {
     toast.add({
-      title: 'Erreur',
-      description: 'Veuillez sélectionner une langue cible',
-      color: 'error',
-      icon: 'i-lucide-alert-circle'
-    })
-    return
+      title: "Erreur",
+      description: "Veuillez sélectionner une langue cible",
+      color: "error",
+      icon: "i-lucide-alert-circle",
+    });
+    return;
   }
 
-  isGenerating.value = true
+  isGenerating.value = true;
 
   try {
     // TODO: Remplacer par votre endpoint d'API
-    const response = await $fetch('/api/translations/generate', {
-      method: 'POST',
+    const response = await $fetch("/api/translations/generate", {
+      method: "POST",
       body: {
         sourceDocPath: props.doc.path,
-        targetLocale: targetLocale.value
-      }
-    })
+        targetLocale: targetLocale.value,
+      },
+    });
 
-    console.log('Génération réussie:', response)
+    console.log("Génération réussie:", response);
     toast.add({
-      title: 'Traduction générée',
+      title: "Traduction générée",
       description: `La traduction en ${targetLocale.value} a été créée avec succès`,
-      color: 'success',
-      icon: 'i-lucide-check-circle'
-    })
+      color: "success",
+      icon: "i-lucide-check-circle",
+    });
 
-    showTranslationModal.value = false
-    targetLocale.value = ''
+    showTranslationModal.value = false;
+    targetLocale.value = "";
 
     // Émettre un événement pour rafraîchir la liste si nécessaire
     // emit('translation-generated')
   } catch (error) {
-    console.error('Erreur lors de la génération:', error)
+    console.error("Erreur lors de la génération:", error);
     toast.add({
-      title: 'Erreur',
-      description: 'La génération de la traduction a échoué',
-      color: 'error',
-      icon: 'i-lucide-alert-circle'
-    })
+      title: "Erreur",
+      description: "La génération de la traduction a échoué",
+      color: "error",
+      icon: "i-lucide-alert-circle",
+    });
   } finally {
-    isGenerating.value = false
+    isGenerating.value = false;
   }
 }
 
-function openTranslationModal () {
+function openTranslationModal() {
   if (availableLocales.value.length === 0) {
     toast.add({
-      title: 'Information',
-      description: 'Toutes les traductions disponibles existent déjà',
-      color: 'info',
-      icon: 'i-lucide-info'
-    })
-    return
+      title: "Information",
+      description: "Toutes les traductions disponibles existent déjà",
+      color: "info",
+      icon: "i-lucide-info",
+    });
+    return;
   }
-  showTranslationModal.value = true
+  showTranslationModal.value = true;
 }
 </script>
 
@@ -97,12 +97,8 @@ function openTranslationModal () {
       <UBadge v-if="doc.path" color="primary" variant="subtle">
         {{ doc.path }}
       </UBadge>
-      <UBadge 
-        v-if="translationsCount > 0" 
-        color="success" 
-        variant="subtle"
-      >
-        {{ translationsCount }} {{ translationsCount === 1 ? 'traduction' : 'traductions' }}
+      <UBadge v-if="translationsCount > 0" color="success" variant="subtle">
+        {{ translationsCount }} {{ translationsCount === 1 ? "traduction" : "traductions" }}
       </UBadge>
 
       <UButton
@@ -123,26 +119,20 @@ function openTranslationModal () {
       <template #body>
         <div class="space-y-4">
           <div>
-            <label class="block text-sm font-medium mb-2">
-              Document source
-            </label>
-            <UInput
-              :model-value="doc.path"
-              disabled
-              icon="i-lucide-file-text"
-            />
+            <label class="block text-sm font-medium mb-2"> Document source </label>
+            <UInput :model-value="doc.path" disabled icon="i-lucide-file-text" />
           </div>
 
           <div>
-            <label class="block text-sm font-medium mb-2">
-              Langue cible
-            </label>
+            <label class="block text-sm font-medium mb-2"> Langue cible </label>
             <USelectMenu
               v-model="targetLocale"
-              :options="availableLocales.map(l => ({
-                label: typeof l === 'string' ? l : l.name || l.code,
-                value: typeof l === 'string' ? l : l.code
-              }))"
+              :options="
+                availableLocales.map((l) => ({
+                  label: typeof l === 'string' ? l : l.name || l.code,
+                  value: typeof l === 'string' ? l : l.code,
+                }))
+              "
               placeholder="Sélectionnez une langue"
             />
           </div>

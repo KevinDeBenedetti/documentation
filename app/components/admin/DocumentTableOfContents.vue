@@ -1,16 +1,16 @@
 <script setup lang="ts">
 interface TocLink {
-  id: string
-  text: string
-  depth: number
+  id: string;
+  text: string;
+  depth: number;
 }
 
 interface Props {
-  links: TocLink[]
-  title?: string
+  links: TocLink[];
+  title?: string;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <template>
@@ -18,10 +18,10 @@ defineProps<Props>()
     <UCard>
       <template #header>
         <h3 class="text-sm font-semibold text-highlighted">
-          {{ title || 'On this page' }}
+          {{ title || "On this page" }}
         </h3>
       </template>
-      
+
       <nav class="space-y-1">
         <a
           v-for="link in links"
@@ -41,11 +41,9 @@ defineProps<Props>()
 
     <UCard>
       <template #header>
-        <h3 class="text-sm font-semibold text-highlighted">
-          Statistics
-        </h3>
+        <h3 class="text-sm font-semibold text-highlighted">Statistics</h3>
       </template>
-      
+
       <div class="space-y-2 text-sm">
         <div class="flex justify-between">
           <span class="text-muted">Sections</span>
