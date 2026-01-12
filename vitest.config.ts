@@ -48,12 +48,14 @@ export default defineConfig(async () => ({
         "**/node_modules/**",
         "**/coverage/**",
         "**/*.vue",
+        "server/api/**/*.ts", // Uses Nuxt globals, tested via nuxt environment
+        "shared/types/**/*.ts", // Type definitions only, no executable code
       ],
       thresholds: {
-        lines: 60,
-        functions: 60,
-        branches: 60,
-        statements: 60,
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
       },
     },
   },
