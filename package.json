@@ -3,8 +3,9 @@
   "scripts": {
     "dev": "nuxt dev --extends docus",
     "build": "nuxt build --prerender --extends docus",
-    "lint": "oxlint .",
-    "format": "oxfmt .",
+    "lint": "oxlint -c config/oxlintrc.json .",
+    "format": "oxfmt -c config/.oxfmtrc.json .",
+    "format:check": "oxfmt -c config/.oxfmtrc.json --check .",
     "type:check": "tsc --noEmit",
     "prepare": "prek install",
     "update": "up --latest",
