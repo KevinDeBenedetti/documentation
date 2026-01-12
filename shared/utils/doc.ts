@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
-import type { FrontmatterData, Doc } from "#shared/types/doc";
-import { docIdToSlug } from "#shared/formatters/doc";
+import type { FrontmatterData, Doc } from "../types/doc";
+import { docIdToSlug } from "../formatters/doc";
 
 // FIXME : Get datas from YAML frontmatter in markdown files - title / description / seo
 // if title or description are missing, use seo
