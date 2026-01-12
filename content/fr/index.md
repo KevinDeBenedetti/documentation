@@ -115,9 +115,13 @@ Développement backend avec Python et FastAPI. Créez des API performantes, séc
 :::
 ::
 
-## ::u-page-section
+::u-page-section
 
-## class: bg-neutral-50 dark:bg-neutral-900
+---
+
+class: bg-neutral-50 dark:bg-neutral-900
+
+---
 
 #title
 Une documentation technique complète
@@ -126,7 +130,7 @@ Une documentation technique complète
 Cette documentation est conçue pour les développeurs fullstack qui recherchent des guides détaillés, des exemples pratiques et des explications techniques approfondies.
 
 ::card-group
-:::card
+::card
 
 ---
 
@@ -139,9 +143,9 @@ Guides détaillés
 
 #description
 Chaque sujet est traité en profondeur avec contexte, concepts, implémentations et cas d'usage réels.
-:::
+::
 
-:::card
+::card
 
 ---
 
@@ -154,9 +158,9 @@ Exemples de code
 
 #description
 Tous les exemples sont testés, commentés et prêts à être utilisés dans vos projets.
-:::
+::
 
-:::card
+::card
 
 ---
 
@@ -169,9 +173,9 @@ Diagrammes & Visualisations
 
 #description
 Architectures, flux de données, séquences d'interactions illustrés avec Mermaid et schémas clairs.
-:::
+::
 
-:::card
+::card
 
 ---
 
@@ -184,9 +188,9 @@ Best Practices
 
 #description
 Bonnes pratiques, pièges courants et recommandations de sécurité pour chaque technologie.
-:::
+::
 
-:::card
+::card
 
 ---
 
@@ -199,9 +203,9 @@ Performance & Optimisation
 
 #description
 Métriques, benchmarks et techniques d'optimisation pour améliorer vos applications.
-:::
+::
 
-:::card
+::card
 
 ---
 
@@ -214,7 +218,7 @@ Multi-langages
 
 #description
 Exemples en Python, TypeScript, JavaScript avec comparaisons et cas d'usage appropriés.
-:::
+::
 ::
 ::
 
