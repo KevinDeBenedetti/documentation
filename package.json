@@ -9,7 +9,7 @@
     "type:check": "tsc --noEmit",
     "prepare": "prek install",
     "update": "up --latest",
-    "clean": "rm -rf node_modules .nuxt .output .cache .husky .data .content dist && pnpm store prune",
+    "clean": "rm -rf node_modules .nuxt .output .cache .husky .data .content dist coverage && pnpm store prune",
     "test": "vitest",
     "test:run": "vitest run",
     "test:watch": "vitest --watch",
