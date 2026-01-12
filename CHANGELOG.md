@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.12.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.11.0...v0.12.0) (2026-01-12)
+
+
+### Features
+
+* improve dependencies tests ([d00e889](https://github.com/KevinDeBenedetti/documentation/commit/d00e889a45f8725c87e6d94c5d9cc31377f8577b))
+
+
+### Bug Fixes
+
+* add an OXFormatter configuration file and improve the UV documentation ([b08ecdc](https://github.com/KevinDeBenedetti/documentation/commit/b08ecdcfcd799264c20a678cba101e53e9e8b948))
+* add memfs as a dependency and improve unit tests for document processing ([e80cbda](https://github.com/KevinDeBenedetti/documentation/commit/e80cbdaa55b7ca3dae0de61d90c2f4b76ea75714))
+* ajouter des fichiers de configuration pour Release Please et mettre à jour le workflow CI/CD ([1886dec](https://github.com/KevinDeBenedetti/documentation/commit/1886decf821e1beee497db327abe32f3b89cbc85))
+* format codebase ([0c14bde](https://github.com/KevinDeBenedetti/documentation/commit/0c14bdea06091afe956f541e98eeb74c8a49570d))
+* improve CI tests with coverage reports and PR comments ([458401c](https://github.com/KevinDeBenedetti/documentation/commit/458401c3553e95f372cbb287db1ac57a4bcbc5cd))
+* improve CI tests, add unit tests for formatting and parsing functions ([3a11a20](https://github.com/KevinDeBenedetti/documentation/commit/3a11a2026e196cd3542e6c6101c5d8ffc37a772f))
+* improve dependencies and tests setup ([debf218](https://github.com/KevinDeBenedetti/documentation/commit/debf218494c7028672bf815dfc5533ac750135f0))
+* improve pre-commit hook configuration, add unit tests, and update documentation ([d365d3c](https://github.com/KevinDeBenedetti/documentation/commit/d365d3c86c115684e7cdc8827b52de4b01428fea))
+* refactor CI workflow, remove unused lint and versions jobs, and update documentation for UV ([85915ea](https://github.com/KevinDeBenedetti/documentation/commit/85915ea82fbf9edb60425ad39faf41f655c3f917))
+* update CI configuration and add Gitleaks and OXLint settings ([3500adb](https://github.com/KevinDeBenedetti/documentation/commit/3500adb556aee7497af62584a03594b05e582164))
+* update Gitleaks and oxlint configurations, add error handling in API endpoint ([2d51344](https://github.com/KevinDeBenedetti/documentation/commit/2d5134432ccca188d0177c423cb2eb320c727bc9))
+* update pnpm workspace dependencies and fix config files ([4d1b0a0](https://github.com/KevinDeBenedetti/documentation/commit/4d1b0a06897b1ffc63a1e3d3d6d6966f9004504a))
+
 ## [0.11.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.10.0...v0.11.0) (2025-12-17)
 
 
