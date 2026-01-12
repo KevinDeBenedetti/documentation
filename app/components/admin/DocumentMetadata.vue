@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Doc } from '#shared/types/doc'
+import type { Doc } from "#shared/types/doc";
 
 interface Props {
-  doc: Doc
-  translationsCount: number
+  doc: Doc;
+  translationsCount: number;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <template>
@@ -17,12 +17,8 @@ defineProps<Props>()
     <UBadge v-if="doc.path" color="primary" variant="subtle">
       {{ doc.path }}
     </UBadge>
-    <UBadge 
-      v-if="translationsCount > 0" 
-      color="success" 
-      variant="subtle"
-    >
-      {{ translationsCount }} {{ translationsCount === 1 ? 'traduction' : 'traductions' }}
+    <UBadge v-if="translationsCount > 0" color="success" variant="subtle">
+      {{ translationsCount }} {{ translationsCount === 1 ? "traduction" : "traductions" }}
     </UBadge>
   </div>
 </template>

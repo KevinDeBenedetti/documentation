@@ -1,60 +1,64 @@
 <script setup lang="ts">
-import type { Collections } from '@nuxt/content'
-import { slugToDocId } from '#shared/formatters/doc'
+import type { Collections } from "@nuxt/content";
+import { slugToDocId } from "#shared/formatters/doc";
 
-const { defaultLocale, locales } = useI18n()
-const route = useRoute()
-const router = useRouter()
-const lang = computed(() => (route.query.lang as string) ?? defaultLocale)
+const { defaultLocale, locales } = useI18n();
+const route = useRoute();
+const router = useRouter();
+const lang = computed(() => (route.query.lang as string) ?? defaultLocale);
 
-const formattedId = route.params.id as string
+const formattedId = route.params.id as string;
 
 const { data } = await useAsyncData(
   () => `doc-${formattedId}-${lang.value}`,
   async () => {
-    const collection = ('content_' + lang.value) as keyof Collections
-    return queryCollection(collection).where('stem', '=', slugToDocId(formattedId, lang.value)).first()
+    const collection = ("content_" + lang.value) as keyof Collections;
+    return queryCollection(collection)
+      .where("stem", "=", slugToDocId(formattedId, lang.value))
+      .first();
   },
   {
-    watch: [lang]
-  }
-)
+    watch: [lang],
+  },
+);
 
 const { data: translations } = await useAsyncData(
   () => `doc-${formattedId}-translations-${lang.value}`,
   async () => {
-    const availableTranslations = []
-    
+    const availableTranslations = [];
+
     for (const locale of locales.value) {
       try {
-        const collection = ('content_' + locale.code) as keyof Collections
-        const doc = await queryCollection(collection).where('stem', '=', slugToDocId(formattedId, locale.code)).first()
+        const collection = ("content_" + locale.code) as keyof Collections;
+        const doc = await queryCollection(collection)
+          .where("stem", "=", slugToDocId(formattedId, locale.code))
+          .first();
 
         if (doc) {
           availableTranslations.push({
             locale: locale.code,
             localeName: locale.name,
-            doc
-          })
+            doc,
+          });
         }
       } catch (error) {
-        console.error(error)
-        console.log(`No translation found for ${locale.code}`)
+        console.error(error);
+        console.log(`No translation found for ${locale.code}`);
       }
     }
-    
-    return availableTranslations
+
+    return availableTranslations;
   },
   {
-    watch: [lang]
-  }
-)
+    watch: [lang],
+  },
+);
 
-async function switchLanguage (localeCode: string) {
+async function switchLanguage(localeCode: string) {
   await router.push({
     path: route.path,
-    query: { ...route.query, lang: localeCode }
-  })
+    query: { ...route.query, lang: localeCode },
+  });
 }
 </script>
 
@@ -68,16 +72,10 @@ async function switchLanguage (localeCode: string) {
       @switch-language="switchLanguage"
     >
       <template #metadata>
-        <AdminDocumentMetadata
-          :doc="data"
-          :translations-count="translations?.length || 0"
-        />
+        <AdminDocumentMetadata :doc="data" :translations-count="translations?.length || 0" />
       </template>
       <template #actions>
-        <AdminDocumentActions
-          :doc="data"
-          :translations-count="translations?.length || 0"
-        />
+        <AdminDocumentActions :doc="data" :translations-count="translations?.length || 0" />
       </template>
     </AdminDocumentHeader>
 
