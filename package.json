@@ -38,6 +38,7 @@
     "@vitest/coverage-v8": "^4.0.16",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^20.1.0",
+    "memfs": "^4.51.1",
     "oxfmt": "latest",
     "vitest": "^4.0.16"
   },
