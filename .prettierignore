@@ -1,0 +1,14 @@
+# Nuxt server API files (use auto-imports not parseable by oxfmt)
+server/api/**/*.ts
+
+# Build outputs
+.nuxt/
+.output/
+dist/
+coverage/
+
+# Dependencies
+node_modules/
+
+# Changelog (auto-generated)
+CHANGELOG.md

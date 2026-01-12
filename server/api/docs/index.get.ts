@@ -9,6 +9,9 @@ export default defineEventHandler(async (event) => {
   try {
     const docs = await getMarkdownFiles(contentRootDir, contentRootDir);
 
+    const lang = query.lang as string | undefined;
+    const langs = query.langs as string[] | undefined;
+
     const filteredDocs = processDocsWithQuery(docs, {
-      lang: query.lang as string | undefined,
-      langs: query.langs as string[] | undefined,
+      lang,
+      langs,

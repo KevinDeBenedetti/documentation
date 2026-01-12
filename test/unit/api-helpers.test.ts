@@ -96,10 +96,7 @@ describe("filterDocsByLang", () => {
   });
 
   it("should return empty array when no docs match", () => {
-    const docs = [
-      createMockDoc({ _lang: "en" }),
-      createMockDoc({ _lang: "fr" }),
-    ];
+    const docs = [createMockDoc({ _lang: "en" }), createMockDoc({ _lang: "fr" })];
 
     const result = filterDocsByLang(docs, "de");
 
@@ -107,10 +104,7 @@ describe("filterDocsByLang", () => {
   });
 
   it("should return all docs when all match", () => {
-    const docs = [
-      createMockDoc({ _lang: "fr" }),
-      createMockDoc({ _lang: "fr" }),
-    ];
+    const docs = [createMockDoc({ _lang: "fr" }), createMockDoc({ _lang: "fr" })];
 
     const result = filterDocsByLang(docs, "fr");
 
@@ -237,10 +231,7 @@ describe("sortDocs", () => {
   });
 
   it("should not mutate original array", () => {
-    const docs = [
-      createMockDoc({ categoryOrder: 2 }),
-      createMockDoc({ categoryOrder: 1 }),
-    ];
+    const docs = [createMockDoc({ categoryOrder: 2 }), createMockDoc({ categoryOrder: 1 })];
     const original = [...docs];
 
     sortDocs(docs);
@@ -256,10 +247,7 @@ describe("sortDocs", () => {
 
 describe("processDocsWithQuery", () => {
   it("should return all docs when no language specified", () => {
-    const docs = [
-      createMockDoc({ _lang: "en" }),
-      createMockDoc({ _lang: "fr" }),
-    ];
+    const docs = [createMockDoc({ _lang: "en" }), createMockDoc({ _lang: "fr" })];
 
     const result = processDocsWithQuery(docs, {});
 

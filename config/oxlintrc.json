@@ -8,5 +8,5 @@
   "rules": {
     "eqeqeq": "warn"
   },
-  "ignorePatterns": ["CHANGELOG.md"]
+  "ignorePatterns": ["CHANGELOG.md", "server/api/**/*.ts"]
 }

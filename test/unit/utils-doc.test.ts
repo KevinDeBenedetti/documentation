@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { fs, vol } from "memfs";
+import { vol } from "memfs";
 import { parseFrontmatter, getMarkdownFiles } from "../../shared/utils/doc";
 
 // Mock node:fs/promises module with memfs
@@ -212,7 +212,7 @@ description: A guide to Git
 ---
 Content about Git`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -244,7 +244,7 @@ title: Git FR
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -264,7 +264,7 @@ title: Vue Guide
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -285,7 +285,7 @@ description: K8s guide
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -304,7 +304,7 @@ title: Git
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -322,7 +322,7 @@ description: Welcome
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -343,7 +343,7 @@ title: Git
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -364,7 +364,7 @@ title: Docker
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -395,7 +395,7 @@ title: Git EN
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -417,7 +417,7 @@ title: GitHub Actions
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");
@@ -434,7 +434,7 @@ title: Git
 ---
 Content`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content/en/1.devops", "/content");
@@ -450,7 +450,7 @@ Content`,
 ---
 Content without metadata`,
       },
-      "/content"
+      "/content",
     );
 
     const result = await getMarkdownFiles("/content", "/content");

@@ -33,9 +33,7 @@ export default defineConfig(async () => ({
         },
       }),
     ],
-    reporters: process.env.GITHUB_ACTIONS
-      ? ["default", "github-actions"]
-      : ["default"],
+    reporters: process.env.GITHUB_ACTIONS ? ["default", "github-actions"] : ["default"],
     coverage: {
       enabled: true,
       provider: "v8",
