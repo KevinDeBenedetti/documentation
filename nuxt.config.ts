@@ -12,7 +12,9 @@ export default defineNuxtConfig({
   //   url: process.env.NUXT_SITE_URL || 'http://localhost:3000',
   // },
   app: {
-    baseURL: "/documentation/",
+    // baseURL is set via NUXT_SITE_URL environment variable for production
+    // In development, it defaults to '/'
+    baseURL: process.env.NUXT_SITE_URL ? new URL(process.env.NUXT_SITE_URL).pathname : "/",
     head: {
       title: "Documentation",
       meta: [{ name: "description", content: "Documentation site" }],
@@ -31,7 +33,8 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: process.env.NUXT_SITE_URL || "http://localhost:3000",
     defaultLocale: "fr",
-    strategy: "prefix_except_default",
+    strategy: "prefix",
+    rootRedirect: "/fr",
     locales: [
       {
         code: "en",
@@ -42,5 +45,10 @@ export default defineNuxtConfig({
         name: "Français",
       },
     ],
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      redirectOn: "root",
+    },
   },
 });
