@@ -2,7 +2,14 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
 import { defineVitestProject } from "@nuxt/test-utils/config";
 
-export default defineConfig({
+export default defineConfig(async () => ({
+  resolve: {
+    alias: {
+      "#shared": fileURLToPath(new URL("./shared", import.meta.url)),
+      "~": fileURLToPath(new URL("./", import.meta.url)),
+      "@": fileURLToPath(new URL("./", import.meta.url)),
+    },
+  },
   test: {
     projects: [
       {
@@ -31,4 +38,4 @@ export default defineConfig({
       provider: "v8",
     },
   },
-});
+}));
