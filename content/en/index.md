@@ -1,61 +1,118 @@
 ---
 seo:
-  title: My documentation
-  description: Documentation for Python, JavaScript/TypeScript, DevOps, and Artificial Intelligence.
+  title: Fullstack Technical Documentation
+  description: Complete documentation on Python, JavaScript/TypeScript, DevOps, Artificial Intelligence and Security for fullstack developers.
 ---
 
 ::u-page-hero
 #title
-Write beautiful docs with Markdown
+Technical Documentation
 
 #description
-Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box.
+Documentation covering multiple domains: **DevOps**, **Artificial Intelligence**, **Security**, **Design** and **modern technologies**.
 
-Docus brings the best of the Nuxt ecosystem into one CLI.
+Practical guides with code examples, diagrams and best practices.
 
 #links
 :::u-button{color="neutral" size="xl" to="/en/devops/git" trailing-icon="i-lucide-arrow-right"}
-Get started
+Get Started
 :::
 
-:::u-button{color="neutral" icon="simple-icons-github" size="xl" to="https://github.com/nuxt-content/docus" variant="outline"}
-Star on GitHub
+:::u-button{color="neutral" icon="i-lucide-github" size="xl" to="https://github.com/kevindebenedetti" variant="outline" target="\_blank"}
+GitHub
 :::
 ::
 
-::u-page-section
----
-title: 'Shipped with many features'
+## ::u-page-section
+
+title: 'Explore documentation by domain'
 features:
-  - icon: 'i-simple-icons-nuxt'
-    target: '\_blank'
-    to: 'https://nuxt.com'
-    title: 'Built with Nuxt 4'
-    description: 'Optimized by the most famous Vue framework. Docus gives you everything you need to build fast, performant, and SEO-friendly websites.'
-  - icon: 'i-simple-icons-nuxt'
-    target: '\_blank'
-    to: 'https://ui.nuxt.com/'
-    title: 'Powered by Nuxt UI'
-    description: 'Beautiful out of the box, minimal by design but highly customizable. Docus leverages Nuxt UI to give you the best docs writing experience with zero boilerplate, just focus on your content.'
-  - icon: 'i-simple-icons-nuxt'
-    target: '\_blank'
-    to: 'https://content.nuxt.com'
-    title: 'Enhanced Markdown syntax by Nuxt Content'
-    description: 'The only thing you need to take care about is writing your content. Write your pages in Markdown and extend with MDC syntax to embed Nuxt UI or custom Vue components. Structure, routing, and rendering are handled for you.'
-  - icon: 'i-simple-icons-nuxt'
-    target: '\_blank'
-    to: 'https://nuxt.com/docs/guide/directory-structure/app-config'
-    title: 'Customize with Nuxt App Config'
-    description: 'Update colors, social links, header logos and component styles globally using the app.config.ts, no direct code modifications required.'
-  - icon: 'i-simple-icons-nuxt'
-    target: '\_blank'
-    to: 'https://content.nuxt.com/studio'
-    title: 'Collaborate on Nuxt Studio'
-    description: 'Write and manage your content visually, with zero Markdown knowledge required. Let your non technical colleagues collaborate on the documentation and integrate Vue components without code skills.'
-  - icon: 'i-simple-icons-nuxt'
-    target: '\_blank'
-    to: 'https://ui.nuxt.com/components/content-search'
-    title: 'Built-in navigation and full-text search'
-    description: 'Only focus on ordering your content, Docus handles the search modal and auto-generates the side navigation for you.'
+
+- icon: 'i-lucide-server'
+  to: '/en/devops/git'
+  title: 'DevOps & Infrastructure'
+  description: 'Git, CI/CD, Docker, Kubernetes, Infrastructure as Code. Master modern DevOps practices with complete pipelines and ready-to-use configurations.'
+- icon: 'i-lucide-brain'
+  to: '/en/ai/introduction'
+  title: 'Artificial Intelligence'
+  description: 'Machine Learning, Deep Learning, LLMs, Prompt Engineering. Discover algorithms, practical implementations and AI model deployment in production.'
+- icon: 'i-lucide-code-2'
+  to: '/en/javascript-typescript/vue'
+  title: 'Python & TypeScript'
+  description: 'Modern programming languages, frameworks, design patterns. Complete guides with tested code examples and recommended architectures.'
+- icon: 'i-lucide-database'
+  to: '/en/python/fastapi'
+  title: 'Python / FastAPI'
+  description: 'Backend development with Python and FastAPI. Build performant, secure and scalable APIs with concrete examples and best practices.'
+
 ---
+
 ::
+
+## ::u-page-section{class="bg-neutral-50 dark:bg-neutral-900"}
+
+title: 'A complete technical documentation'
+description: 'This documentation is designed for fullstack developers looking for detailed guides, practical examples and in-depth technical explanations.'
+
+---
+
+:::card-group
+::card{icon="i-lucide-book-open"}
+
+---
+
+title: 'Detailed Guides'
+description: 'Each topic is covered in depth with context, concepts, implementations and real-world use cases.'
+
+---
+
+::
+
+## ::card{icon="i-lucide-code"}
+
+title: 'Code Examples'
+description: 'All examples are tested, commented and ready to use in your projects.'
+
+---
+
+::
+
+## ::card{icon="i-lucide-chart-line"}
+
+title: 'Diagrams & Visualizations'
+description: 'Architectures, data flows, interaction sequences illustrated with Mermaid and clear diagrams.'
+
+---
+
+::
+
+## ::card{icon="i-lucide-check-circle"}
+
+title: 'Best Practices'
+description: 'Best practices, common pitfalls and security recommendations for each technology.'
+
+---
+
+::
+
+## ::card{icon="i-lucide-gauge"}
+
+title: 'Performance & Optimization'
+description: 'Metrics, benchmarks and optimization techniques to improve your applications.'
+
+---
+
+::
+
+## ::card{icon="i-lucide-layers"}
+
+title: 'Multi-language'
+description: 'Examples in Python, TypeScript, JavaScript with comparisons and appropriate use cases.'
+
+---
+
+::
+:::
+::
+
+::note
