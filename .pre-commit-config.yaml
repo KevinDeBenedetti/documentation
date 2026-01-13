@@ -3,28 +3,30 @@ repos:
     hooks:
       - id: oxlint
         name: oxlint
-        entry: pnpm exec oxlint -c oxlintrc.json .
+        entry: bash -c 'pnpm exec oxlint -c oxlintrc.json .'
         language: system
-        types: [javascript, jsx, ts, tsx, vue]
+        types_or: [javascript, jsx, ts, tsx, vue]
         pass_filenames: false
+        stages: [pre-commit]
 
       - id: oxfmt
         name: oxfmt
-        entry: pnpm exec oxfmt --check .
+        entry: bash -c 'pnpm exec oxfmt --check .'
         language: system
-        types: [javascript, jsx, ts, tsx, vue]
         pass_filenames: false
+        stages: [pre-commit]
 
       - id: type-check
         name: TypeScript type check
         entry: pnpm run type:check
         language: system
-        types: [ts, tsx, vue]
+        types_or: [ts, tsx, vue]
         pass_filenames: false
+        stages: [pre-push]
 
       - id: unit-tests
         name: Unit tests
         entry: pnpm run test:unit --run
         language: system
-        types: [javascript, jsx, ts, tsx]
         pass_filenames: false
+        stages: [pre-push]
