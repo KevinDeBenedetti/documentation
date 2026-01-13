@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.12.1](https://github.com/KevinDeBenedetti/documentation/compare/v0.12.0...v0.12.1) (2026-01-13)
+
+
+### Bug Fixes
+
+* correct pre-commit hooks configuration and update English and French documentation ([4260d81](https://github.com/KevinDeBenedetti/documentation/commit/4260d817a0dd8295a9094d9bc1e7746bd214b89d))
+* **nuxt.config.ts:** update baseURL handling and i18n configuration ([b76adfa](https://github.com/KevinDeBenedetti/documentation/commit/b76adfac5dce3bb275076036ad9b31f2a231247a))
+
 ## [0.12.0](https://github.com/KevinDeBenedetti/documentation/compare/v0.11.0...v0.12.0) (2026-01-12)
 
 
