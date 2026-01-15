@@ -11,6 +11,12 @@ export default defineNuxtConfig({
   //   name: 'Documentation',
   //   url: process.env.NUXT_SITE_URL || 'http://localhost:3000',
   // },
+  nitro: {
+    prerender: {
+      // Ignore MCP endpoints during prerendering
+      ignore: ["/api/mcp"],
+    },
+  },
   app: {
     // baseURL is set via NUXT_SITE_URL environment variable for production
     // In development, it defaults to '/'
@@ -31,7 +37,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
   ],
   i18n: {
-    baseUrl: process.env.NUXT_SITE_URL || "http://localhost:3000",
+    baseUrl: process.env.NUXT_SITE_URL || "https://example.com",
     defaultLocale: "fr",
     strategy: "prefix",
     rootRedirect: "/fr",
