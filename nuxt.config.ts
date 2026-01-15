@@ -37,7 +37,7 @@ export default defineNuxtConfig({
     "@nuxt/ui",
   ],
   i18n: {
-    baseUrl: process.env.NUXT_SITE_URL || "https://example.com",
+    baseUrl: process.env.NUXT_SITE_URL || "http://localhost:3000",
     defaultLocale: "fr",
     strategy: "prefix",
     rootRedirect: "/fr",
