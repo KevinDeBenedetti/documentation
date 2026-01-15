@@ -35,12 +35,12 @@
   },
   "devDependencies": {
     "@j178/prek": "latest",
-    "@vitest/coverage-v8": "^4.0.16",
+    "@vitest/coverage-v8": "^4.0.17",
     "@vue/test-utils": "^2.4.6",
-    "happy-dom": "^20.1.0",
-    "memfs": "^4.51.1",
+    "happy-dom": "^20.3.0",
+    "memfs": "^4.52.0",
     "oxfmt": "latest",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.17"
   },
   "packageManager": "pnpm@10.28.0"
 }

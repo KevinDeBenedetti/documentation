@@ -1,6 +1,6 @@
 onlyBuiltDependencies:
-  - "@j178/prek"
-  - "@parcel/watcher"
+  - '@j178/prek'
+  - '@parcel/watcher'
   - better-sqlite3
   - esbuild
   - sharp

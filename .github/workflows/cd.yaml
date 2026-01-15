@@ -25,6 +25,9 @@ jobs:
   release:
     name: Release application
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     outputs:
       release-created: ${{ steps.release.outputs.release_created }}
       major-tag: ${{ steps.release.outputs.major }}

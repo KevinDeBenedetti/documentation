@@ -12,3 +12,6 @@ node_modules/
 
 # Changelog (auto-generated)
 CHANGELOG.md
+
+# Workspace configuration (managed by pnpm)
+pnpm-workspace.yaml
