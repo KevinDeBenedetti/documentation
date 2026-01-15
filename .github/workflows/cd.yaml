@@ -39,7 +39,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           target-branch: ${{ github.ref_name }}
           manifest-file: .github/release/.release-please-manifest.json
-          config-file: ${{ (github.ref_name == 'main' && '.github/release/release-please-config-release.json') || (github.ref_name == 'dev' && '.github/release/release-please-config-prerelease.json') }}
+          config-file: ${{ github.ref_name == 'main' && '.github/release/release-please-config-release.json' || '.github/release/release-please-config-prerelease.json' }}
 
   build:
     name: Build application
