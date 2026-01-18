@@ -25,7 +25,7 @@
     "@nuxt/test-utils": "3.23.0",
     "@nuxt/ui": "4.3.0",
     "@unhead/vue": "^2.1.2",
-    "better-sqlite3": "^12.6.0",
+    "better-sqlite3": "^12.6.2",
     "docus": "latest",
     "nuxt": "^4.2.2",
     "oxlint": "latest",
@@ -35,11 +35,11 @@
     "zod-to-json-schema": "^3.25.1"
   },
   "devDependencies": {
-    "@j178/prek": "latest",
+    "@j178/prek": "0.2.29",
     "@vitest/coverage-v8": "^4.0.17",
     "@vue/test-utils": "^2.4.6",
-    "happy-dom": "^20.3.0",
-    "memfs": "^4.52.0",
+    "happy-dom": "^20.3.1",
+    "memfs": "^4.54.0",
     "oxfmt": "latest",
     "vitest": "^4.0.17"
   },
