@@ -27,7 +27,7 @@
     "@unhead/vue": "^2.1.2",
     "better-sqlite3": "^12.6.2",
     "docus": "latest",
-    "nuxt": "^4.2.2",
+    "nuxt": "^4.3.0",
     "oxlint": "latest",
     "typescript": "^5.9.3",
     "unist-util-visit": "^5.0.0",
