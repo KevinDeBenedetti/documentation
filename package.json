@@ -35,7 +35,7 @@
     "zod-to-json-schema": "^3.25.1"
   },
   "devDependencies": {
-    "@j178/prek": "0.2.29",
+    "@j178/prek": "0.3.0",
     "@vitest/coverage-v8": "^4.0.18",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^20.3.9",
