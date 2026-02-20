@@ -3,13 +3,10 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "documentation",
-      "component": "",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
-      "changelog-path": ".github/CHANGELOG.md",
       "changelog-sections": [
         { "type": "feat", "section": "✨ Features" },
         { "type": "fix", "section": "🐛 Bug Fixes" },
