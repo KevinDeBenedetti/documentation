@@ -1,8 +1,0 @@
-{
-  "packages": {
-    ".": {
-      "package-name": "documentation",
-      "include-component-in-tag": false
-    }
-  }
-}
