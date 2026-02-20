@@ -33,6 +33,25 @@ jobs:
       patch-tag: ${{ steps.release.outputs.patch }}
     if: ${{ !contains(github.event.head_commit.message, '[skip gha]') }}
     steps:
+      - name: Debug GITHUB_TOKEN permissions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "=== Vérification des permissions du GITHUB_TOKEN ==="
+          curl -s -o /dev/null -w "Code HTTP (list PRs): %{http_code}\n" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/pulls?per_page=1"
+          curl -s -o /dev/null -w "Code HTTP (list releases): %{http_code}\n" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}/releases?per_page=1"
+          echo "=== Scopes du token ==="
+          curl -s -I \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${{ github.repository }}" | grep -i "x-oauth-scopes\|x-accepted-oauth-scopes"
+
       - name: Run Release Please
         uses: googleapis/release-please-action@v4
         id: release
