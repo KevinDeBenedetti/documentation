@@ -64,6 +64,8 @@ jobs:
 
       - name: Build
         run: pnpm build --preset github_pages
+        env:
+          NUXT_SITE_URL: https://kevindebenedetti.github.io/documentation/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
