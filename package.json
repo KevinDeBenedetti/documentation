@@ -38,7 +38,7 @@
     "@j178/prek": "0.3.3",
     "@vitest/coverage-v8": "^4.0.18",
     "@vue/test-utils": "^2.4.6",
-    "happy-dom": "^20.6.3",
+    "happy-dom": "^20.7.0",
     "memfs": "^4.56.10",
     "oxfmt": "0.34.0",
     "vitest": "^4.0.18"
