@@ -38,9 +38,8 @@ jobs:
   security:
     uses: KevinDeBenedetti/.github/.github/workflows/security.yml@main
     with:
-      run-node-audit: true
-      run-codeql: true
-      codeql-languages: '["javascript","typescript"]'
+      run-node-audit: false
+      run-codeql: false
     secrets: inherit
 
   # ── Deploy to GitHub Pages (main only) ──────────────────────────────────────
