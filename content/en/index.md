@@ -57,10 +57,11 @@ description: 'This documentation is designed for fullstack developers looking fo
 ---
 
 :::card-group
-::card{icon="i-lucide-book-open"}
+::card
 
 ---
 
+icon: i-lucide-book-open
 title: 'Detailed Guides'
 description: 'Each topic is covered in depth with context, concepts, implementations and real-world use cases.'
 
@@ -68,8 +69,9 @@ description: 'Each topic is covered in depth with context, concepts, implementat
 
 ::
 
-## ::card{icon="i-lucide-code"}
+## ::card
 
+icon: i-lucide-code
 title: 'Code Examples'
 description: 'All examples are tested, commented and ready to use in your projects.'
 
@@ -77,8 +79,9 @@ description: 'All examples are tested, commented and ready to use in your projec
 
 ::
 
-## ::card{icon="i-lucide-chart-line"}
+## ::card
 
+icon: i-lucide-chart-line
 title: 'Diagrams & Visualizations'
 description: 'Architectures, data flows, interaction sequences illustrated with Mermaid and clear diagrams.'
 
@@ -86,8 +89,9 @@ description: 'Architectures, data flows, interaction sequences illustrated with 
 
 ::
 
-## ::card{icon="i-lucide-check-circle"}
+## ::card
 
+icon: i-lucide-check-circle
 title: 'Best Practices'
 description: 'Best practices, common pitfalls and security recommendations for each technology.'
 
@@ -95,8 +99,9 @@ description: 'Best practices, common pitfalls and security recommendations for e
 
 ::
 
-## ::card{icon="i-lucide-gauge"}
+## ::card
 
+icon: i-lucide-gauge
 title: 'Performance & Optimization'
 description: 'Metrics, benchmarks and optimization techniques to improve your applications.'
 
@@ -104,8 +109,9 @@ description: 'Metrics, benchmarks and optimization techniques to improve your ap
 
 ::
 
-## ::card{icon="i-lucide-layers"}
+## ::card
 
+icon: i-lucide-layers
 title: 'Multi-language'
 description: 'Examples in Python, TypeScript, JavaScript with comparisons and appropriate use cases.'
 
@@ -116,3 +122,5 @@ description: 'Examples in Python, TypeScript, JavaScript with comparisons and ap
 ::
 
 ::note
+📚 **Documentation constantly evolving**: This documentation is regularly updated with the latest technologies and practices of modern development.
+::

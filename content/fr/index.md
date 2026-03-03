@@ -31,11 +31,11 @@ features:
 - icon: 'i-lucide-server'
   to: '/fr/devops/git'
   title: 'DevOps & Infrastructure'
-  description: 'Git, CI/CD, Docker, Kubernetes, Infrastructure as Code. Maîtrisez les pratiques DevOps modernes avec des pipelines complets et des configurations prêtes à l'emploi.'
+  description: "Git, CI/CD, Docker, Kubernetes, Infrastructure as Code. Maîtrisez les pratiques DevOps modernes avec des pipelines complets et des configurations prêtes à l'emploi."
 - icon: 'i-lucide-brain'
   to: '/fr/ai/introduction'
   title: 'Intelligence Artificielle'
-  description: 'Machine Learning, Deep Learning, LLMs, Prompt Engineering. Découvrez les algorithmes, implémentations pratiques et déploiement de modèles IA en production.'
+  description: "Machine Learning, Deep Learning, LLMs, Prompt Engineering. Découvrez les algorithmes, implémentations pratiques et déploiement de modèles IA en production."
 - icon: 'i-lucide-code-2'
   to: '/fr/javascript-typescript/vue'
   title: 'Python & TypeScript'
@@ -43,7 +43,7 @@ features:
 - icon: 'i-lucide-database'
   to: '/fr/python/fastapi'
   title: 'Python / FastAPI'
-  description: 'Développement backend avec Python et FastAPI. Créez des API performantes, sécurisées et scalables avec des exemples concrets et meilleures pratiques.'
+  description: "Développement backend avec Python et FastAPI. Créez des API performantes, sécurisées et scalables avec des exemples concrets et meilleures pratiques."
 
 ---
 
@@ -57,19 +57,21 @@ description: 'Cette documentation est conçue pour les développeurs fullstack q
 ---
 
 :::card-group
-::card{icon="i-lucide-book-open"}
+::card
 
 ---
 
+icon: i-lucide-book-open
 title: 'Guides détaillés'
-description: 'Chaque sujet est traité en profondeur avec contexte, concepts, implémentations et cas d'usage réels.'
+description: "Chaque sujet est traité en profondeur avec contexte, concepts, implémentations et cas d'usage réels."
 
 ---
 
 ::
 
-## ::card{icon="i-lucide-code"}
+## ::card
 
+icon: i-lucide-code
 title: 'Exemples de code'
 description: 'Tous les exemples sont testés, commentés et prêts à être utilisés dans vos projets.'
 
@@ -77,17 +79,19 @@ description: 'Tous les exemples sont testés, commentés et prêts à être util
 
 ::
 
-## ::card{icon="i-lucide-chart-line"}
+## ::card
 
+icon: i-lucide-chart-line
 title: 'Diagrammes & Visualisations'
-description: 'Architectures, flux de données, séquences d'interactions illustrés avec Mermaid et schémas clairs.'
+description: "Architectures, flux de données, séquences d'interactions illustrés avec Mermaid et schémas clairs."
 
 ---
 
 ::
 
-## ::card{icon="i-lucide-check-circle"}
+## ::card
 
+icon: i-lucide-check-circle
 title: 'Best Practices'
 description: 'Bonnes pratiques, pièges courants et recommandations de sécurité pour chaque technologie.'
 
@@ -95,19 +99,21 @@ description: 'Bonnes pratiques, pièges courants et recommandations de sécurit�
 
 ::
 
-## ::card{icon="i-lucide-gauge"}
+## ::card
 
+icon: i-lucide-gauge
 title: 'Performance & Optimisation'
-description: 'Métriques, benchmarks et techniques d'optimisation pour améliorer vos applications.'
+description: "Métriques, benchmarks et techniques d'optimisation pour améliorer vos applications."
 
 ---
 
 ::
 
-## ::card{icon="i-lucide-layers"}
+## ::card
 
+icon: i-lucide-layers
 title: 'Multi-langages'
-description: 'Exemples en Python, TypeScript, JavaScript avec comparaisons et cas d'usage appropriés.'
+description: "Exemples en Python, TypeScript, JavaScript avec comparaisons et cas d'usage appropriés."
 
 ---
 
