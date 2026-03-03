@@ -18,6 +18,8 @@ permissions:
   pull-requests: write
   pages: write
   id-token: write
+  actions: read
+  security-events: write
 
 jobs:
   # ── CI: Lint, typecheck, test, build ────────────────────────────────────────
