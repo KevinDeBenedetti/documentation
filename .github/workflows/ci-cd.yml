@@ -1,0 +1,60 @@
+name: CI/CD
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Documentation — Nuxt with Docus
+# - CI: pnpm auto-detected from lockfile
+# - Deploy: GitHub Pages
+# - Release: Release Please with auto-tagging
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+  pages: write
+  id-token: write
+
+jobs:
+  # ── CI: Lint, typecheck, test, build ────────────────────────────────────────
+  ci:
+    uses: KevinDeBenedetti/.github/.github/workflows/ci-node.yml@main
+    with:
+      node-version: "22"
+      framework: nuxt
+      run-lint: true
+      run-typecheck: true
+      run-test: true
+      run-build: false # Build handled by deploy-pages
+    secrets: inherit
+
+  # ── Security: Secret scanning and dependency audit ──────────────────────────
+  security:
+    uses: KevinDeBenedetti/.github/.github/workflows/security.yml@main
+    with:
+      run-node-audit: true
+      run-codeql: true
+      codeql-languages: '["javascript","typescript"]'
+    secrets: inherit
+
+  # ── Deploy to GitHub Pages (main only) ──────────────────────────────────────
+  deploy-pages:
+    needs: [ci, security]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    uses: KevinDeBenedetti/.github/.github/workflows/deploy-pages.yml@main
+    with:
+      node-version: "22"
+      build-command: "pnpm build"
+      output-directory: ".output/public"
+    secrets: inherit
+
+  # ── Release Please ──────────────────────────────────────────────────────────
+  release:
+    needs: deploy-pages
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    uses: KevinDeBenedetti/.github/.github/workflows/release.yml@main
+    secrets: inherit
