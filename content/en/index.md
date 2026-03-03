@@ -117,10 +117,6 @@ description: 'Examples in Python, TypeScript, JavaScript with comparisons and ap
 
 ---
 
-::
-:::
-::
-
-::note
+:note
 📚 **Documentation constantly evolving**: This documentation is regularly updated with the latest technologies and practices of modern development.
 ::
