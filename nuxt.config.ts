@@ -27,6 +27,13 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "favicon.ico" }],
     },
   },
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        skipLibCheck: true,
+      },
+    },
+  },
   robots: { robotsTxt: false },
   modules: [
     "@nuxtjs/i18n",
