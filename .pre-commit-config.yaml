@@ -18,7 +18,7 @@ repos:
 
       - id: type-check
         name: TypeScript type check
-        entry: pnpm run type:check
+        entry: pnpm run typecheck
         language: system
         types_or: [ts, tsx, vue]
         pass_filenames: false

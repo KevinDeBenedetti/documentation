@@ -6,7 +6,6 @@
     "lint": "oxlint -c oxlintrc.json .",
     "format": "oxfmt .",
     "format:check": "oxfmt --check .",
-    "type:check": "nuxt typecheck --extends docus",
     "typecheck": "nuxt typecheck --extends docus",
     "prepare": "prek install",
     "update": "up --latest",
