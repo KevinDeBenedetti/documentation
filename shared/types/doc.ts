@@ -31,11 +31,16 @@ export interface Toc {
 export type MinimarkElement = [string, Record<string, unknown>, ...(string | MinimarkElement)[]];
 
 /**
+ * A minimark node can be a text string or an element tuple
+ */
+export type MinimarkNode = string | MinimarkElement;
+
+/**
  * Document body
  */
 export interface Body {
   type: "minimark";
-  value: MinimarkElement[];
+  value: MinimarkNode[];
   toc: Toc;
 }
 
@@ -53,23 +58,39 @@ export interface Navigation {
 export interface Seo {
   title: string;
   description: string;
+  [key: string]: unknown;
 }
 
 /**
  * Document returned by Nuxt Content
  */
 export interface Doc {
-  id: string;
+  // Common
   title: string;
-  body: Body;
   description: string;
-  extension: string;
-  meta: Record<string, unknown>;
+
+  // Nuxt Content API properties (from queryCollection)
+  id?: string;
+  body?: Body;
+  extension?: string;
+  meta?: Record<string, unknown>;
   navigation?: Navigation;
-  path: string;
-  seo: Seo;
-  stem: string;
-  __hash__: string;
+  path?: string;
+  seo?: Seo;
+  stem?: string;
+  __hash__?: string;
+
+  // Parsed doc properties (from getMarkdownFiles / server API)
+  _dir?: string;
+  _id?: string;
+  _file?: string;
+  _lang?: string;
+  _path?: string;
+  _route?: string;
+  category?: string;
+  categoryOrder?: number;
+  fileOrder?: number;
+  order?: number;
 }
 
 export type DocQuery = Partial<Doc>;

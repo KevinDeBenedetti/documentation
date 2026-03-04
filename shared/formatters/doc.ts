@@ -54,6 +54,7 @@ export function slugToDocId(slug: string, lang: string): string {
 
   for (let i = 0; i < parts.length; i++) {
     const part = parts[i];
+    if (part === undefined) continue;
 
     // If a numeric part appears and there's an existing current segment,
     // start a new segment (e.g., ['1','devops','6','firewall'] -> ['1-devops','6-firewall'])
@@ -71,7 +72,7 @@ export function slugToDocId(slug: string, lang: string): string {
 
   const formattedSegments = segments.map((segment) => {
     const match = segment.match(/^(\d+)-(.+)$/);
-    if (match) {
+    if (match?.[1] && match[2]) {
       return `${match[1]}.${match[2]}`;
     }
     return segment;

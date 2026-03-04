@@ -4,10 +4,10 @@ import type { Doc } from "#shared/types/doc";
 interface Props {
   doc: Doc;
   currentLocale: string;
-  locales: Array<{ code: string; name: string }>;
+  locales: Array<{ code: string; name?: string }>;
   availableTranslations: Array<{
     locale: string;
-    localeName: string;
+    localeName?: string;
     doc: Doc;
   }>;
 }

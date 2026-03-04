@@ -91,15 +91,16 @@ function extractOrderAndCleanPath(path: string): {
   let category = "Autre";
   let lang = "en";
 
-  if (parts.length > 0) {
+  if (parts.length > 0 && parts[0] !== undefined) {
     lang = parts[0];
   }
 
   for (let i = 0; i < parts.length; i++) {
     const part = parts[i];
+    if (part === undefined) continue;
     const match = part.match(/^(\d+)\.(.+)/);
 
-    if (match) {
+    if (match?.[1] && match[2]) {
       const order = parseInt(match[1], 10);
       const cleanName = match[2];
 

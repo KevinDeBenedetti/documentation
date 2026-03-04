@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Collections } from "@nuxt/content";
+import type { Doc } from "#shared/types/doc";
 import { slugToDocId } from "#shared/formatters/doc";
 
 const { defaultLocale, locales } = useI18n();
@@ -15,7 +16,7 @@ const { data } = await useAsyncData(
     const collection = ("content_" + lang.value) as keyof Collections;
     return queryCollection(collection)
       .where("stem", "=", slugToDocId(formattedId, lang.value))
-      .first();
+      .first() as Promise<Doc | null>;
   },
   {
     watch: [lang],
@@ -37,8 +38,8 @@ const { data: translations } = await useAsyncData(
         if (doc) {
           availableTranslations.push({
             locale: locale.code,
-            localeName: locale.name,
-            doc,
+            localeName: locale.name ?? locale.code,
+            doc: doc as Doc,
           });
         }
       } catch (error) {

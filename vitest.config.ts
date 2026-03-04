@@ -1,60 +1,62 @@
 import { fileURLToPath } from "node:url";
-import { defineConfig } from "vitest/config";
+import { defineConfig, type UserConfig } from "vite";
 import { defineVitestProject } from "@nuxt/test-utils/config";
 
-export default defineConfig(async () => ({
-  resolve: {
-    alias: {
-      "#shared": fileURLToPath(new URL("./shared", import.meta.url)),
-      "~": fileURLToPath(new URL("./", import.meta.url)),
-      "@": fileURLToPath(new URL("./", import.meta.url)),
-    },
-  },
-  test: {
-    projects: [
-      {
-        test: {
-          name: "unit",
-          include: ["test/unit/*.{test,spec}.ts"],
-          environment: "node",
-        },
+export default defineConfig(
+  async (): Promise<UserConfig> => ({
+    resolve: {
+      alias: {
+        "#shared": fileURLToPath(new URL("./shared", import.meta.url)),
+        "~": fileURLToPath(new URL("./", import.meta.url)),
+        "@": fileURLToPath(new URL("./", import.meta.url)),
       },
-      await defineVitestProject({
-        test: {
-          name: "nuxt",
-          include: ["test/nuxt/*.{test,spec}.ts"],
-          environment: "nuxt",
-          environmentOptions: {
-            nuxt: {
-              rootDir: fileURLToPath(new URL(".", import.meta.url)),
-              domEnvironment: "happy-dom",
-            },
+    },
+    test: {
+      projects: [
+        {
+          test: {
+            name: "unit",
+            include: ["test/unit/*.{test,spec}.ts"],
+            environment: "node",
           },
         },
-      }),
-    ],
-    reporters: process.env.GITHUB_ACTIONS ? ["default", "github-actions"] : ["default"],
-    coverage: {
-      enabled: true,
-      provider: "v8",
-      reporter: ["text", "json", "html", "json-summary"],
-      include: ["shared/**/*.ts", "server/**/*.ts"],
-      exclude: [
-        "**/*.config.ts",
-        "**/*.d.ts",
-        "**/test/**",
-        "**/node_modules/**",
-        "**/coverage/**",
-        "**/*.vue",
-        "server/api/**/*.ts", // Uses Nuxt globals, tested via nuxt environment
-        "shared/types/**/*.ts", // Type definitions only, no executable code
+        await defineVitestProject({
+          test: {
+            name: "nuxt",
+            include: ["test/nuxt/*.{test,spec}.ts"],
+            environment: "nuxt",
+            environmentOptions: {
+              nuxt: {
+                rootDir: fileURLToPath(new URL(".", import.meta.url)),
+                domEnvironment: "happy-dom",
+              },
+            },
+          },
+        }),
       ],
-      thresholds: {
-        lines: 80,
-        functions: 80,
-        branches: 80,
-        statements: 80,
+      reporters: process.env.GITHUB_ACTIONS ? ["default", "github-actions"] : ["default"],
+      coverage: {
+        enabled: true,
+        provider: "v8",
+        reporter: ["text", "json", "html", "json-summary"],
+        include: ["shared/**/*.ts", "server/**/*.ts"],
+        exclude: [
+          "**/*.config.ts",
+          "**/*.d.ts",
+          "**/test/**",
+          "**/node_modules/**",
+          "**/coverage/**",
+          "**/*.vue",
+          "server/api/**/*.ts", // Uses Nuxt globals, tested via nuxt environment
+          "shared/types/**/*.ts", // Type definitions only, no executable code
+        ],
+        thresholds: {
+          lines: 80,
+          functions: 80,
+          branches: 80,
+          statements: 80,
+        },
       },
     },
-  },
-}));
+  }),
+);
