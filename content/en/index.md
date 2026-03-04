@@ -14,83 +14,66 @@ Documentation covering multiple domains: **DevOps**, **Artificial Intelligence**
 Practical guides with code examples, diagrams and best practices.
 
 #links
-:::u-button
+  :::u-button
+  ---
+  color: neutral
+  size: xl
+  to: /en/devops/git
+  trailing-icon: i-lucide-arrow-right
+  ---
+  Get Started
+  :::
 
----
-
-color: neutral
-size: xl
-to: /en/devops/git
-trailing-icon: i-lucide-arrow-right
-
----
-
-Get Started
-:::
-
-:::u-button
-
----
-
-color: neutral
-icon: i-lucide-github
-size: xl
-to: https://github.com/kevindebenedetti
-variant: outline
-target: \_blank
-
----
-
-GitHub
-:::
+  :::u-button
+  ---
+  color: neutral
+  icon: i-lucide-github
+  size: xl
+  to: https://github.com/kevindebenedetti
+  variant: outline
+  target: _blank
+  ---
+  GitHub
+  :::
 ::
 
-## ::u-page-section
-
+::u-page-section
+---
 title: 'Explore documentation by domain'
 features:
-
-- icon: i-lucide-server
-  to: /en/devops/git
-  title: DevOps & Infrastructure
-  description: 'Git, CI/CD, Docker, Kubernetes, Infrastructure as Code. Master modern DevOps practices with complete pipelines and ready-to-use configurations.'
-- icon: i-lucide-brain
-  to: /en/ai/introduction
-  title: Artificial Intelligence
-  description: 'Machine Learning, Deep Learning, LLMs, Prompt Engineering. Discover algorithms, practical implementations and AI model deployment in production.'
-- icon: i-lucide-code-2
-  to: /en/javascript-typescript/vue
-  title: Python & TypeScript
-  description: 'Modern programming languages, frameworks, design patterns. Complete guides with tested code examples and recommended architectures.'
-- icon: i-lucide-database
-  to: /en/python/fastapi
-  title: Python / FastAPI
-  description: 'Backend development with Python and FastAPI. Build performant, secure and scalable APIs with concrete examples and best practices.'
-
+  - icon: i-lucide-server
+    to: /en/devops/git
+    title: DevOps & Infrastructure
+    description: 'Git, CI/CD, Docker, Kubernetes, Infrastructure as Code. Master modern DevOps practices with complete pipelines and ready-to-use configurations.'
+  - icon: i-lucide-brain
+    to: /en/ai/introduction
+    title: Artificial Intelligence
+    description: 'Machine Learning, Deep Learning, LLMs, Prompt Engineering. Discover algorithms, practical implementations and AI model deployment in production.'
+  - icon: i-lucide-code-2
+    to: /en/javascript-typescript/vue
+    title: Python & TypeScript
+    description: 'Modern programming languages, frameworks, design patterns. Complete guides with tested code examples and recommended architectures.'
+  - icon: i-lucide-database
+    to: /en/python/fastapi
+    title: Python / FastAPI
+    description: 'Backend development with Python and FastAPI. Build performant, secure and scalable APIs with concrete examples and best practices.'
 ---
-
 ::
 
-## ::u-page-section
-
+::u-page-section
+---
 class: 'bg-neutral-50 dark:bg-neutral-900'
 title: 'A complete technical documentation'
 description: 'This documentation is designed for fullstack developers looking for detailed guides, practical examples and in-depth technical explanations.'
-
 ---
-
-:::card-group
-::::card
-
----
-
-icon: i-lucide-book-open
-title: Detailed Guides
-description: Each topic is covered in depth with context, concepts, implementations and real-world use cases.
-
----
-
-::::
+  :::card-group
+    ::::card
+    ---
+    icon: i-lucide-book-open
+    title: Detailed Guides
+    description: Each topic is covered in depth with context, concepts, implementations and real-world use cases.
+    ---
+    ::::
 
     ::::card
     ---
@@ -131,10 +114,9 @@ description: Each topic is covered in depth with context, concepts, implementati
     description: Examples in Python, TypeScript, JavaScript with comparisons and appropriate use cases.
     ---
     ::::
+  :::
 
-:::
-
-::note
-📚 **Documentation constantly evolving**: This documentation is regularly updated with the latest technologies and practices of modern development.
-::
+  ::note
+  📚 **Documentation constantly evolving**: This documentation is regularly updated with the latest technologies and practices of modern development.
+  ::
 ::
