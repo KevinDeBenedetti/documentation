@@ -4,7 +4,7 @@ import type { Doc } from "#shared/types/doc";
 interface Props {
   translations: Array<{
     locale: string;
-    localeName: string;
+    localeName?: string;
     doc: Doc;
   }>;
   currentLocale: string;

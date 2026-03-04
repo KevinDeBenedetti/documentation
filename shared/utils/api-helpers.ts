@@ -57,10 +57,11 @@ export function addTranslationsToDoc(
 ): DocWithTranslations {
   const translations = availableLangs
     .map((lang) => {
-      const translatedPath = doc._path.replace(`/${currentLang}/`, `/${lang}/`);
+      const docPath = doc._path ?? "";
+      const translatedPath = docPath.replace(`/${currentLang}/`, `/${lang}/`);
       const translatedDoc = allDocs.find((d) => d._path === translatedPath && d._lang === lang);
 
-      return translatedDoc ? { lang, path: translatedDoc._path } : null;
+      return translatedDoc ? { lang, path: translatedDoc._path ?? "" } : null;
     })
     .filter((t): t is { lang: string; path: string } => t !== null);
 
@@ -75,8 +76,12 @@ export function addTranslationsToDoc(
  */
 export function sortDocs<T extends Doc>(docs: T[]): T[] {
   return [...docs].sort((a, b) => {
-    if (a.categoryOrder !== b.categoryOrder) return a.categoryOrder - b.categoryOrder;
-    if (a.fileOrder !== b.fileOrder) return a.fileOrder - b.fileOrder;
+    const aCat = a.categoryOrder ?? 999;
+    const bCat = b.categoryOrder ?? 999;
+    if (aCat !== bCat) return aCat - bCat;
+    const aFile = a.fileOrder ?? 999;
+    const bFile = b.fileOrder ?? 999;
+    if (aFile !== bFile) return aFile - bFile;
     return a.title.localeCompare(b.title);
   });
 }

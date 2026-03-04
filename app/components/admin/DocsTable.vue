@@ -49,7 +49,7 @@ const columns = [
           variant="outline"
           icon="i-lucide-eye"
           size="sm"
-          @click="openDocPreview(row.original.id, lang)"
+          @click="openDocPreview(row.original.id ?? '', lang)"
         />
       </div>
     </template>
@@ -63,7 +63,7 @@ const columns = [
           variant="outline"
           icon="i-lucide-arrow-right"
           size="sm"
-          @click="navigateTo(`/doc/${docIdToSlug(row.original.stem)}`)"
+          @click="navigateTo(`/doc/${docIdToSlug(row.original.stem ?? '')}`)"
         />
       </div>
     </template>
