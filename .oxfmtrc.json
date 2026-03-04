@@ -1,4 +1,4 @@
 {
   "$schema": "https://oxc.rs/schemas/oxfmtrc.json",
-  "ignorePatterns": ["CHANGELOG.md"]
+  "ignorePatterns": ["CHANGELOG.md", "content/**/*.md"]
 }
