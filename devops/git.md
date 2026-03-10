@@ -1,0 +1,103 @@
+# Git
+
+*Practical guide to Git commands for version control.*
+
+## Initial Setup
+
+```shell
+# Set your name
+git config --global user.name "Your Name"
+# Set your email
+git config user.email "your@email.com"
+# Required for commits
+```
+
+## Start a Project
+
+```shell
+# Initialize a repository in the current folder
+git init
+# Clone an existing repository
+git clone https://github.com/user/repo.git
+```
+
+## Workflow
+
+```shell
+# View status of modified files
+git status
+# Add a file to tracking
+git add file.txt
+# Add all modified files
+git add .
+# Commit changes
+git commit -m "Descriptive message"
+# Push to remote repository
+git push origin main
+# Pull updates
+git pull
+```
+
+> **Tip**: Follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) naming conventions.
+
+## Branches
+
+```shell
+# Show current branch
+git branch
+# List branches
+git branch -a
+# Create a new branch
+git branch new-branch
+# Switch branch
+git checkout branch-name
+# Create + switch to a branch
+git checkout -b new-branch
+# Merge a branch
+git merge branch-name
+```
+
+## Collaboration
+
+```shell
+# Add a remote repository
+git remote add origin https://github.com/user/repo.git
+# List remote repositories
+git remote -v
+# Fetch changes without merging
+git fetch
+```
+
+## History
+
+```shell
+# Show commit history
+git log
+# View differences between files
+git diff
+# Undo a modified file (before commit)
+git restore file.txt
+```
+
+## Useful Commands
+
+```shell
+# Stash (temporarily save changes)
+git stash
+# Apply a stash
+git stash pop
+# Remove a file from tracking
+git rm file.txt
+# Remove a file from tracking (without deleting it from the filesystem)
+git rm --cached file.txt
+# Rename / Move a file
+git mv old-name new-name
+# Create a tag
+git tag v1.0.0
+```
+
+## Help
+
+```shell
+git help [command]
+```
