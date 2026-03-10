@@ -145,6 +145,12 @@ Install the [Ruff extension](https://marketplace.visualstudio.com/items?itemName
 }
 ```
 
+## PyCharm / IntelliJ Integration
+
+1. Install the Ruff plugin from the marketplace
+2. Configure in **Settings > Tools > External Tools**
+3. Add Ruff as an external formatter/linter
+
 ## Pre-commit Hooks
 
 ```yaml
@@ -197,6 +203,41 @@ jobs:
         run: uv run ruff format --check .
 ```
 
+## CI/CD — GitLab CI
+
+```yaml
+# .gitlab-ci.yml
+ruff-lint:
+  stage: test
+  image: python:3.11
+  before_script:
+    - pip install uv
+    - uv sync --dev
+  script:
+    - uv run ruff check .
+    - uv run ruff format --check .
+  rules:
+    - if: $CI_MERGE_REQUEST_ID
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+```
+
+## CI/CD — Jenkins Pipeline
+
+```groovy
+pipeline {
+    agent any
+    stages {
+        stage('Quality Check') {
+            steps {
+                sh 'uv sync --dev'
+                sh 'uv run ruff check . || true'
+                sh 'uv run ruff format --check .'
+            }
+        }
+    }
+}
+```
+
 ## Common Workflows
 
 ```sh
@@ -208,11 +249,57 @@ uv run ruff format .
 uv run ruff check .
 uv run ruff format --check .
 
+# Run on specific files
+uv run ruff check app/main.py app/models/
+
 # Get rule explanation
 uv run ruff rule F401
+uv run ruff rule --all  # List all rules
 
 # Show violation statistics
 uv run ruff check --statistics .
+
+# Watch changes (only modified files)
+uv run ruff check $(git diff --name-only --diff-filter=ACM | grep '\.py$')
+
+# Show active configuration
+uv run ruff check --show-settings
+
+# Export configuration as JSON
+uv run ruff check --show-settings --output-format=json > config.json
+```
+
+## Performance Optimizations
+
+For large projects, consider these optimizations:
+
+```toml
+[tool.ruff]
+# Enable cache (enabled by default)
+cache-dir = ".ruff_cache"
+
+# Respect .gitignore to limit search scope
+respect-gitignore = true
+```
+
+```sh
+# Parallel execution using multiple cores
+RAYON_NUM_THREADS=8 uv run ruff check .
+
+# Incremental analysis (only changed files)
+uv run ruff check --diff $(git diff --name-only HEAD)
+```
+
+## Migration from Other Tools
+
+Ruff eases migration from traditional tools:
+
+```sh
+# Compare formatting with Black
+ruff format --diff .
+
+# Check isort compatibility
+ruff check --select=I --diff .
 ```
 
 ## Resources
@@ -221,3 +308,4 @@ uv run ruff check --statistics .
 - [Full List of Rules](https://docs.astral.sh/ruff/rules/)
 - [Migration Guide](https://docs.astral.sh/ruff/migration/)
 - [Editor Integrations](https://docs.astral.sh/ruff/integrations/)
+- [Performance Comparison](https://github.com/astral-sh/ruff#benchmarks)
