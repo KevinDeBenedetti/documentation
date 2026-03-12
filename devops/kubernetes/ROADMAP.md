@@ -8,7 +8,7 @@
 
 ```
 Phase 0 — Local tools setup
-Phase 1 — VPS provisioning (Debian 12)
+Phase 1 — VPS provisioning (Debian 13)
 Phase 2 — Automated OS hardening (dotfiles)
 Phase 3 — k3s master (control plane)
 Phase 4 — k3s worker (join node)
@@ -50,9 +50,9 @@ htpasswd -v
 
 ## Phase 1 — VPS Provisioning
 
-> Prerequisite: 2 VPS running **Debian 12 (Bookworm)**, SSH access as root.
+> Prerequisite: 2 VPS running **Debian 13 (Trixie)**, SSH access as root.
 
-Get two VPS nodes from any provider (OVH, Hetzner, etc.) running Debian 12.
+Get two VPS nodes from any provider (OVH, Hetzner, etc.) running Debian 13.
 
 ```bash
 # Verify SSH access works
@@ -61,7 +61,7 @@ ssh root@<WORKER_IP>
 ```
 
 **Checklist:**
-- [ ] 2 VPS with Debian 12 created
+- [ ] 2 VPS with Debian 13 created
 - [ ] Root SSH key authentication configured on both
 - [ ] Private network or known IPs for both nodes
 - [ ] `.env` configured with `MASTER_IP`, `WORKER_IP`, `SSH_USER`, `DOMAIN`, `EMAIL`

@@ -1,168 +1,251 @@
 # Debian
 
-*Configuration and hardening guide for a Debian system.*
+*Configuration and hardening guide for a Debian 13 (Trixie) VPS.*
+
+## Automated Bootstrap (Recommended)
+
+For VPS nodes used with the [infra](https://github.com/KevinDeBenedetti/infra) repository, the full provisioning is automated via the dotfiles setup script. This is the standard way to prepare a fresh node:
+
+```bash
+# From your local machine (infra repo):
+make setup-master    # bootstrap VPS1
+make setup-worker    # bootstrap VPS2
+```
+
+Equivalent manual command on each VPS (as root):
+
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/KevinDeBenedetti/dotfiles/main/os/debian/init.sh) -a
+```
+
+What this installs automatically:
+- Base packages (curl, git, vim, htop, unzip, …)
+- Non-root sudo user with SSH key and NOPASSWD sudo
+- SSH hardening (no root login, key-only auth, AllowUsers)
+- UFW firewall (deny-in, allow SSH/HTTP/HTTPS)
+- Fail2Ban (SSH brute-force protection)
+- AppArmor (mandatory access control)
+- Kernel sysctl hardening (`/etc/sysctl.d/99-security.conf`)
+- Docker CE (optional, `-a` flag)
+
+> The sections below document the manual steps for reference or when not using dotfiles.
+
+---
 
 ## Initial Setup
-
-The initial system setup is crucial for your server's security and stability.
 
 ```bash
 # Change the root password
 passwd
 
-# Update the package lists
-sudo apt update
-
-# Upgrade all installed packages
-sudo apt upgrade -y
+# Update the package lists and upgrade
+sudo apt update && sudo apt upgrade -y
 
 # Clean up obsolete packages
-sudo apt autoremove -y
-sudo apt autoclean
+sudo apt autoremove -y && sudo apt autoclean
 
-# Reboot the system to apply kernel updates
+# Reboot to apply kernel updates
 sudo reboot
 ```
 
-> **Best practice**: Schedule regular updates with `cron` or enable automatic security updates using `unattended-upgrades`.
+> **Best practice**: Enable automatic security updates with `unattended-upgrades`.
 
-## SSH Configuration
+---
 
-### Securing the SSH Service
+## Create a Non-root User
 
-Changing the SSH port is a first useful step to reduce automated intrusion attempts.
+Always operate as a non-root user with sudo privileges. The automated bootstrap creates this user for you, but here is the manual procedure:
 
 ```bash
-# Edit the SSH configuration file
+# Create user
+adduser kevin
+
+# Add to sudo group
+usermod -aG sudo kevin
+
+# Copy root SSH key to the new user
+mkdir -p /home/kevin/.ssh
+cp /root/.ssh/authorized_keys /home/kevin/.ssh/authorized_keys
+chown -R kevin:kevin /home/kevin/.ssh
+chmod 700 /home/kevin/.ssh
+chmod 600 /home/kevin/.ssh/authorized_keys
+```
+
+For non-interactive automated operations (k3s install scripts, CI), grant passwordless sudo:
+
+```bash
+echo "kevin ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/kevin
+chmod 440 /etc/sudoers.d/kevin
+```
+
+---
+
+## SSH Hardening
+
+Edit `/etc/ssh/sshd_config`:
+
+```bash
 sudo nano /etc/ssh/sshd_config
 ```
 
-### Recommended Security Settings
+```ini
+# /etc/ssh/sshd_config
 
-Modify the following settings in `/etc/ssh/sshd_config`:
+# Change the default port (optional — reduces automated scan noise)
+Port 22
 
-```bash
-# Change the default port (choose between 49152 and 65535)
-Port 54321
-
-# Disable direct root login
+# Disable root login
 PermitRootLogin no
 
-# Use public key authentication only
+# Key-based auth only
 PubkeyAuthentication yes
 PasswordAuthentication no
-
-# Disable empty password authentication
 PermitEmptyPasswords no
 
-# Limit authentication attempts
-MaxAuthTries 3
+# Restrict users allowed to SSH in
+AllowUsers kevin
 
-# Set a timeout for inactive connections
+# Limit brute-force surface
+MaxAuthTries 3
+MaxSessions 5
+
+# Idle session timeout (5 min)
 ClientAliveInterval 300
 ClientAliveCountMax 2
 
-# Use SSH protocol 2 only
+# Protocol 2 only
 Protocol 2
 ```
 
-### Restart the SSH Service
-
 ```bash
-# Validate the configuration file syntax
+# Validate config before restarting
 sudo sshd -t
 
-# Restart the SSH service
+# Restart SSH
 sudo systemctl restart sshd
 
-# Check the service status
-sudo systemctl status sshd
-
-# Test connection with the new port BEFORE closing your current session
-ssh your_user@server_ip -p 54321
+# ⚠️ Test connection in a NEW terminal BEFORE closing your current session
+ssh kevin@<VPS_IP> -p 22
 ```
 
-> **WARNING**: Do not close your current SSH session before testing the new settings in a separate terminal.
+---
 
-### Firewall Configuration
+## Kernel Parameters (sysctl)
+
+The dotfiles setup writes security defaults to `/etc/sysctl.d/99-security.conf`. For k3s nodes, an additional file overrides `ip_forward`:
 
 ```bash
-# Install UFW
+# /etc/sysctl.d/99-security.conf (set by dotfiles)
+net.ipv4.ip_forward = 0
+
+# /etc/sysctl.d/99-z-k3s.conf (set by k3s install scripts — MUST sort after)
+net.ipv4.ip_forward = 1
+net.bridge.bridge-nf-call-iptables  = 1
+net.bridge.bridge-nf-call-ip6tables = 1
+```
+
+The `99-z-` prefix ensures the k3s file is applied **after** the security baseline.
+
+Apply without rebooting:
+
+```bash
+sudo sysctl --system
+sudo sysctl net.ipv4.ip_forward    # should print 1 on k3s nodes
+```
+
+---
+
+## Firewall (UFW)
+
+See [ufw.md](ufw.md) for detailed rules, including k3s-specific configuration.
+
+```bash
 sudo apt install ufw -y
-
-# Allow the new SSH port
-sudo ufw allow 54321/tcp
-
-# Enable the firewall
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp comment 'SSH'
+sudo ufw allow 80/tcp comment 'HTTP'
+sudo ufw allow 443/tcp comment 'HTTPS'
 sudo ufw enable
-
-# Check active rules
 sudo ufw status verbose
 ```
 
-## Keyboard Configuration
+---
 
-### System Locales
+## Fail2Ban
+
+See [fail2ban.md](fail2ban.md) for configuration details.
 
 ```bash
-# Reconfigure locales
-sudo dpkg-reconfigure locales
+sudo apt install fail2ban -y
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
 
-### Keyboard Layout
+Minimal SSH jail (`/etc/fail2ban/jail.local`):
+
+```ini
+[sshd]
+enabled  = true
+port     = ssh
+filter   = sshd
+maxretry = 3
+findtime = 5m
+bantime  = 30m
+backend  = systemd
+```
 
 ```bash
-# Install keyboard configuration packages
-sudo apt install keyboard-configuration console-setup -y
+sudo systemctl enable --now fail2ban
+sudo fail2ban-client status sshd
+```
 
-# Reconfigure the keyboard layout
+---
+
+## Timezone & Locale
+
+```bash
+# Set timezone
+sudo timedatectl set-timezone Europe/Paris
+timedatectl
+
+# Reconfigure locales
+sudo dpkg-reconfigure locales
+
+# Reconfigure keyboard
 sudo dpkg-reconfigure keyboard-configuration
 ```
 
-### Set Layout Permanently
+---
 
-```ini
-# /etc/default/keyboard
-XKBMODEL="pc105"
-XKBLAYOUT="fr"
-XKBVARIANT=""
-XKBOPTIONS=""
-BACKSPACE="guess"
-```
+## Useful Diagnostic Commands
 
 ```bash
-# Apply changes
-sudo dpkg-reconfigure -phigh console-setup
+# System resources
+htop
+free -h
+df -h
+
+# Network
+ip addr
+ip route
+ss -tulnp
+
+# Logs
+journalctl -xe
+journalctl -u sshd -f
+journalctl -u ufw --since "1 hour ago"
+
+# Failed login attempts
+sudo grep "Failed password" /var/log/auth.log | tail -20
+sudo fail2ban-client status sshd
 ```
 
-## Additional Optimizations
-
-### Timezone
-
-```bash
-# Set the timezone
-sudo timedatectl set-timezone Europe/Paris
-
-# Verify configuration
-timedatectl
-```
-
-### Create a Non-root User
-
-```bash
-# Create a new user
-sudo adduser your_user
-
-# Add the user to the sudo group
-sudo usermod -aG sudo your_user
-
-# Check the user's groups
-groups your_user
-```
-
-> **Security**: Always use a standard user account for daily operations and reserve the root account for critical administrative tasks.
+---
 
 ## Resources
 
-- [OVH Security Guide](https://help.ovhcloud.com/csm/fr-vps-security-tips?id=kb_article_view&sysparm_article=KB0047708)
-- [Debian Documentation](https://www.debian.org/doc/)
+- [Debian Security Guide](https://www.debian.org/doc/manuals/securing-debian-manual/)
+- [OVH VPS Security Guide](https://help.ovhcloud.com/csm/fr-vps-security-tips?id=kb_article_view&sysparm_article=KB0047708)
+- [dotfiles — debian init.sh](https://github.com/KevinDeBenedetti/dotfiles/blob/main/os/debian/init.sh)
+- [infra — setup-vps.sh](https://github.com/KevinDeBenedetti/infra/blob/main/scripts/setup-vps.sh)
+
