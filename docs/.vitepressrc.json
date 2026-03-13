@@ -1,6 +1,6 @@
 {
-  "title": "Documentation",
-  "description": "Centralized documentation hub for all @KevinDeBenedetti open source projects.",
+  "title": "Notes",
+  "description": "Centralized notes hub for all @KevinDeBenedetti open source projects.",
   "icon": "📚",
   "order": 1,
   "repo": "KevinDeBenedetti/notes"
