@@ -1,0 +1,19 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+
+concurrency:
+  group: ci-cd-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # ── Dispatch docs rebuild ──────────────────────────────────────────────────
+  dispatch:
+    name: Dispatch docs rebuild
+    uses: KevinDeBenedetti/github-workflows/.github/workflows/dispatch-docs.yml@main
+    secrets:
+      dispatch-token: ${{ secrets.PAGES_DISPATCH_TOKEN }}
