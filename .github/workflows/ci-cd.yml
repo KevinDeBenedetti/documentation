@@ -11,9 +11,21 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  ci:
+    name: CI
+    uses: KevinDeBenedetti/github-workflows/.github/workflows/ci-shell.yml@main
+    with:
+      run-shellcheck: false
+      run-actionlint: true
+      actionlint-paths: .github/workflows/
+      run-bats: false
+      run-link-check: true
+      link-check-paths: 'docs/**/*.md'
+
   # ── Dispatch docs rebuild ──────────────────────────────────────────────────
   dispatch:
     name: Dispatch docs rebuild
+    needs: ci
     uses: KevinDeBenedetti/github-workflows/.github/workflows/dispatch-docs.yml@main
     secrets:
       dispatch-token: ${{ secrets.PAGES_DISPATCH_TOKEN }}
