@@ -22,6 +22,13 @@ jobs:
       run-link-check: true
       link-check-paths: 'docs/**/*.md'
 
+  bot-check:
+    if: github.event_name == 'pull_request'
+    uses: KevinDeBenedetti/github-workflows/.github/workflows/check-bot-commits.yml@main
+    permissions:
+      contents: read
+      pull-requests: read
+
   # ── Dispatch docs rebuild ──────────────────────────────────────────────────
   dispatch:
     name: Dispatch docs rebuild

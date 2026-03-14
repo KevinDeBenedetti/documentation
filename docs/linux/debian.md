@@ -248,4 +248,3 @@ sudo fail2ban-client status sshd
 - [OVH VPS Security Guide](https://help.ovhcloud.com/csm/fr-vps-security-tips?id=kb_article_view&sysparm_article=KB0047708)
 - [dotfiles — debian init.sh](https://github.com/KevinDeBenedetti/dotfiles/blob/main/os/debian/init.sh)
 - [infra — setup-vps.sh](https://github.com/KevinDeBenedetti/infra/blob/main/scripts/setup-vps.sh)
-
