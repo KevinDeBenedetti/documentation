@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'docs/**'
+      - '.github/workflows/**'
 
 concurrency:
   group: ci-cd-${{ github.ref }}
@@ -33,5 +34,6 @@ jobs:
   dispatch:
     name: Dispatch docs rebuild
     needs: ci
+    if: contains(toJSON(github.event.commits.*.modified), 'docs/') || contains(toJSON(github.event.commits.*.added), 'docs/')
     uses: KevinDeBenedetti/github-workflows/.github/workflows/dispatch-docs.yml@main
     secrets: inherit
