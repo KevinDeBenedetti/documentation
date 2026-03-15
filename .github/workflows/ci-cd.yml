@@ -35,4 +35,4 @@ jobs:
     needs: ci
     uses: KevinDeBenedetti/github-workflows/.github/workflows/dispatch-docs.yml@main
     secrets:
-      dispatch-token: ${{ secrets.PAGES_DISPATCH_TOKEN }}
+      PAT_TOKEN: ${{ secrets.PAGES_DISPATCH_TOKEN }}

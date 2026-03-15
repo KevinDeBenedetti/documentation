@@ -358,10 +358,10 @@ kubectl delete secret <tls-secret-name> -n apps
 
 ## Networking Checklist
 
-- [ ] k3s master installed with `--flannel-backend=vxlan`
-- [ ] UDP port 8472 open between master and worker
-- [ ] Traefik deployed and showing an `EXTERNAL-IP`
-- [ ] Ports 80 and 443 open on the worker VPS
-- [ ] cert-manager deployed and `ClusterIssuer` is `Ready`
-- [ ] DNS A record for your domain points to the worker IP
-- [ ] Test certificate issued (staging) before switching to production
+- k3s master installed with `--flannel-backend=vxlan`
+- UDP port 8472 open between master and worker
+- Traefik deployed and showing an `EXTERNAL-IP`
+- Ports 80 and 443 open on the worker VPS
+- cert-manager deployed and `ClusterIssuer` is `Ready`
+- DNS A record for your domain points to the worker IP
+- Test certificate issued (staging) before switching to production

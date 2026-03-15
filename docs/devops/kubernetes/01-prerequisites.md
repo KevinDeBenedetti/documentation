@@ -168,12 +168,12 @@ KUBECONFIG_CONTEXT=k3s-infra
 
 ## Pre-flight Checklist
 
-- [ ] Debian 13 installed on both VPS nodes
-- [ ] SSH access with key authentication working
-- [ ] `make setup-master` and `make setup-worker` completed successfully
-- [ ] Swap disabled (`free -h` shows 0 swap)
-- [ ] Kernel modules loaded (`lsmod | grep -E 'overlay|br_netfilter'`)
-- [ ] sysctl `ip_forward=1` confirmed
-- [ ] UFW active and configured
-- [ ] `.env` filled with correct IPs, user, and domain
-- [ ] `kubectl`, `helm`, `htpasswd` available locally
+- Debian 13 installed on both VPS nodes
+- SSH access with key authentication working
+- `make setup-master` and `make setup-worker` completed successfully
+- Swap disabled (`free -h` shows 0 swap)
+- Kernel modules loaded (`lsmod | grep -E 'overlay|br_netfilter'`)
+- sysctl `ip_forward=1` confirmed
+- UFW active and configured
+- `.env` filled with correct IPs, user, and domain
+- `kubectl`, `helm`, `htpasswd` available locally
