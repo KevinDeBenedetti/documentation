@@ -34,5 +34,4 @@ jobs:
     name: Dispatch docs rebuild
     needs: ci
     uses: KevinDeBenedetti/github-workflows/.github/workflows/dispatch-docs.yml@main
-    secrets:
-      PAT_TOKEN: ${{ secrets.PAGES_DISPATCH_TOKEN }}
+    secrets: inherit
