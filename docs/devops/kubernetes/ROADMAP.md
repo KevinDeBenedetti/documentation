@@ -61,10 +61,10 @@ ssh root@<WORKER_IP>
 ```
 
 **Checklist:**
-- [ ] 2 VPS with Debian 13 created
-- [ ] Root SSH key authentication configured on both
-- [ ] Private network or known IPs for both nodes
-- [ ] `.env` configured with `MASTER_IP`, `WORKER_IP`, `SSH_USER`, `DOMAIN`, `EMAIL`
+- 2 VPS with Debian 13 created
+- Root SSH key authentication configured on both
+- Private network or known IPs for both nodes
+- `.env` configured with `MASTER_IP`, `WORKER_IP`, `SSH_USER`, `DOMAIN`, `EMAIL`
 
 **Status:** See [01-prerequisites.md](01-prerequisites.md)
 
@@ -91,11 +91,11 @@ make setup-all
 ```
 
 **Checklist:**
-- [ ] Non-root user created with sudo NOPASSWD
-- [ ] Root login disabled over SSH
-- [ ] UFW active, SSH port allowed
-- [ ] Fail2Ban monitoring SSH jail
-- [ ] `sysctl net.ipv4.ip_forward = 0` (will be overridden by k3s step)
+- Non-root user created with sudo NOPASSWD
+- Root login disabled over SSH
+- UFW active, SSH port allowed
+- Fail2Ban monitoring SSH jail
+- `sysctl net.ipv4.ip_forward = 0` (will be overridden by k3s step)
 
 **Status:** See [01-prerequisites.md](01-prerequisites.md)
 
@@ -118,9 +118,9 @@ What this delivers:
 - UFW rules for pod/service CIDRs
 
 **Checklist:**
-- [ ] `kubectl get nodes` shows VPS1 as `Ready`
-- [ ] `K3S_NODE_TOKEN` noted and added to `.env`
-- [ ] `make kubeconfig` ran and context `k3s-infra` set
+- `kubectl get nodes` shows VPS1 as `Ready`
+- `K3S_NODE_TOKEN` noted and added to `.env`
+- `make kubeconfig` ran and context `k3s-infra` set
 
 **Status:** See [02-kubeadm-setup.md](02-kubeadm-setup.md)
 
@@ -135,9 +135,9 @@ make k3s-worker
 ```
 
 **Checklist:**
-- [ ] `kubectl get nodes` shows both nodes `Ready`
-- [ ] Inter-pod ping test passes across nodes
-- [ ] Flannel VXLAN traffic flowing (UDP :8472 open)
+- `kubectl get nodes` shows both nodes `Ready`
+- Inter-pod ping test passes across nodes
+- Flannel VXLAN traffic flowing (UDP :8472 open)
 
 **Status:** See [04-worker-join.md](04-worker-join.md)
 
@@ -160,10 +160,10 @@ What gets deployed:
 5. **Traefik dashboard** — `https://dashboard.<DOMAIN>` (BasicAuth)
 
 **Checklist:**
-- [ ] `kubectl get svc -n ingress traefik` shows `EXTERNAL-IP`
-- [ ] Staging certificate issued successfully for a test domain
-- [ ] Production certificate issued and trusted
-- [ ] Dashboard accessible at `https://dashboard.<DOMAIN>`
+- `kubectl get svc -n ingress traefik` shows `EXTERNAL-IP`
+- Staging certificate issued successfully for a test domain
+- Production certificate issued and trusted
+- Dashboard accessible at `https://dashboard.<DOMAIN>`
 
 **Status:** See [03-networking.md](03-networking.md)
 
@@ -187,10 +187,10 @@ kubectl get certificate -n apps
 ```
 
 **Checklist:**
-- [ ] Deployment showing desired replicas `Running`
-- [ ] Ingress created and resolving to the worker IP
-- [ ] TLS certificate issued and `Ready`
-- [ ] Application reachable via HTTPS
+- Deployment showing desired replicas `Running`
+- Ingress created and resolving to the worker IP
+- TLS certificate issued and `Ready`
+- Application reachable via HTTPS
 
 **Status:** See [05-storage.md](05-storage.md) for stateful applications
 
@@ -210,10 +210,10 @@ kubectl apply -f kubernetes/monitoring/grafana-ingress.yaml
 ```
 
 **Checklist:**
-- [ ] All monitoring pods `Running` in `monitoring` namespace
-- [ ] Grafana accessible at `https://grafana.<DOMAIN>`
-- [ ] Node, pod, and cluster metrics visible in Grafana
-- [ ] Alertmanager configured with notification channel
+- All monitoring pods `Running` in `monitoring` namespace
+- Grafana accessible at `https://grafana.<DOMAIN>`
+- Node, pod, and cluster metrics visible in Grafana
+- Alertmanager configured with notification channel
 
 **Status:** See [06-observability.md](06-observability.md)
 
